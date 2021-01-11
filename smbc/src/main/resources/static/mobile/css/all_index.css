@@ -1,0 +1,217 @@
+@charset "utf-8";
+
+.loginBox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+@media only screen and (max-width: 640px){
+  .loginBox{
+    width: 100%;
+    display: block;
+    margin-bottom: 80px;
+  }
+}
+
+.loginArea{
+    flex:1 0 calc(1000px - (360px + 80px) );
+}
+
+.loginBox h1{
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
+    background-color: transparent;
+    text-align: left;
+    min-width: 0px;
+    font-size: 2.6rem;
+    line-height: 1.389;
+    font-weight: bold;
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 6px;
+}
+
+.loginBox h2{
+    font-size: 2.6rem;
+    font-weight: bold;
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 6px;
+}
+.loginBox h2:before{
+    display: none;
+}
+
+.loginArea h2 + p{
+    margin-bottom: 20px;
+}
+
+
+.loginBox h3{
+    font-size: 2.4rem;
+    padding-left: 0;
+}
+.loginBox h3:before{
+    display: none;
+}
+/*loginArea*/
+.inputText{
+    margin-bottom: 24px;
+}
+
+.inputText dt{
+    font-size: 1.3rem;
+    
+}
+.inputText dd{
+    margin-bottom: 16px;
+}
+.inputText input{
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 7px 10px 8px;
+    border:none;
+    border-bottom: 1px solid #CCCCCC;
+    width: 100%;
+    line-height: 1.4;
+}
+.inputText input::placeholder{
+    color: #CCCCCC;
+}
+
+.inputText input.error:not(:focus){
+    color: #dd3300;
+    border-bottom: 1px solid #dd3300;
+}
+
+.loginValidationMessage{
+    margin-top: 12px;
+    color: #dd3300;
+}
+
+.capyArea {
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.capyArea .capy-captcha{
+    width: 320px !important;
+}
+.capyArea #capy-captcha-caption{
+    margin-top: 10px;
+}
+
+.loginSubmit{
+    width: 345px;
+    margin: 0 auto;
+}
+
+.loginSubmit .btnNormal {
+    width: 100%;
+    margin-bottom: 13px;
+    background-image: url(/img/icon_button_self.svg);
+    background-repeat: no-repeat;
+    background-position: center right 20px;
+    background-size: auto 20px;
+    cursor: pointer;
+}
+.loginSubmit .smallArrowLink{
+    margin-bottom: 0;
+}
+/*ios端末でボタンが角丸になることを防ぐ*/
+.loginSubmit input{
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+.errorMessage{
+    background: #fceae5;
+    padding: 20px;
+}
+
+@media only screen and (max-width: 640px){
+    #contWrap {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .loginArea{
+        padding: 0;
+    }
+    .loginSubmit{
+        width: 100%;
+    }
+    .capyArea .capy-captcha{
+        width: 100% !important;
+        margin-right: 0px;
+    }
+    .capyArea .capy-captcha div div:first-of-type{
+        height: 100%!important;
+    }
+    .capyArea .capy-captcha div div:nth-of-type(3) div:first-of-type,
+    .capyArea .capy-captcha div div:nth-of-type(3) div:nth-of-type(2){
+        height: 100px!important;
+    }
+    .loginBox h2{
+        font-size: 2.4rem;
+    }
+    .loginBox h3{
+        font-size: 1.8rem;
+    }
+}
+
+/*menuArea*/
+.menuArea{
+    width: 360px;
+    margin-left: 80px;
+    background: #F6F6F6;
+    padding: 40px;
+    flex: 0 0 360px;
+}
+
+.menuArea .co_btn {
+    width: 100%;
+    margin-bottom: 13px;
+    padding: 17px 5% 16px;
+}
+
+.menuArea .smallArrowLink{
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width: 640px){
+    .menuArea{
+      width: 100%;
+      margin-left: 0px;
+      padding: 10px;
+      margin-top: 40px;
+    }
+    .menuArea .co_btn {
+        margin-bottom: 13px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+/*会員トップ用インフォメーションエリア余白調整*/
+.gtop_newsAreaWrap dd:last-child{
+    padding-bottom: 0;
+}
+.tabAreaWrap{
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width: 640px){
+    .gtop_newsAreaWrap{
+        margin-bottom: 100px;
+    }
+}
+.top_important{
+    display: none;
+}                                                                                 

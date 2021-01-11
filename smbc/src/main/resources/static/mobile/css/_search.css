@@ -1,0 +1,431 @@
+@charset "UTF-8";
+.container_search {
+  overflow-y: auto !important;
+  background-color: #f2f2f2 !important;
+}
+
+/* =========================================================
+ search
+========================================================= */
+#view1 {
+  background-color: #f2f2f2 !important;
+  overflow: auto;
+}
+
+#search {
+  font-size: 14px !important;
+  line-height: 1.3 !important;
+  margin: 0;
+  /*     background-color: #f2f2f2; */
+  padding: 0 2px;
+}
+
+#search form{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#search img {
+  border: none;
+}
+
+#gNaviInner {
+  /*     padding:15px 10px 15px 10px; */
+}
+
+#search h2 {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+#search a {
+  color: #0C1E89;
+  text-decoration: underline;
+  padding: 0;
+  background: none;
+  font-size: inherit;
+}
+
+#search ul, #search li {
+  list-style: none outside none;
+}
+
+#search .searchHeader {
+  padding: 10px;
+  background-color: #fff;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 9999999;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#search .searchBody {
+  background-color: #999999;
+  text-align: center;
+  padding-top: 82px;
+}
+
+#search form {
+  background: #999999;
+}
+
+#search .searchTags a {
+  color: #fff;
+}
+
+/* --- sideVpassLogout sideVpassLogin --- */
+#search #sideVpassLogout,
+#search #sideVpassLogin {
+  box-sizing: border-box;
+}
+
+#search .inputText {
+  text-align: center;
+  /*     padding:10px 20px; */
+  display: block;
+}
+
+.loginBtn {
+  text-align: center;
+  /*     padding:0 15px 15px 15px; */
+  margin-top: 10px;
+}
+
+#search .cannotLogin {
+  margin-left: 15px;
+}
+
+#search #sideVpassLogout .requestVpass {
+  text-align: center;
+  margin: 0 !important;
+  font-size: 86%;
+}
+
+#search .categoryMenu,
+#search .keiyakuSoudan {
+  background-color: #005135;
+}
+
+#search .categoryMenu h2,
+#search .keiyakuSoudan h2 {
+  background-color: #005135;
+  color: #FFF;
+  border-top: none;
+}
+
+#search .categoryMenu ul {
+  margin-bottom: 15px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#search .categoryMenu li {
+  float: left;
+  width: 48%;
+}
+
+#search .categoryMenu li a {
+  display: block;
+  height: 30px;
+  background-color: #E2ECC6;
+  border: 1px solid #E2ECC6;
+  border-radius: 3px;
+  text-align: center;
+  padding-top: 15px;
+  text-decoration: none;
+}
+
+#search .categoryMenu li a:hover {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+#search .categoryMenu li.catM01,
+#search .categoryMenu li.catM03 {
+  margin-right: 2%;
+}
+
+#search .categoryMenu li.catM01,
+#search .categoryMenu li.catM02 {
+  margin-bottom: 15px;
+}
+
+#search .keiyakuSoudan {
+  margin-bottom: 15px;
+}
+
+#search .keiyakuSoudan p {
+  margin-bottom: 0;
+}
+
+#search .keiyakuSoudan .keiyakuSoudan_wrap {
+  background-color: #FFF;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#search .keiyakuSoudan a {
+  display: inline-block;
+  border: 2px solid #EDEDED;
+  background: linear-gradient(to bottom, white 0%, lightgray 100%) repeat scroll 0% 0% transparent;
+  color: #081B88;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px 0px;
+  margin: 10px 0px;
+  width: 80%;
+  text-decoration: none;
+}
+
+#search .keiyakuSoudanTel {
+  font-size: 124%;
+}
+
+#search .keiyakuSoudanTime {
+  font-size: 86%;
+}
+
+#search .searchFooter {
+  clear: both;
+  text-align: center;
+  top: -1px;
+  position: relative;
+}
+
+#search .searchFooter button {
+  background-color: #000;
+  border: 1px solid #FFF;
+  border-radius: 3px;
+  color: #FFF;
+  height: 30px;
+  width: 150px;
+  cursor: pointer;
+}
+
+#search .kaiyakuLink {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#search .kaiyakuLink a {
+  color: #FFF;
+}
+
+#search input[type="text"],
+#search input[type="search"],
+#search input[type="button"],
+#search input[type="button"]:focus {
+  font-size: 14px !important;
+  font-family: "メイリオ", "Meiryo", "Hiragino Sans", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", Osaka, sans-serif !important;
+}
+
+#search input[type="text"],
+#search input[type="search"] {
+  border-right: 1px solid #919193 !important;
+  border-bottom: 1px solid #919193 !important;
+  border-top: 2px solid #767677 !important;
+  border-left: 2px solid #767677 !important;
+  border-radius: 3px !important;
+  background: #fffbe5 !important;
+  padding: 8px 0 5px 8px !important;
+  line-height: 22px !important;
+  width: 100%;
+  -webkit-box-shadow: inset 1px 1px 0px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 1px 1px 0px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 1px 1px 0px 0px rgba(0, 0, 0, 0.3);
+  margin: 0 !important;
+}
+
+/* --- サイドメニュー --- */
+#search .sideMenu01 {
+  background-color: #f2f2f2;
+  font-size: 16px;
+  /*     margin-bottom: 10px; */
+}
+
+#search .sideMenu01 li {
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  text-align: left;
+}
+
+#search .sideMenu01 a {
+  color: #666 !important;
+  display: block;
+  font-weight: bold;
+  padding: 10px 15px !important;
+  position: relative;
+  text-decoration: none !important;
+}
+
+#search .sideMenu01 a:hover {
+  background-color: white !important;
+}
+
+#search .sideMenu01 img {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+#search .sideMenu01 p {
+  margin-bottom: 0;
+}
+
+#search .sideMenu01 .setumei {
+  display: inline-block;
+  margin-left: 30px;
+  color: #000;
+}
+
+#search .accordion_add_list ul li {
+  padding: 0;
+  border-top: none;
+}
+
+/* close button */
+.slideCloseBtn {
+  display: inline-block;
+  float: right;
+}
+
+#search .btnHaderClose {
+  border: 1px solid #e1e1e1;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: none repeat scroll 0 0 #fff;
+  border-bottom: 3px solid #cccccc;
+  /*     padding: 10px; */
+  height: 42px;
+  width: 80px;
+  text-align: center;
+  color: #545454;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* login button */
+.loginBtn .btnNormal01Large,
+.logoutBtn .btnNormal01Large {
+  width: 100%;
+  font-size: 16.8px;
+  text-align: center;
+  padding: 12px 30px;
+  font-weight: bold;
+  position: relative;
+  border-radius: 0;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  background-color: #C3D600;
+  color: #1A4832 !important;
+  border: 1px solid #C3D600;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+}
+
+#search .loginBtn .btnNormal01Large{
+  padding: 0px;
+  height: 48px;
+}
+
+
+/*矢印LINK*/
+#search .smallArrowLinkType03 li {
+  display: block;
+  position: relative;
+  padding-left: 15px;
+  margin-bottom: 5px;
+  background: url("/common/dynamic/memx/img/sp/common_pict_img_linkArrow03.png") no-repeat;
+  background-position: 3px 6px;
+}
+
+.smallArrowLinkType03 li:before {
+  content: "";
+}
+
+.smallArrowLinkType03 a {
+  margin-bottom: 10px;
+  display: block;
+  color: #fff !important;
+}
+
+.smallArrowLinkType03 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: left;
+  display: inline-block;
+}
+
+/*確認メニュー*/
+.confirmMenu {
+  text-align: left;
+  padding: 10px;
+}
+.confirmMenu span {
+  font-weight: bold;
+  color: #004e31;
+  font-size: 16px;
+}
+
+
+/*区分用Section*/
+.sideSection {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+
+/*アイコン*/
+
+.icon_sideMenu_search01,
+.icon_sideMenu_search02,
+.icon_sideMenu_search03,
+.icon_sideMenu_search04,
+.icon_sideMenu_search05{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: top left;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.icon_sideMenu_search01{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_search01.png');
+}
+.icon_sideMenu_search02{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_search02.png');
+}
+.icon_sideMenu_search03{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_search03.png');
+}
+.icon_sideMenu_search04{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_search04.png');
+}
+.icon_sideMenu_search05{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_search05.png');
+}
+
+/*こころさんバナー*/
+.kokoro_banner {
+  background: #f2f2f2;
+  padding: 10px;
+  text-align: center;
+}
+
+.kokoro_banner a{
+  line-height: 1.3;
+}
+
+.kokoro_banner a img{
+  vertical-align: middle;
+}
+
+                                                                                              

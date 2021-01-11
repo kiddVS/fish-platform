@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+/* =========================================================
+ RESET
+========================================================= */
+body,div, dl, dt, dd, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td{
+    margin: 0;
+    padding: 0;
+}
+
+fieldset, img{
+    border: 0 none;
+}
+
+address, caption, cite, code, dfn, var{ 
+    font-weight: normal;
+    font-style: normal;
+}
+
+caption, th{
+    text-align: left;
+}
+
+q:before, q:after{
+    content: "";
+}
+
+abbr, acronym{
+    border: 0;
+}
+                                                                                    

@@ -1,0 +1,497 @@
+@charset "UTF-8";
+/* menu
+--------------------------------------------------------- */
+.left {
+  float: left;
+  width: 200px;
+  padding-right: 15px;
+  /*    width: 25%; */
+  /*    height: 600px; */
+  /*    background: #fff3d6; */
+}
+/* 基本設定
+--------------------------------------------------------- */
+#side .smallArrowLink{
+    display: inline-block;
+}
+#side .smallArrowLink li{
+    line-height: 1.3;
+    background-position: 0px 3px !important;
+}
+#side .smallArrowLink a{
+    font-size: 12px !important;
+}
+#side .smallArrowLink a:before{
+    border-left: #005135 solid 5px;
+    top:15px;
+    left:12px;
+}
+#side .smallArrowLink a:hover{
+    text-decoration: none;
+}
+.sideTopArea {
+    text-align: center;
+    padding: 5px !important;
+    height: 56px;
+}
+/* ロゴ
+--------------------------------------------------------- */
+.sideTopArea ul.smallArrowLink{
+    margin-bottom: 10px!important;
+}
+/* サイドメニュー
+--------------------------------------------------------- */
+.sideMenu01 {
+    background-color: #f2f2f2;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.sideMenu01 li {
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.sideMenu01 a {
+    display: block;
+    position: relative;
+    padding: 5px 8px !important;
+    text-decoration: none !important;
+    color: #3e7a52 !important;
+    font-weight: bold;
+    
+    transition-property: background;
+    transition-duration:0.3s;
+    transition-timing-function:ease-out;
+    transition-delay:0.1s;
+}
+
+.sideMenu01 a:hover {
+    background-color: #e1ecc5 !important;
+}
+
+.sideMenu01 img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.sideMenu01 p {
+    margin-bottom: 0;
+}
+
+.sideMenu01 .setumei {
+    display: inline-block;
+    margin-left: 30px;
+    color: #000;
+}
+
+/* 確認メニュー
+--------------------------------------------------------- */
+.confirmMenu {
+    text-align: center;
+    padding-bottom: 10px;
+}
+.confirmMenu ul {
+    display: inline-block;
+}
+.confirmMenu ul a {
+    font-weight: bold;
+}
+
+.confirmMenu p {
+    text-align: left;
+    color: #3e7a52 !important;
+    font-size: 12px !important;
+}
+.confirmMenu a {
+    color: #3e7a52 !important;
+    text-decoration: none ;
+}
+.confirmMenu a:hover {
+    text-decoration: underline!important;
+}
+/* 区分用Section
+--------------------------------------------------------- */
+.sideSection {
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+form.sideSection{
+    padding: 10px;
+}
+
+#side .loginSelect {
+    padding: 10px 10px 0;
+    display: none;
+    border:1px solid #ccc;
+    background-color: #FFF;
+    text-align: left;
+}
+
+/* バナーメニュー
+--------------------------------------------------------- */
+.bannerMenu {
+    padding: 0px 0 0px 0;
+}
+
+
+/* ログインエリア
+--------------------------------------------------------- */
+#side #sideVpassLogin {
+    background-color: #e1ecc5;
+    text-align: center;
+
+}
+#side .pastLogin {
+    width: 100%;
+    font-size: 72%;
+    margin: 5px 0px 0;
+    text-align: center;
+    padding: 0 0;
+}
+#side #sideVpassLogin p{
+    margin-bottom: 0;
+}
+
+#side #sideVpassLogout ul {
+    display: inline-block;
+    font-size: 12px !important;
+}
+
+#side #sideVpassLogout .inputText {
+    padding: 10px;
+}
+
+#side .loginBtn,
+#side .logoutBtn {
+    text-align: center;
+    padding: 0 0px 15px 0px;
+    margin: 0;
+}
+
+#side input[type="text"],
+#side input[type="password"] {
+    width: 100% !important;
+    border-style: solid !important;
+    border-color: #C1BEBB !important;
+    border-radius: 3px !important;
+    background: #fffbe5 !important;
+    padding: 2px 0 2px 5px !important;
+    line-height: 22px !important;
+    box-sizing: border-box;
+}
+
+#side input[type="text"],
+#side input[type="password"],
+#side input[type="submit"],
+#side input[type="button"] {
+    font-size: 14px !important;
+    font-family: "メイリオ", "Meiryo", "Hiragino Sans", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", Osaka, sans-serif !important;
+}
+
+#sideVpassLogin .btnLogout {
+    width: 45%;
+    padding: 7px 5px;
+    margin: 0;
+    margin-top: 0px;
+    display: inline-block;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    border-collapse: separate;
+    position: relative;
+    vertical-align: middle;
+    box-sizing: border-box;
+    color: #003e28 !important;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+    border-width: 1px;
+    background: #c4e23f;
+    background: rgb(237,237,237);
+    background: -moz-linear-gradient(top, rgba(237,237,237,1) 0%, rgba(184,184,184,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(237,237,237,1)), color-stop(100%,rgba(184,184,184,1)));
+    background: -webkit-linear-gradient(top, rgba(237,237,237,1) 0%,rgba(184,184,184,1) 100%);
+    background: -o-linear-gradient(top, rgba(237,237,237,1) 0%,rgba(184,184,184,1) 100%);
+    background: -ms-linear-gradient(top, rgba(237,237,237,1) 0%,rgba(184,184,184,1) 100%);
+    background: linear-gradient(to bottom, rgba(237,237,237,1) 0%,rgba(184,184,184,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#b8b8b8',GradientType=0 );
+    box-shadow: -1px -1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+    -moz-box-shadow: -1px -1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+    -webkit-box-shadow: -1px -1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+    -o-box-shadow: -1px -1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+    -ms-box-shadow: -1px -1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+}
+#sideVpassLogin .btnLogout:hover{
+    background: -moz-linear-gradient(top, rgba(257,257,257,1) 0%, rgba(204,204,204,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(257,257,257,1)), color-stop(100%,rgba(204,204,204,1)));
+    background: -webkit-linear-gradient(top, rgba(257,257,257,1) 0%,rgba(204,204,204,1) 100%);
+    background: -o-linear-gradient(top, rgba(257,257,257,1) 0%,rgba(204,204,204,1) 100%);
+    background: -ms-linear-gradient(top, rgba(257,257,257,1) 0%,rgba(204,204,204,1) 100%);
+    background: linear-gradient(to bottom, rgba(257,257,257,1) 0%,rgba(204,204,204,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dddddd', endColorstr='#cccccc',GradientType=0 );
+}
+
+#side .loginBtn .btnNormal01Large{
+    width: 100%;
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    border-collapse: separate;
+    position: relative;
+    vertical-align: middle;
+    box-sizing: border-box;
+    color: #003e28 !important;
+    border-top: 1px solid #c4e23f;
+    border-left: 1px solid #c4e23f;
+    border-width: 1px;
+    background: #c4e23f;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #c4e23f 0%, #bbdd21 2%, #9acd06 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c4e23f), color-stop(2%, #bbdd21), color-stop(100%, #9acd06));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #c4e23f 0%, #bbdd21 2%, #9acd06 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #c4e23f 0%, #bbdd21 2%, #9acd06 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #c4e23f 0%, #bbdd21 2%, #9acd06 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #c4e23f 0%, #bbdd21 2%, #9acd06 100%);
+    /* W3C */
+    box-shadow: -1px -1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+    -moz-box-shadow: -1px -1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+    -webkit-box-shadow: -1px -1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+    -o-box-shadow: -1px -1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+    -ms-box-shadow: -1px -1px 1px 0 rgba(0, 0, 0, 0.3) inset;
+    line-height: 1.5;
+}
+#side .loginBtn .btnNormal01Large:hover{
+    opacity: 0.6;
+    /*-ms-interceptor: "alpha(opacity=60)";*/
+}
+.ie.ie8 #side .loginBtn .btnNormal01Large:hover{
+    background-color:#cae570;
+}
+
+
+#sideVpassLogoutIn {
+    text-align: center;
+    padding: 0;
+    background: #fbf6ba;
+    background: -moz-linear-gradient(top, #fbf6ba 0%, #f6ec7e 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fbf6ba), color-stop(100%, #f6ec7e));
+    background: -webkit-linear-gradient(top, #fbf6ba 0%, #f6ec7e 100%);
+    background: -o-linear-gradient(top, #fbf6ba 0%, #f6ec7e 100%);
+    background: -ms-linear-gradient(top, #fbf6ba 0%, #f6ec7e 100%);
+    background: linear-gradient(to bottom, #fbf6ba 0%, #f6ec7e 100%);
+    
+    transition-property: background;
+    transition-duration:0.3s;
+    transition-timing-function:ease-out;
+    transition-delay:0.1s;
+}
+
+#sideVpassLogoutIn a{
+    text-decoration: none;
+    padding: 0;
+}
+#sideVpassLogoutIn:hover{
+    background: #f6ec7e;
+}
+
+#sideVpassLogoutIn a .requestVpass .signArea {
+    display: block;
+    font-size: 14px;
+    color: #3e7a52 !important;
+    font-weight: 700;
+    text-align: left;
+    margin: 0 0 0 10px;
+    padding-top: 3px;
+}
+#sideVpassLogoutIn a .requestVpass .signArea .signAreaImp {
+    font-size: 15px;
+}
+#sideVpassLogoutIn a .annotation {
+    font-size: 12px;
+    font-weight: 700;
+    color: #3e7a52;
+    margin: 0 0 0 10px;
+    text-align: left;
+}
+#sideVpassLogoutIn a .annotation_2 {
+    font-size: 10px;
+    font-weight: 700;
+    color: #666666;
+    margin: 0 0 0 10px;
+    text-align: left;
+}
+#sideVpassLogoutIn a .requestVpass {
+    padding: 10px 0;
+}
+
+/* =========================================================
+ 
+ 画像用
+ 
+========================================================= */
+.logo_sideMenu_touroku_2{
+    display:block;
+    height:25px;
+    background-image:url('/static/responsive/img/mem/logo_sideMenu_touroku_2.png');
+    background-repeat:no-repeat;
+    background-position:top left;
+    padding-left:30px;
+    vertical-align:middle;
+}
+.logo_sideMenu_touroku{
+    display:block;
+    height:26px;
+    background-image:url('/static/responsive/img/mem/logo_sideMenu_touroku.png');
+    background-repeat:no-repeat;
+    background-position:top left;
+    padding-left:30px;
+    vertical-align:middle;
+}
+
+.icon_sideMenu_service01,
+.icon_sideMenu_service02,
+.icon_sideMenu_service03,
+.icon_sideMenu_service04,
+.icon_sideMenu_service05,
+.icon_sideMenu_service06,
+.icon_sideMenu_service07,
+.icon_sideMenu_service08,
+.icon_sideMenu_service09,
+.icon_sideMenu_right01,
+.icon_sideMenu_right02,
+.icon_sideMenu_right03,
+.icon_sideMenu_right04,
+.icon_sideMenu_right05,
+.icon_sideMenu_bottom01,
+.icon_sideMenu_search01,
+.icon_sideMenu_search02,
+.icon_sideMenu_search03,
+.icon_sideMenu_search04,
+.icon_sideMenu_search05{
+    display:inline-block;
+    width:30px;
+    height:30px;
+    background-repeat:no-repeat;
+    background-position:top left;
+    vertical-align:middle;
+    margin-right:5px;
+}
+
+.icon_sideMenu_service01{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_service01.png');
+}
+.icon_sideMenu_service02{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_service02.png');
+}
+.icon_sideMenu_service03{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_service03.png');
+}
+.icon_sideMenu_service04{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_service04.png');
+}
+.icon_sideMenu_service05{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_service05.png');
+}
+.icon_sideMenu_service06{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_service06.png');
+}
+.icon_sideMenu_service07{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_service07.png');
+}
+.icon_sideMenu_service08{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_service08.png');
+}
+.icon_sideMenu_service09{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_service09.png');
+}
+
+/*--- SPサイドメニュー ---*/
+.icon_sideMenu_right01{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_right01.png');
+}
+.icon_sideMenu_right02{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_right02.png');
+}
+.icon_sideMenu_right03{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_right03.png');
+}
+.icon_sideMenu_right04{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_right04.png');
+}
+.icon_sideMenu_right05{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_right05.png');
+}
+
+.icon_sideMenu_bottom01{
+    background-image:url('/static/responsive/img/mem/logo_sideMenu_touroku_2.png');
+}
+
+/*--- SP検索メニュー ---*/
+.icon_sideMenu_search01{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_search01.png');
+}
+.icon_sideMenu_search02{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_search02.png');
+}
+.icon_sideMenu_search03{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_search03.png');
+}
+.icon_sideMenu_search04{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_search04.png');
+}
+.icon_sideMenu_search05{
+    background-image:url('/static/responsive/img/mem/icon_sideMenu_search05.png');
+}
+
+
+/* =========================================================
+ background化
+========================================================= */
+.topLogo {
+    background: url("/static/responsive/img/vpass_logo_side.png") no-repeat;
+    width: 80px;
+    height:30px;
+    vertical-align: middle;
+    display: block;
+    margin-bottom: 5px!important;
+    margin: 0 auto;
+}
+
+.side_bnr_pin {
+    background: url("/static/responsive/img/mem/side_bnr_pin.gif") no-repeat;
+    width: 200px;
+    height:75px;
+    display: inline-block;
+    background-size: contain;
+}
+.side_bnr_pin:hover {
+    opacity: 0.7;
+}
+.side_bnr_rss{
+    background: url("/static/responsive/img/mem/side_bnr_rss.gif") no-repeat;
+    width: 200px;
+    height:60px;
+    display: inline-block;
+    background-size: contain;
+}
+.side_bnr_rss:hover {
+    opacity: 0.7;
+}
+
+/* =========================================================
+ Capy
+========================================================= */
+#capy-captcha-caption {
+    text-align: left;
+}
+                                                                            

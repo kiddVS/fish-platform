@@ -1,0 +1,297 @@
+@charset "UTF-8";
+/* =========================================================
+ 会員静的用
+========================================================= */
+#footerArea {
+  position: relative;
+  margin: 0 auto;
+  min-width: 770px;
+  margin-top: 70px;
+}
+
+.teikeiFooter #footerArea {
+  min-width: auto;
+  margin: 20px 0 0;
+}
+
+#footerArea .footAreaTop ul, #footerArea .footNavArea, #footerArea .footAreaBottom ul {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+  min-width: 1000px;
+}
+
+/* ----- ページトップボタン ----- */
+.pgTopLinkWrap{
+  position:fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 9999;
+  margin-top: 0;
+}
+.pgTopLinkWrap img{
+  width: 66px;
+}
+.pgTopLink02:hover{
+  opacity: 0.8;
+}
+
+
+/* footAreaTop
+--------------------------------------------------------- */
+#footerArea .footAreaTop {
+  margin-bottom: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #dedede;
+  text-align: center;
+}
+
+#footerArea .footAreaTop ul li {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#footerArea .smallArrowLink {
+  margin-bottom: 0.5em;
+}
+
+/* footAreaBottom
+--------------------------------------------------------- */
+#footerArea .footAreaBottom {
+  background-color: #fff;
+  padding-top: 0px;
+  text-align: center;
+}
+
+#footerArea .footAreaBottom dl dd ul li {
+  display: inline-block;
+  padding-left: 12px;
+  position: relative;
+  color: #000;
+}
+
+#footerArea .footAreaBottom dl dd ul li a div {
+  margin-right: 5px;
+  margin-left: 5px;
+  display: table-cell;
+}
+
+#footerArea .footNavWrapArea .navCont {
+  display: table-cell;
+  width: 25%;
+  margin: 10px 0;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 60px;
+  border-right: 1px solid #dbdbdb;
+}
+
+#footerArea .footNavWrapArea .navCont:first-child {
+  border-left: 1px solid #dbdbdb;
+}
+
+#footerArea .footNavWrapArea .navCont dd li {
+  padding: 0 0 0 20px;
+  margin: 15px 20px;
+}
+
+.layoutChangeArea {
+  margin-top: 10px;
+}
+
+.copyright {
+  background-color: #1a4832;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 12px;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.copyright small{
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.footNavTitle {
+  color: #595;
+}
+
+/* リンク・アイコン
+--------------------------------------------------------- */
+/* ----- リンクアイコン ----- */
+#footerArea .linkWrap .links01, #footerArea .linkWrap .links02 {
+  padding-top: 11.5px;
+  padding-bottom: 11.5px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#footerArea .linkWrap {
+  background-color: #f2f2f2;
+}
+
+#footerArea .linkWrap .links01 {
+  text-align: center;
+}
+
+#footerArea .linkWrap .links02 {
+  text-align: center;
+}
+
+#footerArea .linkWrap .links01 li, #footerArea .linkWrap .links02 p {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+#footerArea .linkWrap .links02 p {
+  float: left;
+  margin-right: 15px;
+}
+
+#footerArea .linkWrap .links02 li {
+  display: inline-block;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+#footerArea .footNavArea {
+  padding-bottom: 20px;
+}
+
+#footerArea .linkWrap .links01 li.item05, #footerArea .linkWrap .links02 li.item07, #footerArea .linkWrap .links02 p.item07 {
+  margin-right: 0;
+}
+
+#footerArea .linkWrap .links01 li a, #footerArea .linkWrap .links02 li a, #footerArea .linkWrap .links02 p a, #footerArea .layoutChangeArea {
+  font-weight: normal;
+  font-size: 86%;
+}
+
+#footerArea .footTelArea {
+  padding: 20px 5px;
+}
+
+#footerArea .footTelArea img {
+  max-width: 100%;
+  height: auto;
+}
+
+#footerArea .footTelArea dt {
+  float: left;
+}
+
+#footerArea .footTelArea dd {
+  margin-left: 5.5em;
+}
+
+#footerArea .footNavWrapArea .footNavArea {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#footerArea .footNavWrapArea .navCont.nav00, #footerArea .footNavWrapArea .navCont.nav05 {
+  display: none;
+}
+
+#footerArea .footNavWrapArea .navCont dt, #footerArea .footNavWrapArea .navCont p {
+  padding-top: 25px;
+  margin-bottom: 10px;
+}
+
+#footerArea .footNavWrapArea .navCont dt {
+  font-weight: bolder;
+}
+
+#footerArea .footNavWrapArea .navCont dt a, #footerArea .footNavWrapArea .navCont dt .linkCap, #footerArea .footNavWrapArea .navCont p a, #footerArea .footNavWrapArea .navCont p .linkCap {
+  text-decoration: none;
+  font-weight: bold;
+  color: #00492c;
+}
+
+#footerArea .footNavWrapArea .navCont dt a {
+  text-decoration: underline;
+}
+
+#footerArea .footNavWrapArea .navCont dd li a {
+  font-size: 93%;
+}
+
+#footerArea .footNavWrapArea .navCont dd li.logo {
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+#footerArea .footNavWrapArea .navCont.nav04 {
+  border-right-style: none;
+}
+
+/* PC/SP Change
+--------------------------------------------------------- */
+.desktop #footerArea .forPcBlock.layoutChangeArea {
+  display: none;
+}
+
+#footerArea .layoutChangeArea {
+  text-align: center;
+  padding-bottom: 0px;
+  padding-left: 23px;
+}
+
+#footerArea .layoutChangeArea p {
+  display: inline-block;
+}
+
+#footerArea .layoutChangeArea p span {
+  display: block;
+}
+
+#footerArea .layoutChangeArea .dot-right {
+  border-right: 1px dotted #747474;
+}
+
+#footerArea .layoutChangeArea p a {
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#footerArea .layoutChangeArea .ico-pc {
+  background: url(/common/dynamic/memx/img/icon_pc.png) no-repeat left 50%;
+  padding-left: 34px;
+}
+
+#footerArea .layoutChangeArea .ico-sp {
+  background: url(/common/dynamic/memx/img/icon_sp.png) no-repeat left 50%;
+  padding-left: 26px;
+}
+
+/* ----- ページ下部閉じるボタン ----- */
+#footerArea .closeBtn {
+  display: inline-block;
+  text-align: center;
+  padding: 14px 2% 14px;
+  background-color: #EEEEEE;
+  color:#333333;
+  font-weight: bold;
+  border: 1px solid #EEEEEE;
+  cursor: pointer;
+  border-radius: 0;
+  -webkit-appearance: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-size: 1.8rem;
+  width: 300px;
+}
+
+#footerArea .closeBtn:hover {
+  background-color: #fff;
+  border: 1px solid #333333;
+}
+
+                                                                                                       

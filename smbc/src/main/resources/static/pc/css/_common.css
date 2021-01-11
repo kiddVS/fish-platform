@@ -1,0 +1,1336 @@
+@charset "UTF-8";
+/* =========================================================
+ 汎用エレメント
+========================================================= */
+/* アイコン
+--------------------------------------------------------- */
+/* ----- icon heading  ----- */
+.pdf_header_area {
+  margin-bottom: 10px;
+  padding: 7px 0 0 40px;
+  height: 25px;
+  background: url("../img/pdf_icon.png") no-repeat;
+}
+
+.pdf_header_area a {
+  text-decoration: none;
+}
+
+.info_header_area {
+  margin-bottom: 10px;
+  padding: 0px 0 10px 30px;
+  font-weight: bold;
+  background: url("/static/responsive/img/mem/icon_info.svg") no-repeat;
+}
+
+.error_header_area {
+  margin-bottom: 10px;
+  padding: 0 0 0 30px;
+  font-weight: bold;
+  font-size: 120%;
+  background: #f1e7a6 url("../img/exclamation_icon.png") no-repeat;
+}
+
+.white_error_header_area {
+  position: relative;
+  color: #DD3300;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-left: 26px;
+}
+
+.white_error_header_area::before {
+  content: '';
+  position: absolute;
+  display: block;
+  background: url(/static/responsive/img/mem/icon_caution.svg) no-repeat;
+  top: 3px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+}
+
+ul.error_header_list li {
+  position: relative;
+  display: block;
+  padding: 0 0 3px 2.5em;
+}
+ul.error_header_list li span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 20px;
+  background: url("../img/exclamation_icon.png") no-repeat;
+  background-size: 22px 20px;
+}
+
+/*
+ ■■ 02-110 Q&A
+========================================================= */
+/*
+ ■■■ 02-110-001 Q&A
+--------------------------------------------------------- */
+dl.qaAreaWrap dt {
+  background: url(../img/q_icon.png) left 10px no-repeat;
+  padding: 10px 15px 10px 40px;
+  font-weight: 700;
+  width: 100%;
+  box-sizing: border-box;
+}
+dl.qaAreaWrap dd {
+  background: url(../img/a_icon.png) left 10px no-repeat;
+  padding: 10px 15px 20px 40px;
+  margin: 0px 0px 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*
+
+/* ボックス
+--------------------------------------------------------- */
+.attention_text_box,
+.inc_adobereader {
+  display: block;
+  clear: both;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #99b9ad;
+  background: white;
+}
+.attention_text_box:after,
+.inc_adobereader:after {
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+  content: ".";
+  font-size: 0;
+}
+
+.attention_text_box2 {
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #dae1cb;
+}
+
+.attention_strongest_box {
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #e06b2a;
+}
+
+.attention_strong_box {
+  clear: both;
+  /* border-left: 1px solid #ccc; */
+  padding-left: 10px;
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
+.attention_light_box {
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f8f9ec;
+}
+
+.attention_dark_box {
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #dae1cb;
+}
+
+.gray_box {
+  background-color: #f6f6f6;
+}
+
+/* ----- Decoration box(border) ----- */
+.attention_strong_border {
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: solid 3px #f1e7a6;
+}
+
+.attention_strongest_border {
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: solid 3px #e06b2a;
+}
+
+.attention_default_border {
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: solid 1px #99b9ad;
+}
+
+.attention_decoration_border {
+}
+
+.border_color_orange {
+  border: 3px solid orange;
+}
+
+/* ----- error text box ----- */
+.error_text_box {
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #ffdcd0;
+  color: black;
+}
+
+.attention_text_box .error_text_box {
+    background: #fff !important;
+    margin-bottom: 0 !important;
+}
+
+.error_left_box {
+  float: left;
+  width: 35px;
+}
+
+.error_right_box {
+  float: left;
+}
+
+.agreement_box {
+  overflow: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  height: 300px;
+  border: 1px solid #dddddd;
+}
+.agreement_box table td {
+  vertical-align: top;
+}
+.agreement_box h2 {
+  margin-top: 0;
+}
+
+.agreement_under_box {
+  padding: 10px;
+  background: #fcf2db;
+}
+
+.agreement_btn_box {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.agreement_box_sp h2 {
+  margin-top: 0 !important;
+}
+
+.original_scroll_target {
+  overflow: auto;
+  height: 300px;
+}
+
+.original_scroll_box {
+  display: none;
+}
+
+.original_scroll_box_sp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 320px;
+}
+.original_scroll_box_sp .original_scroll_btn_top {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  cursor: pointer;
+}
+.original_scroll_box_sp .original_scroll_btn_bottom {
+  position: absolute;
+  right: 5px;
+  bottom: 10px;
+  cursor: pointer;
+}
+
+/* カード券面のボックス
+--------------------------------------------------------- */
+.card_box_l {
+  float: left;
+}
+
+.card_box_r {
+  float: right;
+  margin-right: -10px;
+  max-width: 122px;
+}
+
+/* ダミーボックス
+--------------------------------------------------------- */
+.dummy_banner,
+.dummy_image {
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 20px;
+  width: 195px;
+  height: 32px;
+  background-color: #dddddd;
+  text-align: center;
+}
+
+.contact a.new_update {
+  padding-right: 30px;
+  background-image: url("../img/img_new.jpg");
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
+.dummy_jra_box {
+  padding-top: 70px;
+  width: 200px;
+  height: 80px;
+  background-color: #cccccc;
+  color: white;
+  text-align: center;
+}
+
+.dummy_upload_img {
+  padding-top: 60px;
+  width: 100%;
+  height: 70px;
+  background-color: #cccccc;
+  color: white;
+  text-align: center;
+}
+
+/* お問い合わせボックス
+--------------------------------------------------------- */
+.normal_ttl {
+  margin-bottom: 15px;
+  padding: 13px 20px;
+  border-bottom: solid 1px #bdbdbd;
+  background-color: whitesmoke;
+}
+
+
+/* popup画面用
+--------------------------------------------------------- */
+.agreement_search_box {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+
+.agreement_box_popup {
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 10px;
+  padding: 10px;
+  max-width: 500px;
+  border: 1px solid #bdbdbd;
+  background: none repeat scroll 0 0 white;
+  text-align: center;
+}
+
+.header_box {
+  margin: 0 auto;
+  min-width: 960px;
+  max-width: 1280px;
+  height: 101px;
+  background: url("../img/sample/popup/header_sample.jpg") no-repeat top left 20px;
+}
+
+.head_popup {
+  width: 100%;
+  background: url("../img/sample/popup/header_sample_bg.jpg") repeat-x;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.footer_popup {
+  width: 100%;
+  background: url("../img/sample/popup/footer_sample_bg.jpg") repeat-x;
+  text-align: center;
+}
+
+/* ----- ポップアップのサイドマージン指定 ----- */
+
+.pop_box {
+  min-width: 750px;
+}
+
+/* テーブルレイアウト用（マイナー）
+--------------------------------------------------------- */
+div.border_in_t_div {
+  margin-top: -11px;
+  margin-left: -15px;
+  padding: 13px 15px 5px;
+  width: 100%;
+  border-top: 1px solid #d6d6d6;
+}
+
+
+/* =========================================================
+ レイアウト用クラス
+========================================================= */
+.liqW {
+  display: table;
+  width: 100%;
+}
+.liqW .liqC {
+  display: table-cell;
+  vertical-align: top;
+}
+.liqW .colWL2 {
+  padding-right: 15px;
+  min-width: 225px;
+  max-width: 304px;
+  width: 25%;
+}
+.liqW .colWR2 {
+  padding-left: 15px;
+  min-width: 705px;
+  max-width: 912px;
+  width: 75%;
+}
+.liqW .colCL2Type01 {
+  padding-right: 10px;
+  width: 50%;
+}
+.liqW .colCR2Type01 {
+  padding-left: 10px;
+  width: 50%;
+}
+.liqW .colCL2Type02 {
+  padding-right: 10px;
+  width: 70%;
+}
+.liqW .colCR2Type02 {
+  padding-left: 10px;
+  width: 30%;
+}
+.liqW .colCL2Type03 {
+  padding-right: 10px;
+  width: 30%;
+}
+.liqW .colCR2Type03 {
+  padding-left: 10px;
+  width: 70%;
+}
+.liqW .colCL3Type01 {
+  padding-right: 15px;
+  width: 33.3%;
+}
+.liqW .colCC3Type01 {
+  padding-right: 5px;
+  padding-left: 5px;
+  width: 33.3%;
+}
+.liqW .colCR3Type01 {
+  padding-left: 15px;
+  width: 33.3%;
+}
+
+/* ----- 2カラム均等 ----- */
+/* ----- 2カラム左長 ----- */
+/* ----- 2カラム右長 ----- */
+/* ----- 3カラム ----- */
+/* =========================================================
+ 汎用クラス
+========================================================= */
+/* サイズ調整
+--------------------------------------------------------- */
+/* ----- サイズ調整（.size推奨） ----- */
+/* クラス名変更予定 */
+.index_table_1 {
+  width: 10px;
+}
+
+.index_table_2 {
+  width: 162px;
+}
+
+.index_table_3 {
+  width: 10px;
+}
+
+.index_table_4 {
+  width: 162px;
+}
+
+.index_table_5 {
+  width: 50%;
+}
+
+.index_confirm_1 {
+  width: 6%;
+}
+
+.index_confirm_2 {
+  width: 10%;
+}
+
+.index_confirm_3 {
+  width: 68px;
+}
+
+.index_confirm_4 {
+  width: 88%;
+}
+
+.index_list1 {
+  min-width: 110px;
+}
+
+.index_list2 {
+  min-width: 240px;
+}
+
+.index_list3 {
+  min-width: 10px;
+}
+
+.index_list4 {
+  width: 30%;
+}
+
+/* ----- サイズ指定汎用 ----- */
+.contact .size3p {
+  width: 3%;
+}
+.contact .size5p {
+  width: 5%;
+}
+.contact .size7p {
+  width: 7%;
+}
+.contact .size8p {
+  width: 8% !important;
+}
+.contact .size10p {
+  width: 10%;
+}
+.contact .size12p {
+  width: 12%;
+}
+.contact .size15p {
+  width: 15%;
+}
+.contact .size20p {
+  width: 20%;
+}
+.contact .size22p {
+  width: 22%;
+}
+.contact .size25p {
+  width: 25%;
+}
+.contact .size28p {
+  width: 28%;
+}
+.contact .size30p {
+  width: 30%;
+}
+.contact .size33p {
+  width: 33%;
+}
+.contact .size35p {
+  width: 35%;
+}
+.contact .size40p {
+  width: 40%;
+}
+.contact .size45p {
+  width: 45%;
+}
+.contact .size50p {
+  width: 50%;
+}
+.contact .size55p {
+  width: 55%;
+}
+.contact .size60p {
+  width: 60%;
+}
+.contact .size65p {
+  width: 65%;
+}
+.contact .size66p {
+  width: 66%;
+}
+.contact .size70p {
+  width: 70%;
+}
+.contact .size75p {
+  width: 75%;
+}
+.contact .size80p {
+  width: 80% !important;
+}
+.contact .size85p {
+  width: 85%;
+}
+.contact .size90p {
+  width: 90%;
+}
+.contact .size95p {
+  width: 95%;
+}
+.contact .size100p {
+  width: 100% !important;
+}
+.contact .size25 {
+  width: 25px !important;
+}
+.contact .size35 {
+  width: 35px !important;
+}
+.contact .size40 {
+  width: 40px !important;
+}
+.contact .size55 {
+  width: 55px !important;
+}
+.contact .size60 {
+  width: 60px !important;
+}
+.contact .size70 {
+  width: 70px !important;
+}
+.contact .size80 {
+  width: 80px !important;
+}
+.contact .size92 {
+  width: 92px !important;
+}
+.contact .size100 {
+  width: 100px;
+}
+.contact .size150 {
+  width: 150px !important;
+}
+.contact .size155 {
+  width: 155px;
+}
+.contact .size165 {
+  width: 165px;
+}
+.contact .size180 {
+  width: 180px;
+}
+.contact .size190 {
+  width: 190px;
+}
+.contact .size200 {
+  width: 200px;
+}
+.contact .size240 {
+  width: 240px !important;
+}
+.contact .size250 {
+  width: 250px;
+}
+.contact .size300 {
+  width: 300px;
+}
+.contact .size350 {
+  width: 350px;
+}
+.contact .size360 {
+  width: 360px;
+}
+.contact .size400 {
+  width: 400px;
+}
+.contact .size450 {
+  width: 450px;
+}
+.contact .size495 {
+  width: 495px;
+}
+.contact .size500 {
+  width: 500px;
+}
+.contact .size600 {
+  width: 600px;
+}
+.contact .size730 {
+  width: 730px;
+}
+.contact .size_m100 {
+  min-width: 100px;
+}
+.contact .size4em_important {
+  width: 4em !important;
+}
+.contact .h0 {
+  height: 0;
+}
+.contact .h18 {
+  height: 18px;
+}
+.contact .h38 {
+  height: 38px;
+}
+.contact .h419 {
+  height: 419px;
+}
+.contact .h439 {
+  height: 439px;
+}
+.contact .no_border {
+  border: none !important;
+}
+.contact .no_border_b {
+  border-bottom: none;
+}
+
+/* 高さ調整用
+--------------------------------------------------------- */
+/* ボーダー調整用
+--------------------------------------------------------- */
+/* テキスト、ブロック配置
+--------------------------------------------------------- */
+.at_left {
+  text-align: left !important;
+}
+
+.at_center {
+  text-align: center !important;
+}
+
+.at_right {
+  width: 100px;
+  text-align: right !important;
+}
+
+/* ----- text-align ----- */
+.text_c {
+  text-align: center;
+}
+
+.text_l {
+  text-align: left;
+}
+
+.text_r {
+  text-align: right;
+}
+
+/* ----- ブロック配置 ----- */
+.align_center {
+  margin: 0 auto;
+}
+
+.box_c {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* マージン
+--------------------------------------------------------- */
+.mr_0 {
+  margin: 0 !important;
+}
+
+.mr_a5 {
+  margin: 5px;
+}
+
+.mr_a10 {
+  margin: 10px;
+}
+
+.mr_a15 {
+  margin: 15px;
+}
+
+.mr_a20 {
+  margin: 20px;
+}
+
+.mr_a30 {
+  margin: 30px;
+}
+
+.mr_t0 {
+  margin-top: 0 !important;
+}
+
+.mr_t5 {
+  margin-top: 5px !important;
+}
+
+.mr_t10 {
+  margin-top: 10px !important;
+}
+
+.mr_t15 {
+  margin-top: 15px !important;
+}
+
+.mr_t20 {
+  margin-top: 20px !important;
+}
+
+.mr_t30 {
+  margin-top: 30px !important;
+}
+
+.mr_t40 {
+  margin-top: 40px !important;
+}
+
+.mr_t50 {
+  margin-top: 50px !important;
+}
+
+.mr_b0 {
+  margin-bottom: 0 !important;
+}
+
+.mr_b5 {
+  margin-bottom: 5px !important;
+}
+
+.mr_b10 {
+  margin-bottom: 10px !important;
+}
+
+.mr_b15 {
+  margin-bottom: 15px !important;
+}
+
+.mr_b20 {
+  margin-bottom: 20px !important;
+}
+
+.mr_b30 {
+  margin-bottom: 30px !important;
+}
+
+.mr_b40 {
+  margin-bottom: 40px !important;
+}
+
+.mr_b50 {
+  margin-bottom: 50px !important;
+}
+
+.mr_r0 {
+  margin-right: 0 !important;
+}
+
+.mr_r5 {
+  margin-right: 5px !important;
+}
+
+.mr_r10 {
+  margin-right: 10px !important;
+}
+
+.mr_r15 {
+  margin-right: 15px !important;
+}
+
+.mr_r20 {
+  margin-right: 20px !important;
+}
+
+.mr_r25 {
+  margin-right: 25px !important;
+}
+
+.mr_r30 {
+  margin-right: 30px !important;
+}
+
+.mr_r40 {
+  margin-right: 40px !important;
+}
+
+.mr_l0 {
+  margin-left: 0 !important;
+}
+
+.mr_l5 {
+  margin-left: 5px !important;
+}
+
+.mr_l10 {
+  margin-left: 10px !important;
+}
+
+.mr_l15 {
+  margin-left: 15px !important;
+}
+
+.mr_l20 {
+  margin-left: 20px;
+}
+
+.mr_l30 {
+  margin-left: 30px;
+}
+
+.mr_l40 {
+  margin-left: 40px;
+}
+
+.mr_b0 {
+  margin-bottom: 0;
+}
+
+.mr_r5p {
+  margin-right: 5%;
+}
+
+.mr_l33p {
+  margin-left: 33%;
+}
+
+.mr_t10m {
+  margin-top: -10px;
+}
+
+.mr_t7m {
+  margin-top: -7px;
+}
+
+/* パディング
+--------------------------------------------------------- */
+.pd_a0 {
+  padding: 0px !important;
+}
+
+.pd_a5 {
+  padding: 5px !important;
+}
+
+.pd_a10 {
+  padding: 10px !important;
+}
+
+.pd_a15 {
+  padding: 15px !important;
+}
+
+.pd_a20 {
+  padding: 20px !important;
+}
+
+.pd_a30 {
+  padding: 30px !important;
+}
+
+.pd_t0 {
+  padding-top: 0px;
+}
+.pd_t5 {
+  padding-top: 5px;
+}
+
+.pd_t10 {
+  padding-top: 10px;
+}
+
+.pd_t15 {
+  padding-top: 15px;
+}
+
+.pd_t20 {
+  padding-top: 20px;
+}
+
+.pd_t30 {
+  padding-top: 30px;
+}
+
+.pd_b0 {
+  padding-bottom: 0px !important;
+}
+
+.pd_b5 {
+  padding-bottom: 5px !important;
+}
+
+.pd_b10 {
+  padding-bottom: 10px !important;
+}
+
+.pd_b15 {
+  padding-bottom: 15px !important;
+}
+
+.pd_b20 {
+  padding-bottom: 20px !important;
+}
+
+.pd_b30 {
+  padding-bottom: 30px !important;
+}
+
+.pd_l0 {
+  padding-left: 0px !important;
+}
+
+.pd_l5 {
+  padding-left: 5px !important;
+}
+
+.pd_l10 {
+  padding-left: 10px !important;
+}
+
+.pd_l15 {
+  padding-left: 15px;
+}
+
+.pd_l20 {
+  padding-left: 20px;
+}
+
+.pd_l30 {
+  padding-left: 30px!important;
+}
+
+.pd_r0 {
+  padding-right: 0 !important;
+}
+
+.pd_r5 {
+  padding-right: 5px;
+}
+
+.pd_r10 {
+  padding-right: 10px !important;
+}
+
+.pd_r15 {
+  padding-right: 15px;
+}
+
+.pd_r20 {
+  padding-right: 20px;
+}
+
+.pd_r30 {
+  padding-right: 30px;
+}
+
+.pd_r40 {
+  padding-right: 40px;
+}
+
+/* ----- 余白なし ----- */
+.contact .p0 {
+  padding: 0;
+}
+.contact .pd_t0 {
+  padding-top: 0;
+}
+
+/* フォント
+--------------------------------------------------------- */
+/* ----- font ----- */
+.font_n_bold {
+  font-weight: bold;
+}
+
+.font_b_bold {
+  font-weight: bold;
+  font-size: 200%;
+}
+
+.font_b_nomal,
+.font_b_normal{
+  font-size: 140%;
+}
+
+.font_s75p{
+  font-size: 75%;
+}
+
+.font_s83p{
+  font-size: 83%;
+}
+.font_s92p{
+  font-size: 92%;
+}
+.font_s93p{
+  font-size: 93%;
+}
+.font_s16px{
+  font-size: 114%;  /*14px→16px*/
+}
+.font_s117p{
+  font-size: 117%;  /*12px→14px*/
+}
+.font_sh2{
+  font-size: 129%;/*18px*/
+}
+.font_s_normal {/*12px*/
+  font-size: 86%;
+}
+
+.fs_normal_h2 {/*12px*/
+  font-size: 78%;
+}
+
+.small_text {/*10px*/
+  font-size: 70%;
+}
+
+.font_b_color {
+  color: #508906;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+.red_length {
+  color: red;
+  font-weight: bold;
+}
+
+.font_unvisible_link {
+  color: black;
+  text-decoration: none;
+}
+
+.font_n {
+  font-weight: normal;
+  font-size: 100% !important;
+}
+.font_normal{
+  font-weight:normal;
+}
+
+.h_normal{
+  font-weight: normal!important;
+}
+
+.font_color_black {
+  color: black !important;
+}
+
+.font_color_white {
+  color: white;
+}
+
+.font_color_gray {
+  color: gray;
+}
+
+.orange_length {
+  color: #ff9622;
+}
+
+/* ----- 赤字 ----- */
+.attention_line {
+  color: #DD3300;
+}
+
+.txtHighImp {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #DD3300 !important;
+  line-height: 1.778 !important;
+}
+
+/* フロート
+--------------------------------------------------------- */
+.float_left {
+  float: left;
+}
+
+.float_right {
+  float: right;
+}
+
+.id_entry {
+  float: none;
+}
+
+/* ----- clear_both ----- */
+.clear_line {
+  clear: both;
+}
+
+/* ライン
+--------------------------------------------------------- */
+.hr01 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top: 1px solid #d6d6d6;
+}
+
+/* 英数字テキストを改行する
+--------------------------------------------------------- */
+.word_break_all {
+  word-break: break-all;
+}
+
+/*改行
+---------------------------------------------------------*/
+.ww_break{
+    word-wrap:break-word;
+}
+
+.wb_all{
+    word-break: break-all;
+}
+
+.wb_all_th th{
+    word-break: break-all;
+}
+
+/* position_absolute
+--------------------------------------------------------- */
+.position_absolute {
+  position: absolute;
+}
+
+.contact .pos_parent {
+  position: relative;
+}
+
+.pos_abs_bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.pos_t50p {
+  top: 50%;
+}
+
+.pos_r15 {
+  right: 15px;
+}
+
+.pos_l15 {
+  left: 15px;
+}
+
+/* vertical-align:middle
+--------------------------------------------------------- */
+.text_vm {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.va_mid {
+  vertical-align: middle;
+}
+
+.va_top {
+  vertical-align: top;
+}
+
+.va_bot {
+  vertical-align: bottom;
+}
+
+/* inline-block要素
+--------------------------------------------------------- */
+.inline_b {
+  display: inline-block;
+}
+
+.inline_t {
+  display: inline-table;
+}
+
+/* その他
+--------------------------------------------------------- */
+.text_indent {
+  display: block;
+  text-indent: 1em;
+}
+
+/* ----- ▼ ----- */
+.arrow_down {
+  color: #65ae07;
+  /*font-size: 40px;*/
+  font-size: 286%;
+}
+
+/* M-FL-4  下矢印 */
+.arrowDown{
+  min-width: 20px;
+  min-height: 15px;
+  position: relative;
+}
+
+.arrowDown:after{
+  content: "";
+  position: absolute;
+  background-image: url(/static/responsive/img/mem/icon_step_down.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 15px;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  display: block;
+}
+
+/* clearfix
+--------------------------------------------------------- */
+.clearfix:after {
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+  content: ".";
+  font-size: 0;
+}
+
+/* Hides from IE Mac \*/
+* html .clearfix {
+  height: 1%;
+}
+
+.clearfix {
+  display: block;
+}
+
+/* End Hack */
+/* 印刷用class(下に置く)
+--------------------------------------------------------- */
+@media print {
+  .non_print,
+  .non_printWrap {
+    display: none !important;
+  }
+
+  .contact .detail_table td, .contact .detail_table th {
+    padding: 10px 1px !important;
+    font-size: 80% !important;
+  }
+}
+/*test*/
+/*後で削除*/
+.mainWidgetBase, .headerWidgetBase, .footerWidgetBase {
+  display: block !important;
+}
+
+.popupContent{
+  min-width: 828px;
+}
+                                                                                         

@@ -1,0 +1,925 @@
+@charset "utf-8";
+
+/* =========================================================
+ ヘッダ要素のスタイルを定義
+========================================================= */
+
+/* ------ そのまま移行ページ用にpadding-topを削除  ----- */
+
+/* ------ そのまま移行ページ（プラチナ）のヘッダーh1間マージン調整  ----- */
+.PlatinumContents {
+  margin-top: 20px;
+}
+
+html {
+  border: none; /* 旧iOSハックを無効化 */
+}
+
+/* ヘッダ
+--------------------------------------------------------- */
+/* ------ header  ----- */
+#header {
+  line-height: 1.8;
+  min-width: 1000px;
+  max-width: initial;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0;
+  background: #fff;
+  -webkit-box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+  box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+  position: relative;
+  z-index: 990;
+}
+#header.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: scaleX(1);
+}
+@media print {
+  #header.header-fixed {
+    position: relative;
+  }
+}
+
+.teikeiHeader #header ,
+.teikeiPostHeader #header{
+    width:auto;
+    margin: 0;
+    height:57px;
+    padding: 0;
+    background: url("../img/logo_vpass_02.gif") no-repeat 13px 12px;
+    border-bottom: #EAEAEA double 3px;
+}
+.teikeiPostHeader #header{
+    background: none;   
+}
+.teikeiPostHeader #header .teikeiLogo{
+    margin: 0 0 0 12px;
+    padding-top: 13px; 
+}
+
+#header *,
+#header *::before,
+#header *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* ios角丸除去 */
+#header input {
+  border-radius: 0;
+}
+#header > .headerInner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 1000px;
+  max-width: 1000px;
+  min-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0;
+  position: relative;
+  height: 85px;
+}
+
+#header .hLeft {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: auto;
+  width: 180px; /* 1000px - 845px */
+}
+
+#header .hLeft p.logo_out,
+#header .hLeft h1.logo_out {
+    width: 124px;
+    background: url(/static/responsive/img/logo_logout.png) center/contain no-repeat;
+}
+#header .hLeft p.logo_out a,
+#header .hLeft h1.logo_out a {
+    display:block;
+    height:26px;
+}
+#header .hLeft p.logo_in,
+#header .hLeft h1.logo_in {
+  width: 180px;
+  height: 28px;
+  background: url(/img/logo_login.png) left/180px no-repeat;
+  margin-bottom: 0;
+}
+#header .hLeft p.logo_in a,
+#header .hLeft h1.logo_in a {
+    display: block;
+    height: 26px;
+}
+#header .hLeft p.txt {
+    font-size: 72%;
+    padding-top: 3px;
+    line-height: 1em;
+}
+
+#header .hLeft .wrap .txt br{
+    display:none;
+}
+
+#header .hRight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; 
+  -webkit-box-flex: 1; 
+  -ms-flex: 1; 
+  flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+div ul.hRight_subMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 12px !important;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin-top: 14px !important; /* XXX all_contents.css対応 */
+}
+
+.subMenu_item {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 1.8;
+}
+.subMenu_item:not(:first-child) {
+  margin-left: 20px;
+}
+.subMenu_item.subMenu_item-support::before,
+.subMenu_item.subMenu_item-search::before, 
+.subMenu_item.subMenu_item-userInfo::before,
+.subMenu_item.subMenu_item-logout::before,
+.subMenu_item.subMenu_item-login::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+}
+.subMenu_item-menu {
+  color: #117766;
+  display: none;
+}
+
+/* QA */
+
+.subMenu_item-search {
+  cursor: pointer;
+}
+
+.subMenu_item-qa::before {
+  background: url("/static/responsive/img/mem/icon_qa.svg") no-repeat center;
+}
+.subMenu_item-qa:hover::before {
+  background-image: url("/static/responsive/img/mem/icon_qa_on.svg");
+}
+/* Sub-Menu Supprt */
+.subMenu_item-support::before {
+  background: url("/img/mem/icon_support.svg") no-repeat center;
+}
+.subMenu_item-support:hover::before {
+  background-image: url("/static/responsive/img/mem/icon_support_on.svg");
+}
+/* Sub-Menu Search */
+.subMenu_item-search::before {
+  background: url("/img/mem/icon_search.svg") no-repeat center;
+}
+.subMenu_item-search:hover::before {
+  background-image: url("/static/responsive/img/mem/icon_search_on.svg");
+}
+/* Sub-Menu User */
+.subMenu_item-userInfo::before {
+  background: url("/static/responsive/img/mem/icon_user.svg") no-repeat center;
+}
+.subMenu_item-userInfo:hover::before {
+  background-image: url("/static/responsive/img/mem/icon_user_on.svg");
+}
+/* Sub-Menu Login */
+.subMenu_item-login::before {
+  background: url("/static/responsive/img/mem/icon_login.svg") no-repeat center;
+}
+.subMenu_item-login:hover::before {
+  background-image: url("/img/icon_login_on.svg");
+}
+/* Sub-Menu Logout */
+.subMenu_item-logout::before {
+  background: url("/static/responsive/img/mem/icon_logout.svg") no-repeat center;
+}
+.subMenu_item-logout:hover::before {
+  background-image: url("/static/responsive/img/mem/icon_logout_on.svg");
+}
+/* Sub-Menu Link */
+.subMenu_item > .subMenu_itemInner,
+.subMenu_item > a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #333 !important;
+  text-decoration: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+.subMenu_item:hover > span,
+.subMenu_item:hover > a {
+  color: #117766 !important;
+}
+.subMenu_item:hover > a {
+  text-decoration: underline;
+}
+.subMenu_dropdown {
+  cursor: pointer;
+  position: relative;
+}
+.subMenu_dropdown::after {
+  background: url("/static/responsive/img/mem/icon_down_chevron_thin.svg") no-repeat center;
+  content: '';
+  width: 8px;
+  height: 4px;
+  margin-left: 9px;
+}
+.subMenu_dropdown:hover::after {
+  background: url("/static/responsive/img/mem/icon_down_chevron_thin_on.svg") no-repeat center;
+}
+.subMenu_dropdown:hover > a {
+  text-decoration: none;
+}
+.subMenu_dropdown_body {
+  display: none;
+}
+.subMenu_dropdown.isShow .subMenu_dropdown_body {
+  background-color: #EEE;
+  cursor: auto;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 0 10px;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: calc((-208px + 8px) / 2);
+  margin: 0;
+  width: 208px;
+  z-index: 991;
+}
+.subMenu_dropdown .subMenu_dropdown_body:after {
+  content: '';
+  top: -8px;
+  left: calc((208px - 16px) / 2);
+  position: absolute;
+  border-style: solid;
+  border-width: 0 8px 8px;
+  border-color: #EEE transparent;
+}
+.subMenu_dropdown_item {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+  min-height: 45px;
+}
+a.subMenu_dropdown_item_link {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 14px 27px 13px 0;
+  text-decoration: none;;
+}
+a.subMenu_dropdown_item_link::after {
+  position: absolute;
+  background: url("/static/responsive/img/mem/icon_right_chevron.svg") no-repeat center;
+  content: '';
+  width: 12px;
+  height: 12px;
+  right: 0;
+  top: calc(50% - 12px / 2);
+  text-decoration: underline;
+  color: #117766;
+}
+.subMenu_dropdown_item:last-child {
+  padding: 14px 10px 13px 0;
+}
+.subMenu_dropdown_item + .subMenu_dropdown_item {
+  border-top: 1px dashed #CCC;
+}
+.subMenu_dropdown_close {
+  display: none;
+}
+
+/* SP時の会員情報のモーダル表示 */
+.mfp-bg {
+  opacity: 0.6;
+}
+.subMenu_userInfo_title {
+  pointer-events: none;
+}
+.subMenu_modal_content.mfp-hide {
+  display: block !important;
+}
+.mfp-content > .subMenu_modal_content {
+  font-size: 16px;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 80vh;
+  max-width: 95%;
+  min-width: 345px;
+  margin: 15px auto;
+  padding: 30px 15px;
+  box-sizing: border-box;
+}
+.subMenu_modal_title {
+  display: none;
+}
+.mfp-content .subMenu_modal_title {
+  display: block;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #CCC;
+}
+.mfp-content .subMenu_dropdown_body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.mfp-content .subMenu_dropdown_list {
+  width: 100%;
+}
+.mfp-content .subMenu_userInfo_prevLogin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-top: calc(16px + 16px);
+}
+.subMenu_modal_close_top,
+.subMenu_modal_close_bottom {
+  display: none;
+}
+.mfp-content .subMenu_modal_close_top {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  right: 14px;
+  top: -16px;
+}
+.mfp-content .subMenu_modal_close_bottom {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+  margin-top: auto;
+}
+.mfp-content .subMenu_modal_close_bottom::before {
+  background: url("/static/responsive/img/mem/btn_modal_close.svg") no-repeat center;
+  content: '';
+  height: 24px;
+  width: 24px;
+  margin-right: 10px;
+}
+
+/* メガドロップダウン */
+.megaMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 27px;
+  font-size: 14px;
+  -webkit-box-pack: stretch;
+  -ms-flex-pack: stretch;
+  justify-content: stretch;
+  margin-top: 8px;
+  z-index: 990;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 100%;
+}
+ul li.megaMenu_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  height: 41px;
+  padding: 0 3px 14px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  line-height: 1.8;
+  cursor: pointer;
+}
+.megaMenu_item:first-child {
+  padding-left: 28px;
+}
+.megaMenu_item:nth-last-child(2) {
+  padding-right: 0;  
+}
+.megaMenu_item > .megaMenu_itemTitle {
+  color: #333;
+  cursor: default;
+  line-height: 1.8;
+}
+.megaMenu_item-isMenuOpen > .megaMenu_itemTitle,
+.megaMenu_item-active > .megaMenu_itemTitle {
+  border-bottom: 2px solid #1A4832;
+}
+.megaMenu_item-isMenuOpen > .megaMenu_itemTitle > a,
+.megaMenu_item-active > .megaMenu_itemTitle {
+  color: #1A4832;
+}
+.megaMenu_itemTitle {
+  font-weight: bold;
+  position: relative;
+}
+/* メガドロップダウンの吹き出し部分
+  NOTE: .megaMenu_itemをrelativeにすると、メガドロップダウンに影響してしまうため、.megaMenu_itemTitleで吹き出し部分を再現 */
+.megaMenu_itemTitle::before {
+  content: '';
+  bottom: -17px;
+  left: calc(50% - 8px / 2);
+  position: absolute;
+  border-style: solid;
+  border-width: 0px 8px 8px;
+  border-color: #EEE transparent;
+  transition: all .2s ease-in 0s;
+  visibility: hidden;
+  opacity: 0;
+}
+.megaMenu_item-isMenuOpen > .megaMenu_itemTitle::before {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* メガドロップダウン ボディ */
+.megaMenu_itemBody {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #fff;
+  position: absolute;
+  top: 85px;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  height: 458px;
+  z-index: 1;
+  width: 100%;
+  -webkit-transition: all .4s ease-in .1s;
+  transition: all .4s ease-in .1s;
+  line-height: 1.4;
+}
+.megaMenu_itemBody li {
+  line-height: 1.4 !important;
+}
+.megaMenu_item-isMenuOpen .megaMenu_itemBody {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: all .2s ease-in 0s;
+  transition: all .2s ease-in 0s;
+}
+@media only screen and (max-width: 1000px) {
+  .megaMenu_itemBody {
+    overflow-x: hidden;
+  }
+}
+/* メガドロップダウン サブトップ */
+.megaMenu_subTop {
+  background-color: #1A4832;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #FFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 46px 20px 30px;
+  margin-left: -20px;
+  width: 200px;
+}
+.meagDdm_subTopTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+.meagDdm_subTopLink {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 13px;
+  padding-left: 18px;
+  position: relative;
+  text-decoration: underline;
+}
+a.meagDdm_subTopLink {
+  color: #fff;
+}
+.meagDdm_subTopLink:hover {
+  text-decoration: none;
+}
+.meagDdm_subTopLink::after {
+  position: absolute;
+  background: url("/static/responsive/img/mem/icon_right_chevron_wh.svg") no-repeat center;
+  content: '';
+  width: 12px;
+  height: 12px;
+  top: 4px;
+  left: 0;
+}
+.meagDdm_subTopBelow {
+  margin-top: auto;
+}
+.meagDdm_subTopBelow > .note {
+  color: #fff;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+/* M-LI-3  注釈リスト */
+.note {
+  color: #666;
+  font-size: 1.4rem;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+.note li {
+  position: relative;
+  padding-left: 20px;
+  line-height: 1.4;
+}
+.note li:not(:last-child) {
+  margin-bottom: 8px;
+}
+.note > li::before {
+  content: "※";
+  display: block;
+  position: absolute;
+  left: 0;
+}
+
+
+/* メガドロップダウン サブ */
+.megaMenu_subMenu {
+  background-color: #F0F0F0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 40px 60px 15px;
+  margin-right: -60px;
+  overflow: hidden;
+}
+.megaMenu_subWrap {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.megaMenu_sub {
+  height: 100%;
+}
+.megaMenu_subWrap:not(:first-child) {
+  margin-left: 40px;
+}
+.megaMenu_subTitle {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: bold;
+  padding: 0 0 12px;
+  border-bottom: 1px solid #CCC;
+}
+.megaMenu_subBody {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.megaMenu_subItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 51px;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  border-bottom: 1px dashed #CCC;
+}
+
+/* NOTE: visited打ち消しのため要素指定 */
+a.megaMenu_subItem_link {
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  color: #333 !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  text-decoration: none;
+  width: 100%;
+}
+.megaMenu_subItem_link:hover {
+  text-decoration: underline;
+  color: #117766 !important;
+}
+.megaMenu_subItem_link::after {
+  position: absolute;
+  background: url("/static/responsive/img/mem/icon_right_chevron.svg") no-repeat center;
+  content: '';
+  width: 12px;
+  height: 12px;
+  right: 0;
+  top: calc(50% - 12px / 2)
+}
+.megaMenu_subItem_link[target="_blank"]::after {
+  background-image: url("/static/responsive/img/mem/icon_external_link.svg");
+}
+.megaMenu_subItem_linkIcon {
+  width: 42px;
+}
+.megaMenu_subItem_linkText {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 13px;
+  padding: 0 21px 0 6px;
+}
+/* 2カラム */
+.megaMenu_subWrap-col2 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 493px;
+  flex: 0 0 493px;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.megaMenu_subWrap-col2 .megaMenu_subBody {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  height: 100%;
+  -ms-flex-line-pack: justify;
+  align-content: space-between;
+}
+.megaMenu_subWrap-col2 .megaMenu_subItem {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+  width: 226px;
+}
+/* 1カラム2段 */
+.megaMenu_subWrap-row > .megaMenu_sub {
+  margin-left: 0;
+  height: auto;
+}
+.megaMenu_subWrap-row > .megaMenu_sub:not(:first-child) {
+  margin-top: 70px;
+}
+/* SP時メニュー下部 */
+#header .megaMenu_item-sp {
+  display: none;
+}
+
+/* 検索エリア
+--------------------------------------------------------- */
+/* ------ #searchArea  ----- */
+#searchArea {
+  display: none;
+  z-index: 990;
+}
+#header .hRight .searchAreaWrap {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px;
+  background-color: #F0F0F0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+  box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+}
+.searchBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.searchButton {
+  border: none;
+  height: 45px;
+  width: 45px;
+  color: transparent;
+  background: url("/static/responsive/img/mem/btn_search.svg") no-repeat center;
+}
+.searchButton:hover {
+  opacity: 0.7;
+}
+input.searchTextBox {
+  border: none !important;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 10px 20px !important;
+  width: 100%;
+  background-color: white !important;
+  font-size: 1.6rem;
+}
+
+
+/* SMBCライン
+--------------------------------------------------------- */
+/* ------ smbcLine  ----- */
+#smbcLine {
+  line-height: 1.8;
+  position: relative;
+  z-index: 901;
+}
+#smbcLine *,
+#smbcLine *::before,
+#smbcLine *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#smbcLine_pc {
+  background-color: #1a4832;
+  border-bottom: 5px solid #b6ca3f;
+  min-width: 1000px;
+}
+#smbcLine_pc .smbcGroupWrap {
+  width: 1000px;
+  height: 63px;
+  margin: 0 auto;
+  padding: 13px 0;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+#smbcLine_sp {
+  display: none;
+}
+
+/* オーバーレイ
+--------------------------------------------------------- */
+#header_overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity .4s, visibility 0s ease 1s;
+  transition: opacity .4s, visibility 0s ease 1s;
+  z-index: 900;
+}
+#header_overlay.isShow {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s; /* ios */
+}
+
+
+#header p{
+  margin:0!important;
+}
+
+.logoSmbcGroup {
+  margin-top: 6px;
+}
+
+.txtMagic {
+    text-indent: 100%!important;
+    display: block!important;
+    overflow: hidden!important;
+    white-space: nowrap!important;
+}
+
+#header {
+  font-family: 'Noto Sans JP', "メイリオ", "Meiryo", "Hiragino Sans", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", Osaka, sans-serif !important;
+}
+
+.megaMenu_subItem_link:hover{
+  opacity: 0.5;
+}
+a.meagDdm_subTopLink:link{
+  color: #fff;
+}
+a.meagDdm_subTopLink:visited{
+  color: #fff;
+}
+
+.smallWin {
+  border-top-width: 3px;
+  border-top-style: solid;
+  border-top-color: #003e28;
+  height: 52px;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.smallWin #header{
+  box-sizing: border-box;
+  background: #fff;
+  border-bottom: 3px double #eaeaea;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 100%;
+  padding: 13px 10px 6px 10px;
+  height: auto;
+  box-shadow: none;
+}
+
+.smallWin #header .hLeft p.logo_pop {
+  background: url(/img/logo_smbc_popup.png) 0 0 no-repeat;
+  width: 220px;
+  height: 37px;
+  margin: 0;
+}
+                                                                      
