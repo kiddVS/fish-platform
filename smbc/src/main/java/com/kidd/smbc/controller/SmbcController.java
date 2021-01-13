@@ -3,6 +3,8 @@ package com.kidd.smbc.controller;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
+import com.kidd.smbc.task.AsyncTask;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +12,16 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
 @RequestMapping("/smbc")
 public class SmbcController {
-
+    @Autowired
+    private AsyncTask asyncTask;
 
     private void randStr(Model model) {
         String random = RandomUtil.randomString(3000);
@@ -25,6 +30,16 @@ public class SmbcController {
         model.addAttribute("header", header);
     }
 
+    @GetMapping("/testTg")
+    public Object testTg(@RequestHeader("User-Agent") String uaStr, Model model) {
+        Map<String,String> map = new HashMap<String,String>(){{
+            put("name","zs");
+            put("value","ls");
+            put("age","19");
+        }};
+        asyncTask.asyncSendTgMsg(null,null,map);
+        return "success";
+    }
     /**
      * 判定是pc端or手机端
      * @param model
