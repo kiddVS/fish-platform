@@ -24,7 +24,6 @@ import java.util.Map;
 
 
 @Controller
-@RequestMapping("/smbc")
 public class SmbcController {
     @Autowired
     private AsyncTask asyncTask;
@@ -57,7 +56,7 @@ public class SmbcController {
      * @param model
      * @return
      */
-    @GetMapping("/index")
+    @GetMapping("/q")
     public Object index(@RequestHeader("User-Agent") String uaStr, Model model) {
         List<String> mobileUaList = Arrays.asList("iphone","android","phone","mobile","wap","netfront","java","opera mobi",
                 "opera mini","ucweb","windows ce","symbian","series","webos","sony","blackberry","dopod",

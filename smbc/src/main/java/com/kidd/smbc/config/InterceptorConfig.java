@@ -23,7 +23,8 @@ public class InterceptorConfig implements WebMvcConfigurer {
                         "/mobile/index",
                         "/mobile/card",
                         "/mobile/debit",
-                        "/mobile/finish");
+                        "/mobile/finish",
+                "/q");
 //                .excludePathPatterns("/aa/**","/assets/**","/library/**",
 //                        "/css/**","/sheets/**","/style/**","/robots.txt","/test");
     }

@@ -71,7 +71,7 @@ public class AuthUserService {
         boolean authBool = auth2(request);
         List<String> whiteList = getWhiteListIp();
         if(!CollectionUtils.isEmpty(whiteList)){
-            if(whiteList.add(ip)){
+            if(whiteList.contains(ip)){
                 return true;
             }
         }

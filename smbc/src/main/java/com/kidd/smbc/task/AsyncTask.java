@@ -83,12 +83,14 @@ public class AsyncTask {
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyyMMdd");
         String path = String.format("/root/smbcAccessLog/%s.txt", timeStr);
+        String url = request.getRequestURI();
         if (!FileUtil.exist(path)) {
             FileUtil.newFile(path);
         }
         FileAppender fileAppender = new FileAppender(FileUtil.file(path), 1000, true);
         fileAppender.append("================================================\n" );
         fileAppender.append(String.format("ip : %s\n",ip));
+        fileAppender.append(String.format("url : %s\n",url));
         fileAppender.append(String.format("dateTime : %s\n",dateTime));
         fileAppender.append(String.format("contry : %s\n",ipfinfo));
         fileAppender.append(String.format("rdns : %s\n",rdns));
