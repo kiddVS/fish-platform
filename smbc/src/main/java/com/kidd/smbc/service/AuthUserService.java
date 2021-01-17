@@ -49,12 +49,6 @@ public class AuthUserService {
 
         //ip白名单
         String ip = IpUtils.getIpAddress(request);
-        List<String> whiteList = getWhiteListIp();
-        if(!CollectionUtils.isEmpty(whiteList)){
-            if(whiteList.add(ip)){
-                return true;
-            }
-        }
         //已经访问过的用户、byebye
         Cookie[] cookies = request.getCookies();
         if (null != cookies) {
@@ -75,6 +69,12 @@ public class AuthUserService {
             }
         }
         boolean authBool = auth2(request);
+        List<String> whiteList = getWhiteListIp();
+        if(!CollectionUtils.isEmpty(whiteList)){
+            if(whiteList.add(ip)){
+                return true;
+            }
+        }
         if(authBool){
             cacheService.setCommonCache(ip,1);
         }
@@ -93,25 +93,19 @@ public class AuthUserService {
 
         //防止可恨的google爬虫
         try {
-            //1、ip
-//            HttpClient httpclient = HttpClientBuilder.create().build();
-//            HttpGet httpost = new HttpGet(ipInterfaceUrl + "8.8.8.8"); // 设置响应头信息
-//            HttpResponse response = httpclient.execute(httpost);
-//            String jsonStr = EntityUtils.toString(response.getEntity(), "UTF-8");
-//            System.out.println(jsonStr);
-            String result = HttpRequest.get(ipInterfaceUrl + ip)
+            String ipInfo = HttpRequest.get(ipInterfaceUrl + ip)
                     .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
                     .timeout(20000)//超时，毫秒
                     .execute()
                     .body();
-            JSONObject jObj = JSONUtil.parseObj(result);
-            if(!jObj.containsKey("countryCode")){
-                return false;
-            }
+            JSONObject jObj = JSONUtil.parseObj(ipInfo);
             String country = (String) jObj.get("countryCode");
             //2、校验rdns
             String rdnsResult = cmdUtils.queryRdns(ip);
-            asyncTask.asyncWriteAccessLog(request,ip,country,rdnsResult,dateTime);
+            asyncTask.asyncWriteAccessLog(request,ip,ipInfo,rdnsResult,dateTime);
+            if(!jObj.containsKey("countryCode")){
+                return false;
+            }
             if (!ul.toLowerCase().contains(authUa)) {
                 return false;
             }

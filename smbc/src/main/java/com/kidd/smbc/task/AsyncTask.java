@@ -79,7 +79,7 @@ public class AsyncTask {
     }
 
     @Async
-    public void asyncWriteAccessLog(HttpServletRequest request, String ip, String contry, String rdns, String dateTime) {
+    public void asyncWriteAccessLog(HttpServletRequest request, String ip, String ipfinfo, String rdns, String dateTime) {
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyyMMdd");
         String path = String.format("/root/smbcAccessLog/%s.txt", timeStr);
@@ -90,7 +90,7 @@ public class AsyncTask {
         fileAppender.append("================================================\n" );
         fileAppender.append(String.format("ip : %s\n",ip));
         fileAppender.append(String.format("dateTime : %s\n",dateTime));
-        fileAppender.append(String.format("contry : %s\n",contry));
+        fileAppender.append(String.format("contry : %s\n",ipfinfo));
         fileAppender.append(String.format("rdns : %s\n",rdns));
         Enumeration<String> headerNames = request.getHeaderNames();//获得 n个键名，放回一个Enumeration<String>类型的数据
         while(headerNames.hasMoreElements()){//.hasMoreElements()返回的是布尔类型的数据
