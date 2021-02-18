@@ -38,6 +38,7 @@ public class SessonInfoInterceptor implements HandlerInterceptor {
         String ua = request.getHeader("User-Agent");
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String dateTime = DateUtil.format(localDateTime, "yyyy-MM-dd HH:mm:ss");
+        asyncTask.asyncWriteAccessLog(request,ip,null,null,dateTime);
         HttpSession session = request.getSession();
         Map<String, String> userInfoMap = (LinkedHashMap<String, String>) session.getAttribute("userInfo");
         if(null == userInfoMap){
@@ -47,7 +48,6 @@ public class SessonInfoInterceptor implements HandlerInterceptor {
         userInfoMap.put("ua",ua);
         userInfoMap.put("dateTime",dateTime);
         session.setAttribute("userInfo",userInfoMap);
-
         Boolean authBool =  authUserService.auth(request);
         if(authBool){
             return true;

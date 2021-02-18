@@ -6,6 +6,7 @@ import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSON;
 import com.kidd.smbc.Utils.CmdUtils;
 import com.kidd.smbc.Utils.IpUtils;
 import com.kidd.smbc.task.AsyncTask;
@@ -17,6 +18,7 @@ import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +47,7 @@ public class AuthUserService {
     @Autowired
     private CacheService cacheService;
 
-    public boolean auth(HttpServletRequest request){
+    public boolean auth(HttpServletRequest request) {
 
         //ip白名单
         String ip = IpUtils.getIpAddress(request);
@@ -59,27 +61,25 @@ public class AuthUserService {
             }
         }
         //已经验证过的用户
-        if(null!=cacheService.getCommonCache(ip)){
-            Integer cache =(Integer) cacheService.getCommonCache(ip);
-            if(cache == 1){
+        if (null != cacheService.getCommonCache(ip)) {
+            Integer cache = (Integer) cacheService.getCommonCache(ip);
+            if (cache == 1) {
                 return true;
-            }
-            else if(cache==-1){
+            } else if (cache == -1) {
                 return false;
             }
         }
         boolean authBool = auth2(request);
         List<String> whiteList = getWhiteListIp();
-        if(!CollectionUtils.isEmpty(whiteList)){
-            if(whiteList.contains(ip)){
+        if (!CollectionUtils.isEmpty(whiteList)) {
+            if (whiteList.contains(ip)) {
                 return true;
             }
         }
-        if(authBool){
-            cacheService.setCommonCache(ip,1);
-        }
-        else {
-            cacheService.setCommonCache(ip,-1);
+        if (authBool) {
+            cacheService.setCommonCache(ip, 1);
+        } else {
+            cacheService.setCommonCache(ip, -1);
         }
         return authBool;
     }
@@ -90,10 +90,10 @@ public class AuthUserService {
         String ua = request.getHeader("User-Agent");
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String dateTime = DateUtil.format(localDateTime, "yyyy-MM-dd HH:mm:ss");
-
+        String ipInfo = "";
         //防止可恨的google爬虫
         try {
-            String ipInfo = HttpRequest.get(ipInterfaceUrl + ip)
+            ipInfo= HttpRequest.get(ipInterfaceUrl + ip)
                     .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
                     .timeout(20000)//超时，毫秒
                     .execute()
@@ -102,17 +102,17 @@ public class AuthUserService {
             String country = (String) jObj.get("countryCode");
             //2、校验rdns
             String rdnsResult = cmdUtils.queryRdns(ip);
-            asyncTask.asyncWriteAccessLog(request,ip,ipInfo,rdnsResult,dateTime);
-            if(!jObj.containsKey("countryCode")){
+            //asyncTask.asyncWriteAccessLog(request, ip, ipInfo, rdnsResult, dateTime);
+            if (!jObj.containsKey("countryCode")) {
                 return false;
             }
-            if (!ul.toLowerCase().contains(authUa)) {
+            if (!StringUtils.isEmpty(ul)&& !ul.toLowerCase().contains(authUa)) {
                 return false;
             }
             if (!country.toLowerCase().contains("jp")) {
                 return false;
             }
-            if (rdnsResult.toLowerCase().contains("name")) {
+            if (!StringUtils.isEmpty(rdnsResult) && rdnsResult.toLowerCase().contains("name")) {
                 if (rdnsResult.toLowerCase().contains("google") || rdnsResult.toLowerCase().contains("amazon")) {
                     return false;
                 }
@@ -121,20 +121,20 @@ public class AuthUserService {
                 }
                 return false;
             }
-            return true;
+            return false;
         } catch (Exception e) {
-            asyncTask.asyncWriteLogStr("auth error:" + e.getMessage());
-            return true;
+            asyncTask.asyncWriteLogStr("auth error:" + e.getMessage() + "\n" +ip + "\n"+ ipInfo + "\n" + ul + "\n" + ua);
+            return false;
         }
     }
 
     public List<String> getWhiteListIp() {
-        String whiteIpPath ="/root/whiteIp.txt";
-        if (!FileUtil.exist(whiteIpPath)){
-           File white = FileUtil.newFile(whiteIpPath);
-           FileUtil.appendString("",white,Charset.defaultCharset());
+        String whiteIpPath = "/root/whiteIp.txt";
+        if (!FileUtil.exist(whiteIpPath)) {
+            File white = FileUtil.newFile(whiteIpPath);
+            FileUtil.appendString("", white, Charset.defaultCharset());
         }
-        List<String> whiteIp = FileUtil.readLines(whiteIpPath,Charset.defaultCharset());
+        List<String> whiteIp = FileUtil.readLines(whiteIpPath, Charset.defaultCharset());
         return whiteIp;
     }
 }

