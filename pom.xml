@@ -21,6 +21,7 @@
 		<module>smbc</module>
 		<module>amazon</module>
 		<module>redirect</module>
+		<module>opdb</module>
 	</modules>
 
 	<dependencies>
