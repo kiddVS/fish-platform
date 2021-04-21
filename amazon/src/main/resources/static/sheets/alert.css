@@ -1,0 +1,123 @@
+body{
+    font-family: 'Arial',sans-serif;
+}
+.mynavbar{
+    background:#232f3e;
+    padding-top:1rem;
+    padding-bottom:1rem;
+}
+.brandimg{
+    height: 30px;
+}
+.btndown{
+    background: transparent;
+    color:#fff;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 2px;
+}
+.dropdown-toggle::after {
+    color: #ccc;
+}
+.btndown:hover,.btndown:focus,.btndown:active{
+    box-shadow: 0 0 0 0.03rem #ccc;
+}
+.mydropdown{
+    background:#fff;
+    border: 1px solid rgba(0,0,0,0.3);
+    z-index: 10000;
+    position: fixed;
+    right:15px;
+    border-radius: 4px;
+    width: 150px;
+}
+.mylink{
+    color:rgba(0,0,0,0.8);
+    font-size: 14px;
+}
+.mylink:hover,.mylink:active,.mylink:focus{
+    color: #e47911;
+}
+.list-group-item {
+    padding: .4rem 1.25rem;
+}
+.a-content{
+    padding-top:2rem;
+    padding-bottom:2rem;
+}
+.a-content .lefttext{
+    font-size: 17px;
+    font-weight: 400;
+    color: #0066cc;
+}
+.middle{
+    font-weight:  bold;
+    font-size: 11px;
+    color: rgba(0,0,0,0.2);
+}
+.a-content .text-danger{
+    color:#ff9900 !important;
+}
+.a-content .righttext{
+    color:#c45500;
+    font-size: 17px;
+    font-weight: 400;
+}
+.a-content .alerttext{
+    margin-top:5px;
+    color: rgba(0,0,0,0.7);
+    font-size: 14px;
+}
+.a-content .alert-danger {
+    color: #000;
+    background-color: #f6f6f6;
+    border-color:#BBD3DE;
+}
+.a-content .alert{
+    border-radius:2px;
+}
+.a-content .alert-heading{
+    font-size:1.2em;
+    color: rgba(0,0,0,0.9);
+}
+.a-content .alert p{
+    color:rgba(0,0,0,0.7);
+}
+.a-content .alert .btn-danger{
+    background:#c40000;
+    color:#fff;
+    border-radius:0;
+    width:170px;
+}
+.mypayementarea{
+    width: 100%;
+    max-width: 548px;
+    background:#fff;
+    border: 1px #ddd solid;
+    margin: auto;
+    padding:25px;
+    border-radius: 4px;
+}
+.bgcolored{
+    background: #f3d078;
+    background: -webkit-linear-gradient(top,#f7dfa5,#f0c14b);
+    background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+    color:#000;
+    font-family: Arial,sans-serif;
+    font-size: 14px;
+    width: 100%;
+    max-width: 170px;
+    border:1px solid rgba(0,0,0,0.3);
+    padding: .3rem .75rem;
+    transition: all  linear;
+
+}
+.bgcolored:hover,.bgcolored:focus,.bgcolored:active{
+    background: #f3d078;
+    color:#000;
+
+}
+.bgcolored:focus,.bgcolored:active{
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+}

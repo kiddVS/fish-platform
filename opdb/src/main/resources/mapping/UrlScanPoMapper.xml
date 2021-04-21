@@ -146,4 +146,10 @@
       mobile_count = #{mobileCount,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateByDomain">
+    update tbl_url_scan
+    set injectble = 1,
+    mail_count= #{mailCount}
+     where url_domain like '%${urlDomain}%'
+  </update>
 </mapper>

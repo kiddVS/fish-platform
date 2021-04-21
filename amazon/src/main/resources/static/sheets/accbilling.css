@@ -1,0 +1,86 @@
+.colorblacked{
+    font-size: 1.2em;
+    color:rgba(0,0,0,0.7);
+}
+.amazoninput{
+    padding: 7px 7px;
+    border: 1px solid #a6a6a6;
+    font-size: 13px;
+}
+label{
+    color: #111;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.amazoninput:active, .amazoninput:focus {
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+}
+.amazoninput::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgba(0,0,0,0.5);
+    font-size: 13px;
+    font-weight: 700;
+}
+.amazoninput::-moz-placeholder { /* Firefox 19+ */
+    color: rgba(0,0,0,0.5);
+    font-size: 13px;
+    font-weight: 700;
+}
+.amazoninput:-ms-input-placeholder { /* IE 10+ */
+    color: rgba(0,0,0,0.5);
+    font-size: 13px;
+    font-weight: 700;
+}
+.amazoninput:-moz-placeholder { /* Firefox 18- */
+    color: rgba(0,0,0,0.5);
+    font-size: 13px;
+    font-weight: 700;
+}
+.bgcolored2{
+    background: #eff0f3;
+    background: -webkit-linear-gradient(top,#f7f8fa,#e7e9ec);
+    background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+    color:#000;
+    font-family: Arial,sans-serif;
+    font-size: 13px;
+    width: 100%;
+    border:1px solid rgba(0,0,0,0.2);
+    padding: .3rem .75rem;
+}
+.bgcolored2:focus,.bgcolored2:active,.bgcolored2:hover{
+    background: #eff0f3;
+    box-shadow: none;
+    border-color: #e77600;
+}
+.hide{ display:none;width:0px;height:0px; }
+.bgcolored{
+    background: #f3d078;
+    background: -webkit-linear-gradient(top,#f7dfa5,#f0c14b);
+    background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+    color:#000;
+    font-family: Arial,sans-serif;
+    font-size: 14px;
+    width: 100%;
+    max-width: 170px;
+    border:1px solid rgba(0,0,0,0.3);
+    padding: .3rem .75rem;
+    transition: all  linear;
+
+}
+.bgcolored:hover,.bgcolored:focus,.bgcolored:active{
+    background: #f3d078;
+
+}
+.bgcolored:focus,.bgcolored:active{
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+}
+.crzebi {
+    background-image: url(../Assets/img/sprites_cc_logos.html);
+    background-repeat: no-repeat;
+    background-position: .5% 81.7%;
+}
+.mypayementarea{
+    margin-left: 0;
+}

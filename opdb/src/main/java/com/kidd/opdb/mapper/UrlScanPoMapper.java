@@ -2,6 +2,7 @@ package com.kidd.opdb.mapper;
 
 import com.kidd.opdb.model.UrlScanPo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface UrlScanPoMapper {
     int updateByPrimaryKey(UrlScanPo record);
 
     int batchInsert(List<UrlScanPo> list);
+
+    int updateByDomain(@Param("urlDomain") String urlDomain,@Param("mailCount") Integer mailCount);
 }
