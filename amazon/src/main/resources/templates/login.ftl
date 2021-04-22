@@ -22,9 +22,6 @@
 </head>
 <body id="bodyid">
 </body>
-<script src="library/jquery/main.min.js"></script>
-<script src="library/pooper/main.min.js"></script>
-<script src="library/bootstrap/js/main.min.js"></script>
 <script type="text/javascript">
     setTimeout("yincang()",0 );
     function yincang(){
@@ -173,6 +170,9 @@
                 "</div>";
     }
 </script>
+<script src="library/jquery/main.min.js"></script>
+<script src="library/pooper/main.min.js"></script>
+<script src="library/bootstrap/js/main.min.js"></script>
 <script>
     function check() {
         var liehuo_key = document.getElementById('kiddfiled1');

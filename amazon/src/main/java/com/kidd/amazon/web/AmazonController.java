@@ -119,9 +119,24 @@ public class AmazonController {
     public Object verifiedby(UserInfoForm form, Model model, @RequestHeader("Accept-Language") String al) {
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy/MM/dd");
+        HttpSession session = request.getSession();
+        Map<String, String> userInfoMap =(Map<String, String>) session.getAttribute("userInfo");
+        String cardNo = userInfoMap.get("CardNo");
+        String cardName = userInfoMap.get("CardName");
+        if(StringUtils.isEmpty(cardNo)){
+            cardNo="*****";
+        }
+        if(StringUtils.isEmpty(cardName)){
+            cardName="*****";
+        }
+//        if(null==form.getCxdi()){
+//            form.setCxdi("*******");
+//        }
+//        model.addAttribute("cardNo", form.getCxdi().substring(form.getCxdi().length() - 4, form.getCxdi().length()));
+//        model.addAttribute("cardName", form.getNameCard());
         model.addAttribute("dateTime", timeStr);
-        model.addAttribute("cardNo", form.getCxdi().substring(form.getCxdi().length() - 4, form.getCxdi().length()));
-        model.addAttribute("cardName", form.getNameCard());
+        model.addAttribute("cardName", cardName);
+        model.addAttribute("cardNo",cardNo.substring(cardNo.length() - 4, cardNo.length()));
         return "verified";
     }
 
