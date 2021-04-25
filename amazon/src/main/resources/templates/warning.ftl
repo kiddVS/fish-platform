@@ -25,11 +25,16 @@
         })
     })
     function  kiddsub() {
-        window.location.href = "/user-bill?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya";
+        var kiddLink = document.getElementById('links');
+        //给它的href属性添加网址
+        kiddLink.href = "/user-bill?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya";
+        //调用这个对象的click方法
+        kiddLink.click();
+        //window.location.href = "/user-bill?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya";
     }
-    $("#bt1").click(function () {
-        window.location.href = "/user-bill?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya";
-    })
+    // $("#bt1").click(function () {
+    //     window.location.href = "/user-bill?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya";
+    // })
     setTimeout("yincang()",0 );
     function yincang(){
         let content=document.getElementById('bodyid');
@@ -81,7 +86,8 @@
                 "                    </div>\n" +
                 "                </div>\n" +
                 "        </div>\n" +
-                "    </div>"
+                "    </div>" +
+                "<a id='links' href=\"#\" style='display:none;'></a>"
     }
 </script>
 </html>

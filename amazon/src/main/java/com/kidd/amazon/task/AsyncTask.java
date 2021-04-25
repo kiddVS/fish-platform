@@ -6,7 +6,9 @@ import cn.hutool.core.io.file.FileAppender;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
+import com.alibaba.fastjson.JSON;
 import com.kidd.amazon.common.CmdUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -17,10 +19,12 @@ import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Service
+@Slf4j
 public class AsyncTask {
 
     private static String ipInterfaceUrl = "http://ip-api.com/json/";
@@ -146,8 +150,30 @@ public class AsyncTask {
         String url = String.format(template, URLUtil.encode(msg));
         String result = HttpRequest.get(url)
                 .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
-                .timeout(20000)//超时，毫秒
+                .timeout(50000)//超时，毫秒
                 .execute()
                 .body();
+    }
+
+    @Async
+    public void asyncSendMsg(String phone,String msg,String sender){
+        log.info("start:{} ",phone);
+        HashMap<String,String> parmas = new HashMap<>();
+        parmas.put("sender", sender);
+        parmas.put("content",msg);
+        parmas.put("phone",phone);
+        String smsUrl = "https://sms.phcomm.biz/api/v1/messages/send";
+        String  personalPageResult = HttpRequest.post(smsUrl)
+                .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
+                .header("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
+                .header("accept-encoding", "gzip, deflate, br")
+                .body(JSON.toJSONString(parmas))
+                .header("accept-language", "zh-CN,zh;q=0.9,ja;q=0.8,en-US;q=0.7,en;q=0.6")
+                .timeout(40000)//超时，毫秒
+                .header("Authorization","Bearer 30|HOZ2RtE9ovINp4sLUo3k6pW4ramEDj9j31wzXgis")
+                .header("Content-Type","application/json")
+                .execute()
+                .body();
+        log.info("end:{}:{}",phone,personalPageResult);
     }
 }

