@@ -1,0 +1,77 @@
+<font size="2" face= color="#000000" style="font-size:12px">
+.heading
+{
+    FONT-SIZE: 12px;
+    FONT-WEIGHT: bold;
+    FONT-FAMILY: "ＭＳ Ｐゴシック","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",sans-serif;
+}
+.normal
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: "ＭＳ Ｐゴシック","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",sans-serif;
+    COLOR: #000000;
+}
+
+.normalgray
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: "ＭＳ Ｐゴシック","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",sans-serif;
+    COLOR: #666666;
+}
+
+.normalplus
+{
+    FONT-SIZE: 14px;
+    FONT-FAMILY: "ＭＳ Ｐゴシック","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",sans-serif;
+    COLOR: #000000;
+}
+.normalbold
+{
+    FONT-SIZE: 12px;
+    FONT-WEIGHT: bold;
+    FONT-FAMILY: "ＭＳ Ｐゴシック","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",sans-serif;
+    COLOR: #000000;
+}
+.error
+{
+    FONT-SIZE: 12px;
+    COLOR: red;
+    FONT-FAMILY: "ＭＳ Ｐゴシック","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",sans-serif;
+}
+.forgotlink
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10px;
+    FONT-FAMILY: "ＭＳ Ｐゴシック","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",sans-serif;
+    COLOR: #666666;
+    TEXT-DECORATION: underline;
+}
+
+.normallink
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12px;
+    COLOR: #666666;
+    FONT-FAMILY: "ＭＳ Ｐゴシック","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",sans-serif;
+    TEXT-DECORATION: underline;
+}
+
+.copyright
+{
+    FONT-SIZE: 10px;
+    COLOR: gray;
+    FONT-FAMILY: "ＭＳ Ｐゴシック","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",sans-serif;
+}
+A.helplink
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12px;
+    COLOR: #666666;
+    FONT-FAMILY: "ＭＳ Ｐゴシック","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",sans-serif;
+    TEXT-DECORATION: none;
+}
+A.helplink:hover
+{
+    COLOR: red;
+    TEXT-DECORATION: none;
+}
