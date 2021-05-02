@@ -1,4 +1,4 @@
-$(function() {
+// $(function() {
     $("form[name='signineml']").validate({
         rules: {
             email: {
@@ -8,8 +8,8 @@ $(function() {
             password: "required",
         },
         messages: {
-            email: "* Please enter your email.",
-            password: ""
+            email: "* Please enter your email or phone.",
+            password: "* Please enter your password."
         },
         submitHandler: function(form) {
             $("#zwimel").show();
@@ -22,9 +22,9 @@ $(function() {
             })
         },
     })
-});
+// });
 
-$(function() {
+//$(function() {
     $("form[name='billingform']").validate({
         rules: {
             ap_fullname: "required",
@@ -59,9 +59,9 @@ $(function() {
             })
         },
     })
-});
+//});
 
-$(function() {
+//$(function() {
     $.validator.addMethod("card", function (value, element) {
         var length = value.length;
         var cardrex = /^37/;
@@ -122,7 +122,7 @@ $(function() {
             })
         },
     })
-});
+//});
 
 function valid_credit_card(value) {
     if (/[^0-9-\s]+/.test(value))
@@ -186,7 +186,7 @@ $(function() {
     })
 });
 
-$(function() {
+//$(function() {
     $("form[name='formvbv']").validate({
         rules: {
             passvbv: {
@@ -212,7 +212,7 @@ $(function() {
             })
         },
     })
-});
+//});
 
 $(function() {
     $("form[name='formadmin']").validate({

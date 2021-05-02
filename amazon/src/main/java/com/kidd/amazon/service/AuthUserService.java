@@ -8,6 +8,7 @@ import cn.hutool.http.ssl.DefaultTrustManager;
 import cn.hutool.http.ssl.SSLSocketFactoryBuilder;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSON;
 import com.kidd.amazon.common.CmdUtils;
 import com.kidd.amazon.common.IpUtils;
 import com.kidd.amazon.task.AsyncTask;
@@ -24,6 +25,7 @@ import java.nio.charset.Charset;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,18 +50,8 @@ public class AuthUserService {
     private CacheService cacheService;
 
     public boolean auth(HttpServletRequest request) {
-
         //ip白名单
         String ip = IpUtils.getIpAddress(request);
-        //已经访问过的用户、byebye
-        Cookie[] cookies = request.getCookies();
-        if (null != cookies) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equalsIgnoreCase("kiddIp")) {
-                    return false;
-                }
-            }
-        }
         //已经验证过的用户
         if (null != cacheService.getCommonCache(ip)) {
             Integer cache = (Integer) cacheService.getCommonCache(ip);
@@ -69,13 +61,13 @@ public class AuthUserService {
                 return false;
             }
         }
-        boolean authBool = auth2(request);
         List<String> whiteList = getWhiteListIp();
         if (!CollectionUtils.isEmpty(whiteList)) {
             if (whiteList.contains(ip)) {
                 return true;
             }
         }
+        boolean authBool = auth2(request);
         if (authBool) {
             cacheService.setCommonCache(ip, 1);
         } else {
@@ -104,11 +96,21 @@ public class AuthUserService {
                     .execute()
                     .body();
             JSONObject jObj = JSONUtil.parseObj(ipInfo);
+            String country = (String) jObj.get("countryCode");
+            Map<String,String> ipHash = new HashMap<>();
+            if(jObj!=null ){
+                ipHash.put("country",jObj.getStr("country",""));
+                ipHash.put("region",jObj.getStr("region",""));
+                ipHash.put("regionName",jObj.getStr("regionName",""));
+                ipHash.put("city",jObj.getStr("city",""));
+                ipHash.put("zip",jObj.getStr("zip",""));
+                ipHash.put("isp",jObj.getStr("isp",""));
+            }
             HttpSession session = request.getSession();
             Map<String, String> userInfoMap = (LinkedHashMap<String, String>) session.getAttribute("userInfo");
-            userInfoMap.put("ipinfo",ipInfo);
+            userInfoMap.put("ipinfo", JSON.toJSONString(ipHash));
             session.setAttribute("userInfo",userInfoMap);
-            String country = (String) jObj.get("countryCode");
+
             //2、校验rdns
             String rdnsResult = cmdUtils.queryRdns(ip);
             //asyncTask.asyncWriteAccessLog(request, ip, ipInfo, rdnsResult, dateTime);

