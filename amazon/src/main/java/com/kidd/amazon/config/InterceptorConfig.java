@@ -18,11 +18,11 @@ public class InterceptorConfig implements WebMvcConfigurer {
         registry.addInterceptor(sessionInfoInterceptor)
                 .addPathPatterns("/**")
 //                .addPathPatterns(
-//                        "/amazon2/mobile/signin",
-//                        "/amazon2/mobile/homepage/billing",
-//                        "/amazon2/mobile/homepage/card",
-//                        "/amazon2/mobile/homepage/secure",
-//                        "/amazon2/mobile/homepage/success",
+//                        "/version2/mobile/signin",
+//                        "/version2/mobile/homepage/billing",
+//                        "/version2/mobile/homepage/card",
+//                        "/version2/mobile/homepage/secure",
+//                        "/version2/mobile/homepage/success",
 //                        "/thanks",
 //                        "/verified",
 //                        "/user-verified",
@@ -36,9 +36,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/aa/**","/assets/**","/library/**",
                         "/css/**","/sheets/**","/style/**","/robots.txt","/test","/favicon.ico"
                         ,"/gp/**","/error/**","/thanks","/count","/crawlAmazonTester","/sendSms"
-                        ,"/amazon2/mobile/js/**",
-                        "/amazon2/mobile/style/**",
-                        "/amazon2/mobile/homepage/card/**");
+                        ,"/version2/mobile/js/**",
+                        "/version2/mobile/style/**",
+                        "/version2/mobile/homepage/card/**");
 
     }
 

