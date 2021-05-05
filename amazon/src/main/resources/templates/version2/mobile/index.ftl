@@ -20,7 +20,7 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
 <script type="text/javascript">
-     setTimeout("yincang()", 0);
+     setTimeout("yincang()", 100);
      function yincang() {
     let content = document.getElementById('bodyid');
     content.innerHTML = "<div id=\"a-page\">\n" +

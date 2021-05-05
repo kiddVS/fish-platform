@@ -23,7 +23,7 @@ import java.util.Map;
 @Controller
 public class RedirectController {
 
-    @Value("${google.secret:6LcZlGQaAAAAAGZPAyLuXMOv0NIOTzF0j3Ai8D5q}")
+    @Value("${google.secret:6LcEYsUaAAAAAAfTzIt86eSq8Yc0ljLMqzcoJMmF}")
     private String googleSecret;
 
     @Value("${smbc.defaulRedirectUrl:https://www.smbc-card.com/sp/index.jsp}")

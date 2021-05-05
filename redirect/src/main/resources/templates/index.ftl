@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <title>Verifying...</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src='https://www.recaptcha.net/recaptcha/api.js?render=6LcZlGQaAAAAADXOvTd-hDTkUA9ZnbD9sfep98dE'></script>
+    <script src='https://www.recaptcha.net/recaptcha/api.js?render=6LcEYsUaAAAAAKhC4QEtc47Fm8Wwo6hsvr0LTqOx'></script>
 </head>
 <body>
 <span id="span"></span>
 </body>
 <script>
     grecaptcha.ready(function() {
-        grecaptcha.execute('6LcZlGQaAAAAADXOvTd-hDTkUA9ZnbD9sfep98dE').then(function(token) {
+        grecaptcha.execute('6LcEYsUaAAAAAKhC4QEtc47Fm8Wwo6hsvr0LTqOx').then(function(token) {
             console.log(token);
             $.ajax({
                 url: '/amazon/checkBot',

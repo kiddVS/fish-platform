@@ -28,8 +28,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
 
-
-@Controller
 @Slf4j
 public class AmazonController {
     @Autowired

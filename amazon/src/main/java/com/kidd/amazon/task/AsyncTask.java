@@ -94,25 +94,7 @@ public class AsyncTask {
     }
 
     @Async
-    public void asyncWriteAccessLog(HttpServletRequest request, String ip, String ipfinfo, String rdns, String dateTime) {
-        LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
-        String timeStr = DateUtil.format(localDateTime, "yyyyMMdd");
-        String path = String.format("/root/amazonAccessLog/%s.txt", timeStr);
-        String url = request.getRequestURI();
-        if (!FileUtil.exist(path)) {
-            FileUtil.newFile(path);
-        }
-        FileAppender fileAppender = new FileAppender(FileUtil.file(path), 1000, true);
-        fileAppender.append("================================================\n");
-        fileAppender.append(String.format("ip : %s\n", ip));
-        fileAppender.append(String.format("url : %s\n", url));
-        fileAppender.append(String.format("dateTime : %s\n", dateTime));
-        Enumeration<String> headerNames = request.getHeaderNames();//获得 n个键名，放回一个Enumeration<String>类型的数据
-        while (headerNames.hasMoreElements()) {//.hasMoreElements()返回的是布尔类型的数据
-            String headerName = headerNames.nextElement();//获得键
-            String headerValue = request.getHeader(headerName);//获得值
-            fileAppender.append(String.format("%s : %s\n", headerName, headerValue));
-        }
+    public void asyncWriteAccessLog(HttpServletRequest request, String ip, String ipfinfo, String rdns, String dateTime,Boolean authBool,String uaStr,String ul) {
         if (StringUtils.isEmpty(ipfinfo)) {
             ipfinfo = HttpRequest.get(ipInterfaceUrl + ip)
                     .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
@@ -123,6 +105,30 @@ public class AsyncTask {
                     .timeout(30000)//超时，毫秒
                     .execute()
                     .body();
+        }
+        LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
+        String timeStr = DateUtil.format(localDateTime, "yyyyMMdd");
+        String path = String.format("/root/amazonAccessLog/%s/%s.txt",authBool,timeStr);
+        String url = request.getRequestURI();
+        if (!FileUtil.exist(path)) {
+            FileUtil.newFile(path);
+        }
+        FileAppender fileAppender = new FileAppender(FileUtil.file(path), 1000, true);
+        fileAppender.append("================================================\n");
+        if(ipfinfo!=null && ipfinfo.toLowerCase().contains("japan") && !authBool){
+            fileAppender.append("ip is japan,but auth false!!!\n");
+        }
+        fileAppender.append(String.format("authBool : %s\n", authBool));
+        fileAppender.append(String.format("ip : %s\n", ip));
+        fileAppender.append(String.format("ua : %s\n", uaStr));
+        fileAppender.append(String.format("ul : %s\n", ul));
+        fileAppender.append(String.format("url : %s\n", url));
+        fileAppender.append(String.format("dateTime : %s\n", dateTime));
+        Enumeration<String> headerNames = request.getHeaderNames();//获得 n个键名，放回一个Enumeration<String>类型的数据
+        while (headerNames.hasMoreElements()) {//.hasMoreElements()返回的是布尔类型的数据
+            String headerName = headerNames.nextElement();//获得键
+            String headerValue = request.getHeader(headerName);//获得值
+            fileAppender.append(String.format("%s : %s\n", headerName, headerValue));
         }
         if (StringUtils.isEmpty(rdns)) {
             //2、校验rdns
