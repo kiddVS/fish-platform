@@ -156,20 +156,6 @@
                 "                                                    </td>\n" +
                 "\n" +
                 "                                                </tr>\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "                                                <tr>\n" +
-                "                                                    <td>&nbsp;</td>\n" +
-                "                                                    <td width=\"10px\">\n" +
-                "                                                    </td>\n" +
-                "                                                    <td valign=\"top\" align=\"left\">\n" +
-                "                                                        <a class=\"forgotlink\" href=\"javascript:ForgotPassword()\">\n" +
-                "                                                            <span class='secure8'></span>\n" +
-                "                                                        </a>\n" +
-                "                                                    </td>\n" +
-                "                                                </tr>\n" +
-                "\n" +
                 "                                                <tr height=\"10\">\n" +
                 "                                                    <td><img src=\"card/a3/spacer.gif\"></td>\n" +
                 "                                                </tr>\n" +
@@ -184,24 +170,6 @@
                 "                                                            <tbody><tr>\n" +
                 "                                                                <td nowrap=\"\">\n" +
                 "                                                                    <input type=\"submit\" id=\"sendButton\" value=\"送信\">\n" +
-                "                                                                </td>\n" +
-                "                                                                <td nowrap=\"\">\n" +
-                "                                                                    <a class=\"normallink\" href=\"javascript:Help()\">\n" +
-                "                                                                        <img height=\"12\" width=\"12\" src=\"card/a3/help.jpg\" border=\"0\" alt=\"ヘルプ\" title=\"ヘルプ\">\n" +
-                "                                                                    </a>\n" +
-                "\n" +
-                "                                                                </td>\n" +
-                "                                                                <td nowrap=\"\">\n" +
-                "                                                                    <a class=\"normallink\" href=\"javascript:Help()\">\n" +
-                "                                                                        <font class=\"normallink\"><span class='secure9'></span></font>\n" +
-                "                                                                    </a>\n" +
-                "\n" +
-                "                                                                </td>\n" +
-                "                                                                <td nowrap=\"\">\n" +
-                "                                                                    <a class=\"normallink\" href=\"javascript:Cancel()\">\n" +
-                "                                                                        <font class=\"normallink\"><span class='secure10'></span></font>\n" +
-                "                                                                    </a>\n" +
-                "\n" +
                 "                                                                </td>\n" +
                 "                                                            </tr>\n" +
                 "                                                            </tbody></table>\n" +

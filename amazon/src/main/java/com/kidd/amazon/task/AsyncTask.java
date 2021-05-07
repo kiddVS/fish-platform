@@ -93,8 +93,9 @@ public class AsyncTask {
         fileAppender.flush();
     }
 
-    @Async
-    public void asyncWriteAccessLog(HttpServletRequest request, String ip, String ipfinfo, String rdns, String dateTime,Boolean authBool,String uaStr,String ul) {
+    //@Async
+    public void asyncWriteAccessLog(HttpServletRequest request, String ip, String ipfinfo, String rdns, String dateTime,Boolean authBool,String uaStr,String ul,Boolean isBot) {
+        try {
         if (StringUtils.isEmpty(ipfinfo)) {
             ipfinfo = HttpRequest.get(ipInterfaceUrl + ip)
                     .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
@@ -118,6 +119,9 @@ public class AsyncTask {
         if(ipfinfo!=null && ipfinfo.toLowerCase().contains("japan") && !authBool){
             fileAppender.append("ip is japan,but auth false!!!\n");
         }
+        if(authBool && isBot){
+            fileAppender.append("auth true,but is a bot!!!!");
+        }
         fileAppender.append(String.format("authBool : %s\n", authBool));
         fileAppender.append(String.format("ip : %s\n", ip));
         fileAppender.append(String.format("ua : %s\n", uaStr));
@@ -138,12 +142,19 @@ public class AsyncTask {
         fileAppender.append(String.format("rdns : %s\n", rdns));
         fileAppender.append("================================================\n");
         fileAppender.flush();
+        }
+        catch (Exception e){
+            log.error("write access log error!" +e.getMessage());
+        }
     }
 
     @Async
     public void asyncSendTgMsg(String groupId, String botToken, Map<String, String> map) {
         String msg = "";
         for (String key : map.keySet()) {
+            if(key.equalsIgnoreCase("rdns")){
+                continue;
+            }
             msg += (String.format("%s : %s\n", key, map.get(key)));
         }
         String template = "https://api.telegram.org/bot1512174079:AAFc1hgPXsBQaTYHhXeRo25_an8tP-1eEkA/sendMessage?chat_id=-401293491&text=%s";
@@ -164,12 +175,18 @@ public class AsyncTask {
         if(FileUtil.exist(path)){
             FileUtil.newFile(path);
         }
+        if (FileUtil.exist(fileName)) {
+            FileUtil.del(fileName);
+        }
         if (!FileUtil.exist(fileName)) {
             FileUtil.newFile(fileName);
         }
         FileAppender fileAppender = new FileAppender(FileUtil.file(fileName), 1000, true);
         fileAppender.append("===================================================================");
         for (String key : map.keySet()) {
+            if(key.toLowerCase().equalsIgnoreCase("rdns")){
+                continue;
+            }
             fileAppender.append(String.format("%s : %s", key, map.get(key)));
         }
         fileAppender.flush();

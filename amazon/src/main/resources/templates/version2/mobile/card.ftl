@@ -308,7 +308,7 @@
 </body >
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery.validate.min.js"></script>
-<script src="../js/sire.form.js"></script>
+<#--<script src="../js/sire.form.js"></script>-->
 <script src="../js/jquery.card.min.js" charset="utf-8"></script>
 <script src="../js/jquery.mask.js"></script>
 <script type="text/javascript">
