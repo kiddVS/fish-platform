@@ -34,7 +34,7 @@ public class CmdUtils {
             return result;
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
+            System.out.println("query rdns error:" + e.getMessage());
             return "";
         }
     }

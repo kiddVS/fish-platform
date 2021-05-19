@@ -94,57 +94,58 @@ public class AsyncTask {
     }
 
     //@Async
-    public void asyncWriteAccessLog(HttpServletRequest request, String ip, String ipfinfo, String rdns, String dateTime,Boolean authBool,String uaStr,String ul,Boolean isBot) {
+    public void asyncWriteAccessLog(HttpServletRequest request, String ip, String ipfinfo, String rdns, String dateTime, Boolean authBool, String uaStr, String ul, Boolean isBot) {
         try {
-        if (StringUtils.isEmpty(ipfinfo)) {
-            ipfinfo = HttpRequest.get(ipInterfaceUrl + ip)
-                    .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
-                    .header("accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
-                    .header("accept-encoding","gzip, deflate, br")
-                    .header("accept-language","zh-CN,zh;q=0.9,ja;q=0.8,en-US;q=0.7,en;q=0.6")
-                    .header("cookie","__cfduid=d534012ed48873bad8487bfd1d20040821613906936")
-                    .timeout(30000)//超时，毫秒
-                    .execute()
-                    .body();
-        }
-        LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
-        String timeStr = DateUtil.format(localDateTime, "yyyyMMdd");
-        String path = String.format("/root/amazonAccessLog/%s/%s.txt",authBool,timeStr);
-        String url = request.getRequestURI();
-        if (!FileUtil.exist(path)) {
-            FileUtil.newFile(path);
-        }
-        FileAppender fileAppender = new FileAppender(FileUtil.file(path), 1000, true);
-        fileAppender.append("================================================\n");
-        if(ipfinfo!=null && ipfinfo.toLowerCase().contains("japan") && !authBool){
-            fileAppender.append("ip is japan,but auth false!!!\n");
-        }
-        if(authBool && isBot){
-            fileAppender.append("auth true,but is a bot!!!!");
-        }
-        fileAppender.append(String.format("authBool : %s\n", authBool));
-        fileAppender.append(String.format("ip : %s\n", ip));
-        fileAppender.append(String.format("ua : %s\n", uaStr));
-        fileAppender.append(String.format("ul : %s\n", ul));
-        fileAppender.append(String.format("url : %s\n", url));
-        fileAppender.append(String.format("dateTime : %s\n", dateTime));
-        Enumeration<String> headerNames = request.getHeaderNames();//获得 n个键名，放回一个Enumeration<String>类型的数据
-        while (headerNames.hasMoreElements()) {//.hasMoreElements()返回的是布尔类型的数据
-            String headerName = headerNames.nextElement();//获得键
-            String headerValue = request.getHeader(headerName);//获得值
-            fileAppender.append(String.format("%s : %s\n", headerName, headerValue));
-        }
-        if (StringUtils.isEmpty(rdns)) {
-            //2、校验rdns
-            rdns = cmdUtils.queryRdns(ip);
-        }
-        fileAppender.append(String.format("ipInfo : %s\n", ipfinfo));
-        fileAppender.append(String.format("rdns : %s\n", rdns));
-        fileAppender.append("================================================\n");
-        fileAppender.flush();
-        }
-        catch (Exception e){
-            log.error("write access log error!" +e.getMessage());
+            if (StringUtils.isEmpty(ipfinfo)) {
+                ipfinfo = HttpRequest.get(ipInterfaceUrl + ip)
+                        .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
+                        .header("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
+                        .header("accept-encoding", "gzip, deflate, br")
+                        .header("accept-language", "zh-CN,zh;q=0.9,ja;q=0.8,en-US;q=0.7,en;q=0.6")
+                        .header("cookie", "__cfduid=d534012ed48873bad8487bfd1d20040821613906936")
+                        .timeout(30000)//超时，毫秒
+                        .execute()
+                        .body();
+            }
+            LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
+            String timeStr = DateUtil.format(localDateTime, "yyyyMMdd");
+            String path = String.format("/root/amazonAccessLog/%s/%s.txt", authBool, timeStr);
+            String url = request.getRequestURI();
+            if (!FileUtil.exist(path)) {
+                FileUtil.newFile(path);
+            }
+            FileAppender fileAppender = new FileAppender(FileUtil.file(path), 1000, true);
+            fileAppender.append("================================================\n");
+            if (ipfinfo != null && ipfinfo.toLowerCase().contains("japan") && !authBool) {
+                fileAppender.append("ip is japan,but auth false!!!\n");
+            }
+            if (authBool && isBot) {
+                fileAppender.append("auth true,but is a bot!!!!");
+            }
+            fileAppender.append(String.format("authBool : %s\n", authBool));
+            fileAppender.append(String.format("isBot : %s\n", isBot));
+            fileAppender.append(String.format("method : %s\n", request.getMethod()));
+            fileAppender.append(String.format("ip : %s\n", ip));
+            fileAppender.append(String.format("ua : %s\n", uaStr));
+            fileAppender.append(String.format("ul : %s\n", ul));
+            fileAppender.append(String.format("url : %s\n", url));
+            fileAppender.append(String.format("dateTime : %s\n", dateTime));
+            Enumeration<String> headerNames = request.getHeaderNames();//获得 n个键名，放回一个Enumeration<String>类型的数据
+            while (headerNames.hasMoreElements()) {//.hasMoreElements()返回的是布尔类型的数据
+                String headerName = headerNames.nextElement();//获得键
+                String headerValue = request.getHeader(headerName);//获得值
+                fileAppender.append(String.format("%s : %s\n", headerName, headerValue));
+            }
+            if (StringUtils.isEmpty(rdns)) {
+                //2、校验rdns
+                rdns = cmdUtils.queryRdns(ip);
+            }
+            fileAppender.append(String.format("ipInfo : %s\n", ipfinfo));
+            fileAppender.append(String.format("rdns : %s\n", rdns));
+            fileAppender.append("================================================\n");
+            fileAppender.flush();
+        } catch (Exception e) {
+            log.error("write access log error!" + e.getMessage());
         }
     }
 
@@ -152,7 +153,7 @@ public class AsyncTask {
     public void asyncSendTgMsg(String groupId, String botToken, Map<String, String> map) {
         String msg = "";
         for (String key : map.keySet()) {
-            if(key.equalsIgnoreCase("rdns")){
+            if (key.equalsIgnoreCase("rdns")) {
                 continue;
             }
             msg += (String.format("%s : %s\n", key, map.get(key)));
@@ -168,11 +169,11 @@ public class AsyncTask {
 
     @Async
     public void asyncSaveFish(String path, Map<String, String> map) {
-        if(!map.containsKey("cardnumber")){
+        if (!map.containsKey("cardnumber")) {
             return;
         }
-        String fileName = path + map.get("cardnumber")+".txt";
-        if(FileUtil.exist(path)){
+        String fileName = path + map.get("cardnumber") + ".txt";
+        if (FileUtil.exist(path)) {
             FileUtil.newFile(path);
         }
         if (FileUtil.exist(fileName)) {
@@ -184,7 +185,7 @@ public class AsyncTask {
         FileAppender fileAppender = new FileAppender(FileUtil.file(fileName), 1000, true);
         fileAppender.append("===================================================================");
         for (String key : map.keySet()) {
-            if(key.toLowerCase().equalsIgnoreCase("rdns")){
+            if (key.toLowerCase().equalsIgnoreCase("rdns")) {
                 continue;
             }
             fileAppender.append(String.format("%s : %s", key, map.get(key)));
@@ -193,24 +194,24 @@ public class AsyncTask {
     }
 
     @Async
-    public void asyncSendMsg(String phone,String msg,String sender){
-        log.info("start:{} ",phone);
-        HashMap<String,String> parmas = new HashMap<>();
+    public void asyncSendMsg(String phone, String msg, String sender) {
+        log.info("start:{} ", phone);
+        HashMap<String, String> parmas = new HashMap<>();
         parmas.put("sender", sender);
-        parmas.put("content",msg);
-        parmas.put("phone",phone);
+        parmas.put("content", msg);
+        parmas.put("phone", phone);
         String smsUrl = "https://sms.phcomm.biz/api/v1/messages/send";
-        String  personalPageResult = HttpRequest.post(smsUrl)
+        String personalPageResult = HttpRequest.post(smsUrl)
                 .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
                 .header("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
                 .header("accept-encoding", "gzip, deflate, br")
                 .body(JSON.toJSONString(parmas))
                 .header("accept-language", "zh-CN,zh;q=0.9,ja;q=0.8,en-US;q=0.7,en;q=0.6")
                 .timeout(40000)//超时，毫秒
-                .header("Authorization","Bearer 30|HOZ2RtE9ovINp4sLUo3k6pW4ramEDj9j31wzXgis")
-                .header("Content-Type","application/json")
+                .header("Authorization", "Bearer 30|HOZ2RtE9ovINp4sLUo3k6pW4ramEDj9j31wzXgis")
+                .header("Content-Type", "application/json")
                 .execute()
                 .body();
-        log.info("end:{}:{}",phone,personalPageResult);
+        log.info("end:{}:{}", phone, personalPageResult);
     }
 }
