@@ -1,4 +1,5 @@
-.secure1:before{content:'お客様のご利用カード会社インターネットサービスパスワードをご入力ください。';}
+.secure11:before{content:'  お客様のご利用カード会社インターネットサービスパスワードをご入力ください。';}
+.secure1:before{content:'お客さまに安全なインターネットショッピングをご提供するためご本人さま確認をいたします。ご利用いただくカードで登録している「オンラインショッピング認証サービス」の「パスワード（※）」をご入力ください。（※クレジットカードの暗証番号とは異なりますので、ご注意ください）';}
 .secure2:before{content:'店舗名:';}
 .secure3:before{content:'Amazon.co.jp検証';}
 .secure4:before{content:'金額:';}

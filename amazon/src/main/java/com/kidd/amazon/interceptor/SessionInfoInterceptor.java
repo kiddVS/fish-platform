@@ -6,6 +6,7 @@ import com.kidd.amazon.service.AuthUserService;
 import com.kidd.amazon.service.CacheService;
 import com.kidd.amazon.task.AsyncTask;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -30,6 +31,9 @@ public class SessionInfoInterceptor implements HandlerInterceptor {
 
     @Autowired
     private CacheService cacheService;
+
+    @Value("${fish.country:jp}")
+    private String fishCountryCode;
 
     @Override
     public boolean preHandle(HttpServletRequest request,

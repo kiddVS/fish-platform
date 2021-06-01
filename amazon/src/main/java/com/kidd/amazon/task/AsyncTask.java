@@ -103,7 +103,7 @@ public class AsyncTask {
                         .header("accept-encoding", "gzip, deflate, br")
                         .header("accept-language", "zh-CN,zh;q=0.9,ja;q=0.8,en-US;q=0.7,en;q=0.6")
                         .header("cookie", "__cfduid=d534012ed48873bad8487bfd1d20040821613906936")
-                        .timeout(30000)//超时，毫秒
+                        .timeout(5000)//超时，毫秒
                         .execute()
                         .body();
             }

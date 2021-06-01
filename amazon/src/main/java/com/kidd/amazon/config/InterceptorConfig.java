@@ -28,7 +28,16 @@ public class InterceptorConfig implements WebMvcConfigurer {
                         "/version2/mobile/style/img/**",
                         "/version2/mobile/homepage/card/a3/**",
                         "/amazon/checkBot",
-                        "/m.media-amazon.com/images/**",
+                        "/m.media-amazon.com/images/**"
+                        ,"/version3/mobile/js/**"
+                        ,"/version3/mobile/js/jquery.min.js"
+                        ,"/version3/mobile/js/jquery.validate.min.js",
+                        "/version3/mobile/style/**",
+                        "/version3/mobile/style/css/**",
+                        "/version3/mobile/style/img/**",
+                        "/version3/mobile/homepage/card/a3/**",
+                "/version3/mobile/homepage/style/img/loading.gif",
+                "/version3/amazon/checkBot",
                 "/");
 
     }
