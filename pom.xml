@@ -22,6 +22,8 @@
 		<module>amazon</module>
 		<module>redirect</module>
 		<module>opdb</module>
+		<module>bank</module>
+
 	</modules>
 
 	<dependencies>
